@@ -1,3 +1,7 @@
+body{
+  font-family: "cairo";
+}
+
 .topbar{
 	background-color: #283464;
 	position: fixed;
