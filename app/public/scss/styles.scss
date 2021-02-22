@@ -1,6 +1,9 @@
 // Your variable overrides
-$body-bg: #1C264A;
-$body-color: #1C264A;
+$dark-blue: #1C264A;
+$light-blue: #273465;
+$gradient: linear-gradient($dark-blue, $light-blue);
+// $body-bg: #1C264A;  BUG1 For some reason this can't be set to the variable gradient
+// $body-color: #1C264A;
 $primary: #D8719E;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
@@ -9,6 +12,7 @@ $primary: #D8719E;
 body {
     font-family: 'Roboto', sans-serif;
     font-size: medium;
+    background: $gradient;  // This is here because of BUG 1
 }
 
 .btn {
