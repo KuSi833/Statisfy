@@ -6,6 +6,11 @@ $background-pale: #D1C4E9;
 // Height variables
 $carousel-item-height: 300px;
 
+// $theme-colors: (
+//     "primary": #D8719E
+// );
+
+
 @mixin zero-margin($pad-up-dn, $pad-left-right) {
 	margin:0px auto;
 	padding: $pad-up-dn $pad-left-right;
@@ -17,8 +22,8 @@ $carousel-item-height: 300px;
 
 .row-content {
     @include zero-margin(50px,0px);
-    border-bottom: 1px ridge;
-    min-height:400px;
+    // border-bottom: 1px ridge;
+    // min-height:400px;
 }
 
 .footer{

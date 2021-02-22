@@ -1,0 +1,24 @@
+// Your variable overrides
+$body-bg: #1C264A;
+$body-color: #1C264A;
+$primary: #D8719E;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Your css overrides
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+}
+
+.btn {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    padding: 7px 10px; 
+    border-radius: 25px; 
+}
+
+#login_to_spotify_button {
+    margin-top: 5vh;
+}

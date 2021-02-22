@@ -7,7 +7,7 @@
     "start": "npm run lite",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lite": "lite-server",
-    "scss": "node-sass -o css/ css/"
+    "scss": "node-sass --watch public/scss -o public/css"
   },
   "author": "",
   "license": "ISC",
@@ -16,8 +16,7 @@
     "node-sass": "^5.0.0"
   },
   "dependencies": {
-    "bootstrap": "^4.6.0",
-    "bootstrap-social": "^5.1.1",
+    "bootstrap": "^5.0.0-beta2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.12.9"
