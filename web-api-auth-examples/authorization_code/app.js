@@ -103,16 +103,28 @@ app.get('/callback', function(req, res) {
         //   console.log(body);
         // });
 
-        var options = {
-          url: "https://api.spotify.com/v1/me/top/artists",
+        var artists = {
+          url: "https://api.spotify.com/v1/me/top/artists?time_range=short_term",
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
+        // var tracks = {
+        //   url: "https://api.spotify.com/v1/me/top/tracks",
+        //   headers: { 'Authorization': 'Bearer ' + access_token },
+        //   json: true
+        // };
 
         // use the access token to access the Spotify Web API
-        request.get(options, function(error, response, body) {
-          console.log(body);
-          });
+        request.get(artists, function(error, response, body) {
+          for(item of body.items){
+          	console.log(item.name)	
+          }});
+          // console.log(body.items);
+          // });
+        // // use the access token to access the Spotify Web API
+        // request.get(tracks, function(error, response, body) {
+        //   console.log(body);
+        //   });
 
         // we can also pass the token to the browser to make requests from there
         res.redirect('/#' +
