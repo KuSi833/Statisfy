@@ -7434,6 +7434,8 @@ body {
         color: lightgrey;
         margin-left: 10vh;
         margin-right: 10vh; }
+      .page-container .footer .footer-links li a:hover {
+        color: white; }
 
 .btn {
   color: white;

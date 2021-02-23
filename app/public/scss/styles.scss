@@ -47,11 +47,16 @@ body {
             justify-content: center;
             padding: 0;
             
-            li a {
-                color: lightgrey;
-                margin-left: 10vh;
-                margin-right: 10vh;
-            }
+            li {
+                a {
+                    color: lightgrey;
+                    margin-left: 10vh;
+                    margin-right: 10vh;
+                }
+                a:hover {
+                    color: white;
+                }
+            } 
         }
     }
 }
