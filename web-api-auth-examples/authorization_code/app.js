@@ -108,23 +108,25 @@ app.get('/callback', function(req, res) {
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
-        // var tracks = {
-        //   url: "https://api.spotify.com/v1/me/top/tracks",
-        //   headers: { 'Authorization': 'Bearer ' + access_token },
-        //   json: true
-        // };
+        var tracks = {
+          url: "https://api.spotify.com/v1/me/top/tracks?limit=5",
+          headers: { 'Authorization': 'Bearer ' + access_token },
+          json: true
+        };
 
         // use the access token to access the Spotify Web API
+       
         request.get(artists, function(error, response, body) {
-          for(item of body.items){
-          	console.log(item.name)	
+           	console.log("Top artists(short term)");
+          	for(item of body.items){
+          	console.log(item.name);	
           }});
-          // console.log(body.items);
-          // });
-        // // use the access token to access the Spotify Web API
-        // request.get(tracks, function(error, response, body) {
-        //   console.log(body);
-        //   });
+
+        request.get(tracks, function(error, response, body) {
+       		console.log("\nTop 5 tracks(medium term)");
+          	for(item of body.items){
+          	console.log(item.name);	
+          }});
 
         // we can also pass the token to the browser to make requests from there
         res.redirect('/#' +
