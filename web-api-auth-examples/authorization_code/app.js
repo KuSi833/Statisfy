@@ -111,8 +111,8 @@ app.get('/callback', function(req, res) {
 
 
         var tracks_short = {
-          	url: "https://api.spotify.com/v1/me/top/tracks?time_range=short_term)",
-         	headers: { 'Authorization': 'Bearer ' + access_token },
+          	url: "https://api.spotify.com/v1/me/top/tracks?time_range=short_term",
+          	headers: { 'Authorization': 'Bearer ' + access_token },
          	json: true
         };
         var tracks_medium = {
@@ -173,12 +173,8 @@ app.get('/callback', function(req, res) {
 
         request.get(tracks_short, function(error, response, body) {
            	console.log("Top tracks(short term)");
-          	if (body.items != undefined) {
-	          	for(item of body.items){
-	          		console.log(item.name);	
-	         	 }
-	         } else {
-	         	console.log("No top tracks in the last 4 weeks")
+	        for(item of body.items){
+	        	console.log(item.name);	
 	         }
          	console.log("\n\n");
       		});       
