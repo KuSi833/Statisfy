@@ -7407,35 +7407,96 @@ body {
 
 .page-container {
   display: flex;
-  height: 100vh;
+  height: 100vh; }
+
+#login-screen {
   flex-direction: column; }
-  .page-container .page-content {
+  #login-screen .page-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex-grow: 1; }
-    .page-container .page-content .content-row {
+    #login-screen .page-content .content-row {
       display: flex;
       flex-direction: row;
       justify-content: center; }
-  .page-container .footer {
+  #login-screen footer {
     display: flex;
     justify-content: center;
     margin-top: auto;
     height: fit-content; }
-    .page-container .footer .footer-links {
+    #login-screen footer .footer-links {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       list-style-type: none;
       justify-content: center;
       padding: 0; }
-      .page-container .footer .footer-links li a {
+      #login-screen footer .footer-links li a {
         color: lightgrey;
         margin-left: 10vh;
         margin-right: 10vh; }
-      .page-container .footer .footer-links li a:hover {
+      #login-screen footer .footer-links li a:hover {
         color: white; }
+
+#dashboard {
+  flex-direction: column; }
+  #dashboard .navbar {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    align-items: center;
+    color: white;
+    font-size: large; }
+  #dashboard .middle {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1; }
+    #dashboard .middle .sidebar-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(#D8719E, #D86DBF);
+      margin: 10px 20px 0px 20px;
+      width: 80px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px; }
+      #dashboard .middle .sidebar-left ul {
+        list-style-type: none;
+        padding-left: 0; }
+        #dashboard .middle .sidebar-left ul li {
+          padding-top: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center; }
+    #dashboard .middle .page-content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      overflow-y: scroll;
+      margin-left: 10px; }
+      #dashboard .middle .page-content .page-row {
+        display: flex;
+        display: row;
+        width: 100%;
+        height: 30%;
+        margin-bottom: 25px; }
+      #dashboard .middle .page-content .widget {
+        background: #2B3B70;
+        border-radius: 5px;
+        margin: 10px 25px 25px 0px; }
+      #dashboard .middle .page-content #widget-a {
+        width: 33%;
+        height: 100%; }
+      #dashboard .middle .page-content #widget-b {
+        width: 33%;
+        height: 100%; }
+      #dashboard .middle .page-content #widget-c {
+        width: 33%;
+        height: 100%; }
+      #dashboard .middle .page-content #widget-wide {
+        width: 100%;
+        height: 100%; }
 
 .btn {
   color: white;
@@ -7447,3 +7508,7 @@ body {
 #login-to-spotify-button {
   margin-top: 5vh;
   width: 30vh; }
+
+#icon {
+  color: #fff;
+  font-size: 1.35em; }
