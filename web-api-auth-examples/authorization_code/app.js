@@ -103,30 +103,87 @@ app.get('/callback', function(req, res) {
         //   console.log(body);
         // });
 
-        var artists = {
+        var artists_short = {
           url: "https://api.spotify.com/v1/me/top/artists?time_range=short_term",
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
-        var tracks = {
-          url: "https://api.spotify.com/v1/me/top/tracks?limit=5",
+        var artists_medium = {
+          url: "https://api.spotify.com/v1/me/top/artists?time_range=medium_term",
+          headers: { 'Authorization': 'Bearer ' + access_token },
+          json: true
+        };
+        var artists_long = {
+          url: "https://api.spotify.com/v1/me/top/artists?time_range=long_term",
+          headers: { 'Authorization': 'Bearer ' + access_token },
+          json: true
+        };
+        var tracks_short = {
+          url: "https://api.spotify.com/v1/me/top/tracks?time_range=short_term)",
+          headers: { 'Authorization': 'Bearer ' + access_token },
+          json: true
+        };
+        var tracks_medium = {
+          url: "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term",
+          headers: { 'Authorization': 'Bearer ' + access_token },
+          json: true
+        };
+        var tracks_long = {
+          url: "https://api.spotify.com/v1/me/top/tracks?time_range=long_term",
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
 
         // use the access token to access the Spotify Web API
        
-        request.get(artists, function(error, response, body) {
+        request.get(artists_short, function(error, response, body) {
            	console.log("Top artists(short term)");
           	for(item of body.items){
-          	console.log(item.name);	
-          }});
-
-        request.get(tracks, function(error, response, body) {
-       		console.log("\nTop 5 tracks(medium term)");
+          		console.log(item.name);	
+         	 }
+          	console.log("\n\n")
+      		});       
+        request.get(artists_medium, function(error, response, body) {
+           	console.log("Top artists(medium term)");
           	for(item of body.items){
-          	console.log(item.name);	
-          }});
+          		console.log(item.name);	
+          	}
+          	console.log("\n\n")
+      		});       
+        request.get(artists_long, function(error, response, body) {
+           	console.log("Top artists(long term)");
+          	for(item of body.items){
+          		console.log(item.name);	
+         	}
+         	console.log("\n\n")
+         	});
+       
+        request.get(tracks_short, function(error, response, body) {
+           	console.log("Top tracks(short term)");
+          	if (body.items != undefined) {
+	          	for(item of body.items){
+	          		console.log(item.name);	
+	         	 }
+	         } else {
+	         	console.log("No top tracks in the last 4 weeks")
+	         }
+         	console.log("\n\n");
+      		});       
+        request.get(tracks_medium, function(error, response, body) {
+           	console.log("Top tracks(medium term)");
+          	for(item of body.items){
+          		console.log(item.name);	
+          	}
+          	console.log("\n\n");
+      		});       
+        request.get(tracks_long, function(error, response, body) {
+           	console.log("Top tracks(long term)");
+          	for(item of body.items){
+          		console.log(item.name);	
+         	}
+         	console.log("\n\n");
+         	});
+
 
         // we can also pass the token to the browser to make requests from there
         res.redirect('/#' +
@@ -167,6 +224,7 @@ app.get('/refresh_token', function(req, res) {
     }
   });
 });
+
 
 console.log('Listening on 8888');
 app.listen(8888);
