@@ -46,7 +46,7 @@ app.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email user-top-read user-library-read';
+  var scope = 'user-read-private user-read-email user-top-read user-library-read user-read-recently-played';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -109,6 +109,7 @@ app.get('/callback', function(req, res) {
           	json: true
         };
 
+
         var tracks_short = {
           	url: "https://api.spotify.com/v1/me/top/tracks?time_range=short_term)",
          	headers: { 'Authorization': 'Bearer ' + access_token },
@@ -125,6 +126,7 @@ app.get('/callback', function(req, res) {
 	        json: true
         };
 
+
         var saved_albums = {
         	url: "https://api.spotify.com/v1/me/albums",
           	headers: { 'Authorization': 'Bearer ' + access_token },
@@ -134,6 +136,13 @@ app.get('/callback', function(req, res) {
         	url: "https://api.spotify.com/v1/me/tracks",
           	headers: { 'Authorization': 'Bearer ' + access_token },
           	json: true
+        };
+
+
+        var recently_played = {
+        	url: "https://api.spotify.com/v1/me/player/recently-played",
+          	headers: { 'Authorization': 'Bearer ' + access_token },
+          	json: true        	
         };
         
 
@@ -161,6 +170,7 @@ app.get('/callback', function(req, res) {
          	console.log("\n\n")
          	});
        
+
         request.get(tracks_short, function(error, response, body) {
            	console.log("Top tracks(short term)");
           	if (body.items != undefined) {
@@ -187,6 +197,7 @@ app.get('/callback', function(req, res) {
          	console.log("\n\n");
          	});
 
+
         request.get(saved_albums, function(error, response, body) {
         	console.log("<=20 saved albums");
         	for(item of body.items) {
@@ -201,6 +212,15 @@ app.get('/callback', function(req, res) {
         	}
         	console.log("\n\n");
         });
+
+
+        request.get(recently_played, function(error, response, body) {
+        	console.log("Recently played tracks (20 by default)");
+        	for(item of body.items) {
+        		console.log(item.track.name)
+        	}
+        	console.log("\n\n")
+        })
 
         // we can also pass the token to the browser to make requests from there
         res.redirect('/#' +
