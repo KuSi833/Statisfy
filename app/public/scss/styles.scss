@@ -1,0 +1,75 @@
+// Your variable overrides
+$dark-blue: #1C264A;
+$light-blue: #273465;
+$gradient: linear-gradient($dark-blue, $light-blue);
+// $body-bg: #1C264A;  BUG1 For some reason this can't be set to the variable gradient
+// $body-color: #1C264A;
+$primary: #D8719E;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Your css overrides
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+    background: $gradient;  // This is here because of BUG 1
+}
+
+.page-container{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    
+    .page-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-grow: 1;
+        
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+    }
+
+    .footer {
+        display: flex;
+        justify-content: center;
+        margin-top: auto;
+        height: fit-content;
+
+        .footer-links {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            list-style-type: none;
+            justify-content: center;
+            padding: 0;
+            
+            li {
+                a {
+                    color: lightgrey;
+                    margin-left: 10vh;
+                    margin-right: 10vh;
+                }
+                a:hover {
+                    color: white;
+                }
+            } 
+        }
+    }
+}
+
+.btn {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    padding: 7px 10px; 
+    border-radius: 25px; 
+}
+
+#login-to-spotify-button {
+    margin-top: 5vh;
+    width: 30vh;
+}
