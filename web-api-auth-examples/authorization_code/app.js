@@ -46,7 +46,7 @@ app.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email user-top-read';
+  var scope = 'user-read-private user-read-email user-top-read user-library-read';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -92,47 +92,50 @@ app.get('/callback', function(req, res) {
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
-        // var options = {
-        //   url: 'https://api.spotify.com/v1/me',
-        //   headers: { 'Authorization': 'Bearer ' + access_token },
-        //   json: true
-        // };
-
-        // // use the access token to access the Spotify Web API
-        // request.get(options, function(error, response, body) {
-        //   console.log(body);
-        // });
 
         var artists_short = {
-          url: "https://api.spotify.com/v1/me/top/artists?time_range=short_term",
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
+          	url: "https://api.spotify.com/v1/me/top/artists?time_range=short_term",
+          	headers: { 'Authorization': 'Bearer ' + access_token },
+          	json: true
         };
         var artists_medium = {
-          url: "https://api.spotify.com/v1/me/top/artists?time_range=medium_term",
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
+          	url: "https://api.spotify.com/v1/me/top/artists?time_range=medium_term",
+          	headers: { 'Authorization': 'Bearer ' + access_token },
+          	json: true
         };
         var artists_long = {
-          url: "https://api.spotify.com/v1/me/top/artists?time_range=long_term",
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
+          	url: "https://api.spotify.com/v1/me/top/artists?time_range=long_term",
+          	headers: { 'Authorization': 'Bearer ' + access_token },
+          	json: true
         };
+
         var tracks_short = {
-          url: "https://api.spotify.com/v1/me/top/tracks?time_range=short_term)",
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
+          	url: "https://api.spotify.com/v1/me/top/tracks?time_range=short_term)",
+         	headers: { 'Authorization': 'Bearer ' + access_token },
+         	json: true
         };
         var tracks_medium = {
-          url: "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term",
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
+          	url: "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term",
+          	headers: { 'Authorization': 'Bearer ' + access_token },
+         	json: true
         };
         var tracks_long = {
-          url: "https://api.spotify.com/v1/me/top/tracks?time_range=long_term",
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
+        	url: "https://api.spotify.com/v1/me/top/tracks?time_range=long_term",
+	        headers: { 'Authorization': 'Bearer ' + access_token },
+	        json: true
         };
+
+        var saved_albums = {
+        	url: "https://api.spotify.com/v1/me/albums",
+          	headers: { 'Authorization': 'Bearer ' + access_token },
+          	json: true
+        };
+        var saved_tracks = {
+        	url: "https://api.spotify.com/v1/me/tracks",
+          	headers: { 'Authorization': 'Bearer ' + access_token },
+          	json: true
+        };
+        
 
         // use the access token to access the Spotify Web API
        
@@ -184,6 +187,20 @@ app.get('/callback', function(req, res) {
          	console.log("\n\n");
          	});
 
+        request.get(saved_albums, function(error, response, body) {
+        	console.log("<=20 saved albums");
+        	for(item of body.items) {
+        		console.log(item.album.name)
+        	}
+        	console.log("\n\n");
+        });
+        request.get(saved_tracks, function(error, response, body) {
+        	console.log("<=20 saved tracks");
+        	for(item of body.items) {
+        		console.log(item.track.name)
+        	}
+        	console.log("\n\n");
+        });
 
         // we can also pass the token to the browser to make requests from there
         res.redirect('/#' +
