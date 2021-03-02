@@ -1,74 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <title>Statisfy - Dashboard</title>
+    <head>
+        <title>Statisfy: About Us</title>
+    
+        <!-- Required meta tags always come first -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="public/css/aboutus.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+        <!-- Custom Font -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    </head>
 
-    <!-- Required meta tags always come first -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="public/css/styles.css">
-
-    <!-- Custom Font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-    <div class="page-container" id="aboutus">
-        <div class="navbar">
-            <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
-                <div class="container-fluid">              
-                    <a href="./index.html" class="navbar-brand"><img alt = "logo" src="img/statisfy_logo.png" height="60"></a>
-                    <div class="collapse navbar-collapse" id="Navbar">
-                        <ul class="navbar-nav me-auto">
-                            <li class="nav-item"><a class="nav-link" href="./dashboard.html"><span class="fa fa-list fa-lg"></span> Dashboard</a></li>
-                            <li class="nav-item active"><a class="nav-link active" href=""><span class="fa fa-info fa-lg"></span> About Us</a></li>
-                        </ul>
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-cogs fa-lg"></span> </a></li>
-                            <li class="nav-item"><a class="nav-link" href="./login.html"><span class="fa fa-user fa-lg"></span> </a></li>
-                        </ul>
+    <body>
+        <div class="page-container" id="dashboard">
+            <div class="navbar">
+                <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+                    <div class="container-fluid">              
+                        <a href="./index.html" class="navbar-brand"><img src="img/statisfy_logo.png" height="60"></a>
+                            <div class="collapse navbar-collapse" id="Navbar">
+                            <ul class="navbar-nav me-auto">
+                            <li class="nav-item active"><a class="nav-link active" href="./index.html"><span class="fa fa-list fa-lg"></span> Dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-info fa-lg"></span> About Us</a></li>
+                            </ul>
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-cogs fa-lg"></span> </a></li>
+                                <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-user fa-lg"></span> </a></li>
+                                /ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
-        </div>
-        <div class="middle">
+                </nav>
+            </div>
+            
             <div class="jumbotron text-center">
-                <h1>Statisfy</h1> 
-                <p>The home of all your Spotify Stats</p> 
+              <h1>Statisfy</h1> 
+              <p>The home of all your Spotify Stats</p> 
             </div>
             
             <!-- Container (About Section) -->
             <div id="about" class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <h2>About Us</h2><br>
-                        <h4>Place Holder</h4><br>
-                        <p>Place Holder</p>
-                    </div>
-                    <div class="col-sm-4">
-                        <span class="glyphicon glyphicon-signal logo"></span>
-                    </div>
+              <div class="row">
+                <div class="col-sm-8">
+                  <h2>About Us</h2><br>
+                  <h4>Place Holder</h4><br>
+                  <p>Place Holder</p>
                 </div>
+                <div class="col-sm-4">
+                  <span class="glyphicon glyphicon-signal logo"></span>
+                </div>
+              </div>
             </div>
             
             <div class="container-fluid bg-grey">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <span class="glyphicon glyphicon-globe logo slideanim"></span>
-                    </div>
-                    <div class="col-sm-8">
-                        <h2>Our Values</h2><br>
-                        <h4><strong>MISSION:</strong>Create a better you with Statisfy</h4><br>
-                        <p><strong>VISION:</strong>Create a better you with Statisfy</p>
-                    </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <span class="glyphicon glyphicon-globe logo slideanim"></span>
                 </div>
+                <div class="col-sm-8">
+                  <h2>Our Values</h2><br>
+                  <h4><strong>MISSION:</strong>Create a better you with Statisfy</h4><br>
+                  <p><strong>VISION:</strong>Create a better you with Statisfy
+                </p>
+                </div>
+              </div>
             </div>
         
             
@@ -100,9 +101,9 @@
                 </div>
               </div>
             </div>
-        </div>
-    </div>
 
+    <footer>
+    </footer>
     
     <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
@@ -144,7 +145,7 @@
             });
           });
         })
-    </script>
+        </script>
 </body>
 
 </html>

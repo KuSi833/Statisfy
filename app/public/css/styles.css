@@ -7523,6 +7523,32 @@ body {
         width: 100%;
         height: 100%; }
 
+#aboutus {
+  flex-direction: column; }
+  #aboutus .navbar {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    align-items: center;
+    color: white;
+    font-size: large; }
+  #aboutus .middle {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1; }
+    #aboutus .middle .page-content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      overflow-y: scroll;
+      margin-left: 10px; }
+      #aboutus .middle .page-content .page-row {
+        display: flex;
+        display: row;
+        width: 100%;
+        height: 30%;
+        margin-bottom: 25px; }
+
 .btn {
   color: white;
   font-family: 'Roboto', sans-serif;
