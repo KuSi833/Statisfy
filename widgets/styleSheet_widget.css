@@ -1,0 +1,17 @@
+.widget {
+    background-color:#1D2C69;
+}
+.bigText {
+    color:#D8719E;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+.info {
+    color: white;
+    padding-left: 20px;
+}
+.hours {
+    color:white;
+    padding-left: 150px;
+    padding-bottom: 20px;
+}
