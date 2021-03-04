@@ -15,7 +15,7 @@ var cookieParser = require('cookie-parser');
 
 var client_id = '70d24c0309de4c80a3f869782e9e795a'; // Your client id
 var client_secret = 'c423757044294404b3f51741c7e1676f'; // Your secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+var redirect_uri = 'http://localhost:8888/dashboard'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -40,6 +40,14 @@ app.use(express.static(__dirname + '/public'))
    .use(cors())
    .use(cookieParser());
 
+app.set('views', __dirname + '/public');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
+app.get('/dashboard', function(req, res) {
+
+     res.render('dashboard.html');
+ });
 app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
@@ -57,11 +65,11 @@ app.get('/login', function(req, res) {
     }));
 });
 
-app.get('/callback', function(req, res) {
+app.get('/info', function(req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
-
+  console.log("AAA");
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
