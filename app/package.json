@@ -19,11 +19,14 @@
   "dependencies": {
     "bootstrap": "^5.0.0-beta2",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "ejs": "^3.1.6",
+    "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "install": "^0.13.0",
     "jquery": "^3.5.1",
     "npm": "^7.6.0",
-    "popper.js": "^1.16.1"
+    "popper.js": "^1.16.1",
+    "querystring": "^0.2.1"
   }
 }
