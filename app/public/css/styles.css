@@ -7410,13 +7410,12 @@ body {
   height: 100vh; }
 
 #login-screen {
-  flex-direction: column;
-  justify-content: center; }
+  flex-direction: column; }
   #login-screen .page-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex-grow: 1; }
+    flex: 1 0 auto; }
     #login-screen .page-content .content-row {
       display: flex;
       flex-direction: row;
@@ -7424,7 +7423,7 @@ body {
   #login-screen footer {
     display: flex;
     justify-content: center;
-    margin-top: auto;
+    flex-shrink: 0;
     height: fit-content; }
     #login-screen footer .footer-links {
       display: flex;
@@ -7557,7 +7556,8 @@ body {
   height: 100%;
   margin-bottom: 10px; }
 
-#aboutus .carousel-control.right, #aboutus .carousel-control.left {
+#aboutus .carousel-control.right,
+#aboutus .carousel-control.left {
   background-image: none;
   color: #f4511e; }
 
