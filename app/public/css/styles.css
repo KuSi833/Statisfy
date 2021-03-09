@@ -7457,13 +7457,12 @@ body {
   height: 100vh; }
 
 #login-screen {
-  flex-direction: column;
-  justify-content: center; }
+  flex-direction: column; }
   #login-screen .page-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex-grow: 1; }
+    flex: 1 0 auto; }
     #login-screen .page-content .content-row {
       display: flex;
       flex-direction: row;
@@ -7471,7 +7470,7 @@ body {
   #login-screen footer {
     display: flex;
     justify-content: center;
-    margin-top: auto;
+    flex-shrink: 0;
     height: fit-content; }
     #login-screen footer .footer-links {
       display: flex;
@@ -7486,6 +7485,11 @@ body {
         margin-right: 10vh; }
       #login-screen footer .footer-links li a:hover {
         color: white; }
+  #login-screen #loggedin .media {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px; }
 
 #dashboard {
   flex-direction: column; }
@@ -7571,104 +7575,120 @@ body {
         width: 100%;
         height: 100%; }
 
-#aboutus .container-fluid, #aboutus .container-sm, #aboutus .container-md, #aboutus .container-lg, #aboutus .container-xl, #aboutus .container-xxl {
-  padding: 60px 50px; }
-
-#aboutus .bg-grey {
-  background-color: #f6f6f6; }
-
-#aboutus .bg-babypink {
-  background-color: #776885; }
-
-#aboutus .bg-pink {
-  background-color: #D8719E; }
-
-#aboutus .bg-white {
-  background-color: white; }
-
-#aboutus .logo-small {
-  color: #f4511e;
-  font-size: 50px; }
-
-#aboutus .logo {
-  color: #f4511e;
-  font-size: 200px; }
-
-#aboutus .thumbnail {
-  padding: 0 0 15px 0;
-  border: none;
-  border-radius: 0; }
-
-#aboutus .thumbnail img {
-  width: 100%;
-  height: 100%;
-  margin-bottom: 10px; }
-
-#aboutus .carousel-control.right, #aboutus .carousel-control.left {
-  background-image: none;
-  color: #f4511e; }
-
-#aboutus .carousel-indicators li {
-  border-color: #f4511e; }
-
-#aboutus .carousel-indicators li.active {
-  background-color: #f4511e; }
-
-#aboutus .item h4, #aboutus .item .h4 {
-  font-size: 19px;
-  line-height: 1.375em;
-  font-weight: 400;
-  font-style: italic;
-  margin: 70px 0; }
-
-#aboutus .item span {
-  font-style: normal; }
-
-#aboutus .panel {
-  border: 1px solid #f4511e;
-  border-radius: 0 !important;
-  transition: box-shadow 0.5s; }
-
-#aboutus .panel:hover {
-  box-shadow: 5px 0px 40px rgba(0, 0, 0, 0.2); }
-
-#aboutus .panel-footer .btn:hover {
-  border: 1px solid #f4511e;
-  background-color: #fff !important;
-  color: #f4511e; }
-
-#aboutus .panel-heading {
-  color: #fff !important;
-  background-color: #f4511e !important;
-  padding: 25px;
-  border-bottom: 1px solid transparent;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px; }
-
-#aboutus .panel-footer {
-  background-color: white !important; }
-
-#aboutus .panel-footer h3, #aboutus .panel-footer .h3 {
-  font-size: 32px; }
-
-#aboutus .panel-footer h4, #aboutus .panel-footer .h4 {
-  color: #aaa;
-  font-size: 14px; }
-
-#aboutus .panel-footer .btn {
-  margin: 15px 0;
-  background-color: #f4511e;
-  color: #fff; }
-
-#aboutus .navbar {
-  display: flex;
-  flex-direction: row;
-  height: 70px;
-  align-items: center;
-  color: white;
-  font-size: large; }
+#about-us {
+  flex-direction: column; }
+  #about-us body {
+    font-family: "Montserrat", sans-serif;
+    color: #818181; }
+  #about-us h1, #about-us .h1 {
+    font-size: 50px;
+    color: #ffffff;
+    font-weight: 800;
+    margin-bottom: 30px; }
+  #about-us h2, #about-us .h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: 600;
+    margin-bottom: 30px; }
+  #about-us h4, #about-us .h4 {
+    font-size: 20px;
+    line-height: 1.375em;
+    color: #000000;
+    font-weight: 400;
+    margin-bottom: 30px; }
+  #about-us .carousel-item {
+    background: #D8719E;
+    color: white; }
+  #about-us .container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 20px; }
+  #about-us .jumbotron {
+    background-color: #273465;
+    font-size: 50px;
+    color: #fff;
+    padding: 100px 25px;
+    font-family: Montserrat, sans-serif; }
+    #about-us .jumbotron .para {
+      font-size: 20px; }
+  #about-us .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+  #about-us .team {
+    background-color: black;
+    color: #fff;
+    padding: 60px;
+    font-family: Montserrat, sans-serif; }
+    #about-us .team .para {
+      font-size: 50px;
+      padding-bottom: 25px; }
+  #about-us .container-fluid, #about-us .container-sm, #about-us .container-md, #about-us .container-lg, #about-us .container-xl, #about-us .container-xxl {
+    padding: 60px 50px; }
+  #about-us .bg-grey {
+    background-color: #f6f6f6; }
+  #about-us .bg-babypink {
+    background-color: #776885; }
+  #about-us .bg-pink {
+    background-color: #D8719E; }
+  #about-us .bg-white {
+    background-color: white; }
+  #about-us .logo-small {
+    color: #f4511e;
+    font-size: 50px; }
+  #about-us .logo {
+    color: #f4511e;
+    font-size: 200px; }
+  #about-us .thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px; }
+  #about-us .item h4, #about-us .item .h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0; }
+  #about-us .item span {
+    font-style: normal; }
+  #about-us .panel {
+    border: 1px solid #f4511e;
+    border-radius: 0 !important;
+    transition: box-shadow 0.5s; }
+  #about-us .panel:hover {
+    box-shadow: 5px 0px 40px rgba(0, 0, 0, 0.2); }
+  #about-us .panel-footer .btn:hover {
+    border: 1px solid #f4511e;
+    background-color: #fff !important;
+    color: #f4511e; }
+  #about-us .panel-heading {
+    color: #fff !important;
+    background-color: #f4511e !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px; }
+  #about-us .panel-footer {
+    background-color: white !important; }
+  #about-us .panel-footer h3, #about-us .panel-footer .h3 {
+    font-size: 32px; }
+  #about-us .panel-footer h4, #about-us .panel-footer .h4 {
+    color: #aaa;
+    font-size: 14px; }
+  #about-us .panel-footer .btn {
+    margin: 15px 0;
+    background-color: #f4511e;
+    color: #fff; }
+  #about-us .navbar {
+    height: 70px;
+    align-items: center;
+    color: white;
+    font-size: large; }
 
 .btn {
   color: white;
