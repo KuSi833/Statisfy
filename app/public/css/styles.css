@@ -7466,6 +7466,11 @@ body {
   font-weight: 400;
   margin-bottom: 30px; }
 
+#about-us .carousel-item {
+  height: 24rem;
+  background: linear-gradient(#D8719E, #D86DBF);
+  colour: white; }
+
 #about-us .jumbotron {
   background-color: #273465;
   font-size: 50px;
