@@ -40,6 +40,14 @@ app.use(express.static(__dirname + '/public'))
    .use(cors())
    .use(cookieParser());
 
+// app.set('views', __dirname + '/public');
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
+//
+// app.get('/dashboard', function(req, res) {
+//
+//      res.render('dashboard.html');
+ // });
 app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
@@ -61,7 +69,6 @@ app.get('/callback', function(req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
-
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
