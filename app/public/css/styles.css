@@ -7445,23 +7445,30 @@ body {
   line-height: 1.8;
   color: #818181; }
 
+#about-us h1, #about-us .h1 {
+  font-size: 50px;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 800;
+  margin-bottom: 30px; }
+
 #about-us h2, #about-us .h2 {
   font-size: 24px;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #000000;
   font-weight: 600;
   margin-bottom: 30px; }
 
 #about-us h4, #about-us .h4 {
-  font-size: 19px;
+  font-size: 20px;
   line-height: 1.375em;
-  color: #ffffff;
+  color: #000000;
   font-weight: 400;
   margin-bottom: 30px; }
 
 #about-us .jumbotron {
   background-color: #273465;
-  font-size: 30px;
+  font-size: 50px;
   color: #fff;
   padding: 100px 25px;
   font-family: Montserrat, sans-serif; }
@@ -7493,6 +7500,9 @@ body {
 
 #about-us .bg-pink {
   background-color: #D8719E; }
+
+#about-us .bg-white {
+  background-color: white; }
 
 #about-us .logo-small {
   color: #f4511e;
@@ -7577,43 +7587,6 @@ body {
   align-items: center;
   color: white;
   font-size: large; }
-
-#about-us .slideanim {
-  visibility: hidden; }
-
-#about-us .slide {
-  animation-name: slide;
-  -webkit-animation-name: slide;
-  animation-duration: 1s;
-  -webkit-animation-duration: 1s; }
-
-@keyframes slide {
-  0% {
-    opacity: 0;
-    transform: translateY(70%); }
-  100% {
-    opacity: 1;
-    transform: translateY(0%); } }
-
-@-webkit-keyframes slide {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(70%); }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0%); } }
-
-@media screen and (max-width: 768px) {
-  #about-us .col-sm-4 {
-    text-align: center;
-    margin: 25px 0; }
-  #about-us .btn-lg, #about-us .btn-group-lg > .btn {
-    width: 100%;
-    margin-bottom: 35px; } }
-
-@media screen and (max-width: 480px) {
-  #about-us .logo {
-    font-size: 150px; } }
 
 #dashboard {
   flex-direction: column; }
