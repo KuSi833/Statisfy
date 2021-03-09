@@ -23,20 +23,20 @@
       
     </head>
 
-    <body data-spy="scroll" data-target=".navbar" data-offset="60">
+    <body>
       <div id="about-us">
         <div class="navbar">
-          <nav class="navbar navbar-dark bg- primary navbar-expand-sm fixed-top">
+          <nav class="navbar navbar-dark bg-s primary navbar-expand-sm sticky-top">
               <div class="container-fluid">
                   <a href="./index.html" class="navbar-brand"><img alt = "logo" src="img/statisfy_logo.png" height="60"></a>
-                  <div class="collapse navbar-collapse" id="Navbar">
+                  <div class="collapse navbar-collapse" id="navbarNav">
                       <ul class="navbar-nav me-auto">
-                          <li class="nav-item active"><a class="nav-link active" href="./index.html"><span class="fa fa-list fa-lg"></span> Dashboard</a></li>
-                          <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-info fa-lg"></span> About Us</a></li>
+                          <li class="nav-item"><a class="nav-link" href="./dashboard.html"><span class="fa fa-list fa-lg"></span> Dashboard</a></li>
+                          <li class="nav-item active"><a class="nav-link active" href="./aboutus.html"><span class="fa fa-info fa-lg"></span> About Us</a></li>
                       </ul>
                       <ul class="navbar-nav ms-auto">
                           <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-cogs fa-lg"></span> </a></li>
-                          <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-user fa-lg"></span> </a></li>
+                          <li class="nav-item active"><a class="nav-link active" href="./aboutus.html"><span class="fa fa-user fa-lg"></span> </a></li>
                       </ul>
                   </div>
               </div>
@@ -45,7 +45,7 @@
       
         <div class="jumbotron text-center">
           <h1 class = "animate__animated animate__bounce">Statisfy</h1> 
-          <p class="para">The home of your music listening statistics</p> 
+          <p class="para animate__animated animate__bounceIn">The home of your music listening statistics</p> 
         </div>
       
         <!-- Container (About Section) -->
@@ -55,18 +55,42 @@
             <h2>About Statisfy</h2><br>
             <h4>The goal of Statisfy is to better help you understand your music habits through the easy access to your Spotify Statistics. We use the Spotify Web API to display your recent listening history, top songs, albums, genres and many more statistics! </h4><br>
           </div>
-          <div class="col-sm-4">
-            <span class="fab fa-itunes-note"></span>
+          <div class="col-sm-4 text-center">
+            <!-- <img src="img/note.jpg" class="img"> -->
           </div>
         </div>
         </div>
       
         <div class="container-fluid bg-pink">
-          <div class="carousel-item active">
-            <div class="container">
-              <h1>Example Question?</h1>
-              <p>This is an example answer</p>
+          <h1 class="text-center">FAQs</h1>
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
+
+            <div class="carousel-inner">
+              <div class="carousel-item text-center active">
+                <h2 stlye="color: white">What is the point?</h2>
+                <p>To give you the best way to see all your spotify statistics  in a readable format</p>
+              </div>
+              <div class="carousel-item">
+                <h1>Example 2</h1>
+              </div>
+              <div class="carousel-item text-center">
+                <!-- <h1>Example 3</h1> -->
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
         </div>
 
@@ -74,7 +98,7 @@
       
         <!-- Container (Services Section) -->
         <div class="container-fluid bg-white">
-        <h2 class = "text-center">Your Data</h2>
+        <h2 class = "text-center animate__animated animate__backInUp">Your Data</h2>
         <div class="row">
           <div class="col-sm-4 element">
             <h4 class = "animate__animated animate__backInUp text-center">Data we collect</h4>
@@ -161,13 +185,13 @@
       
         <!-- Container (Contact Section) -->
         <div id="contact" class="container-fluid bg-grey">
-  <h2 class="text-center">CONTACT</h2>
+  <h2 class="text-center">CONTACT US</h2>
   <div class="row">
     <div class="col-sm-5">
-      <p>Contact us and we'll get back to you within 24 hours.</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
-      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
+      <p>Contact us and we'll get back to you within the next year.</p>
+      <p><span class="fa fa-map-marker" aria-hidden="true"></span> Manchester, UK</p>
+      <p><span class="fa fa-phone" aria-hidden="true"></span> +44 798354632</p>
+      <p><span class="fa fa-envelope-o" aria-hidden="true"></span> info@statisfy.com</p>
     </div>
     <div class="col-sm-7 slideanim">
       <div class="row">
