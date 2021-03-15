@@ -6,6 +6,18 @@
  * For more information, read
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
+ var mysql = require('mysql');
+
+ var con = mysql.createConnection({
+   host: "dbhost.cs.man.ac.uk",
+   user: "USERNAME",
+   password: "PASSWORD",
+   database: "2020_comp10120_w4"
+ });
+
+ con.connect(function(err){
+   if (err) throw err;
+ })
 
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
@@ -40,14 +52,7 @@ app.use(express.static(__dirname + '/public'))
    .use(cors())
    .use(cookieParser());
 
-// app.set('views', __dirname + '/public');
-// app.engine('html', require('ejs').renderFile);
-// app.set('view engine', 'html');
-//
-// app.get('/dashboard', function(req, res) {
-//
-//      res.render('dashboard.html');
- // });
+
 app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
@@ -99,6 +104,11 @@ app.get('/callback', function(req, res) {
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
+        var user_profile = {
+          	url: "https://api.spotify.com/v1/me",
+          	headers: { 'Authorization': 'Bearer ' + access_token },
+          	json: true
+        };
 
         var artists_short = {
           	url: "https://api.spotify.com/v1/me/top/artists?time_range=short_term",
@@ -155,49 +165,143 @@ app.get('/callback', function(req, res) {
 
         // use the access token to access the Spotify Web API
 
+        var user_id;
+        var sql_song;
+        request.get(user_profile, function(error, response, body) {
+            user_id = body.id;
+            var display_name = body.display_name;
+            var email = body.email;
+            var sql = `INSERT INTO USER (User_Id, Disaply_name, Email) VALUES ("${user_id}", "${display_name}", "${email}") ON DUPLICATE KEY UPDATE User_Id = "${user_id}", Disaply_name = "${display_name}", Email = "${email}"`;
+            con.query(sql, function (err, result) {
+              if (err) throw err;
+            });
+
+      		});
+
         request.get(artists_short, function(error, response, body) {
-           	console.log("Top artists(short term)");
           	for(item of body.items){
-          		console.log(item.name);
-         	 }
-          	console.log("\n\n")
+                var item_name = mysql.escape(item.name);
+                sql_song = `INSERT INTO ARTISTS (Artist_Id, Name) VALUES ("${item.id}", "${item_name}") ON DUPLICATE KEY UPDATE Artist_Id = "${item.id}", Name = "${item_name}"`;
+
+                var sql = `INSERT  TOP_ARTISTS_SHORT (Artist_Id, User_Id)
+                            SELECT  "${item.id}", "${user_id}"
+                            WHERE   NOT EXISTS
+                                    (   SELECT  *
+                                        FROM    TOP_ARTISTS_SHORT
+                                        WHERE   Artist_Id =  "${item.id}"
+                                        AND     User_Id = "${user_id}"
+                                    );`;
+                con.query(sql_song, function (err, result) {
+                  if (err) throw err;
+                });
+                con.query(sql, function (err, result) {
+                  if (err) throw err;
+                });
+            };
       		});
         request.get(artists_medium, function(error, response, body) {
-           	console.log("Top artists(medium term)");
-          	for(item of body.items){
-          		console.log(item.name);
-          	}
-          	console.log("\n\n")
+            for(item of body.items){
+                var item_name = mysql.escape(item.name);
+                sql_song = `INSERT INTO ARTISTS (Artist_Id, Name) VALUES ("${item.id}", "${item_name}") ON DUPLICATE KEY UPDATE Artist_Id = "${item.id}", Name = "${item_name}"`;
+
+                var sql = `INSERT  TOP_ARTISTS_MEDIUM (Artist_Id, User_Id)
+                            SELECT  "${item.id}", "${user_id}"
+                            WHERE   NOT EXISTS
+                                    (   SELECT  *
+                                        FROM    TOP_ARTISTS_MEDIUM
+                                        WHERE   Artist_Id =  "${item.id}"
+                                        AND     User_Id = "${user_id}"
+                                    );`;
+                con.query(sql_song, function (err, result) {
+                  if (err) throw err;
+                });
+                con.query(sql, function (err, result) {
+                  if (err) throw err;
+                });
+            };
       		});
         request.get(artists_long, function(error, response, body) {
-           	console.log("Top artists(long term)");
-          	for(item of body.items){
-          		console.log(item.name);
-         	}
-         	console.log("\n\n")
+            for(item of body.items){
+                var item_name = mysql.escape(item.name);
+                sql_song = `INSERT INTO ARTISTS (Artist_Id, Name) VALUES ("${item.id}", "${item_name}") ON DUPLICATE KEY UPDATE Artist_Id = "${item.id}", Name = "${item_name}"`;
+
+                var sql = `INSERT  TOP_ARTISTS_LONG (Artist_Id, User_Id)
+                            SELECT  "${item.id}", "${user_id}"
+                            WHERE   NOT EXISTS
+                                    (   SELECT  *
+                                        FROM    TOP_ARTISTS_LONG
+                                        WHERE   Artist_Id =  "${item.id}"
+                                        AND     User_Id = "${user_id}"
+                                    );`;
+                con.query(sql_song, function (err, result) {
+                  if (err) throw err;
+                });
+                con.query(sql, function (err, result) {
+                  if (err) throw err;
+                });
+            };
          	});
 
 
         request.get(tracks_short, function(error, response, body) {
-           	console.log("Top tracks(short term)");
 	        for(item of body.items){
-	        	console.log(item.name);
-	         }
-         	console.log("\n\n");
+              var item_name = mysql.escape(item.name);
+              sql_song = `INSERT INTO SONGS (Song_Id, Name) VALUES ("${item.id}", "${item_name}") ON DUPLICATE KEY UPDATE Song_Id = "${item.id}", Name = "${item_name}"`;
+              var sql = `INSERT  TOP_SONGS_SHORT (Song_Id, User_Id)
+                          SELECT  "${item.id}", "${user_id}"
+                          WHERE   NOT EXISTS
+                                  (   SELECT  *
+                                      FROM    TOP_SONGS_SHORT
+                                      WHERE   Song_Id =  "${item.id}"
+                                      AND     User_Id = "${user_id}"
+                                  );`;
+              con.query(sql_song, function (err, result) {
+                if (err) throw err;
+              });
+              con.query(sql, function (err, result) {
+                if (err) throw err;
+              });
+          };
       		});
         request.get(tracks_medium, function(error, response, body) {
-           	console.log("Top tracks(medium term)");
-          	for(item of body.items){
-          		console.log(item.name);
-          	}
-          	console.log("\n\n");
+            for(item of body.items){
+                var item_name = mysql.escape(item.name);
+                sql_song = `INSERT INTO SONGS (Song_Id, Name) VALUES ("${item.id}", "${item_name}") ON DUPLICATE KEY UPDATE Song_Id = "${item.id}", Name = "${item_name}"`;
+                var sql = `INSERT  TOP_SONGS_MEDIUM (Song_Id, User_Id)
+                            SELECT  "${item.id}", "${user_id}"
+                            WHERE   NOT EXISTS
+                                    (   SELECT  *
+                                        FROM    TOP_SONGS_MEDIUM
+                                        WHERE   Song_Id =  "${item.id}"
+                                        AND     User_Id = "${user_id}"
+                                    );`;
+                con.query(sql_song, function (err, result) {
+                  if (err) throw err;
+                });
+                con.query(sql, function (err, result) {
+                  if (err) throw err;
+                });
+            };
       		});
         request.get(tracks_long, function(error, response, body) {
-           	console.log("Top tracks(long term)");
-          	for(item of body.items){
-          		console.log(item.name);
-         	}
-         	console.log("\n\n");
+            for(item of body.items){
+                var item_name = mysql.escape(item.name);
+                sql_song = `INSERT INTO SONGS (Song_Id, Name) VALUES ("${item.id}", "${item_name}") ON DUPLICATE KEY UPDATE Song_Id = "${item.id}", Name = "${item_name}"`;
+                var sql = `INSERT  TOP_SONGS_LONG (Song_Id, User_Id)
+                            SELECT  "${item.id}", "${user_id}"
+                            WHERE   NOT EXISTS
+                                    (   SELECT  *
+                                        FROM    TOP_SONGS_LONG
+                                        WHERE   Song_Id =  "${item.id}"
+                                        AND     User_Id = "${user_id}"
+                                    );`;
+                con.query(sql_song, function (err, result) {
+                  if (err) throw err;
+                });
+                con.query(sql, function (err, result) {
+                  if (err) throw err;
+                });
+            };
          	});
 
 
