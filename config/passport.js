@@ -6,7 +6,7 @@ module.exports = (passport) => {
         {
           clientID: process.env.SPOTIFY_CLIENT_ID,
           clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-          callbackURL: '/auth/spotify/callback'
+          callbackURL: `http://localhost:${process.env.PORT}/auth/spotify/callback`  // http://localhost:3100/auth/spotify/callback/ 
         },
         async (accessToken, refreshToken, expires_in, profile, done) => {
           User.findOrCreate({ spotifyId: profile.id }, function(err, user) {
