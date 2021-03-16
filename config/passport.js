@@ -30,11 +30,6 @@ module.exports = (passport) => {
             } catch (error) {
                 console.error(err);
             }
-
-
-            // User.findOrCreate({ spotifyId: profile.id }, function(err, user) {
-            //     return done(err, user);
-            // });
         }
       )
     );
