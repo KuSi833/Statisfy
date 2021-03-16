@@ -29,6 +29,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "mongoose": "^5.12.0",
+    "morgan": "^1.10.0",
     "npm": "^7.6.0",
     "popper.js": "^1.16.1",
     "querystring": "^0.2.1"
