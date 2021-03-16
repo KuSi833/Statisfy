@@ -4,7 +4,11 @@ const router = express.Router();
 
 // @desc    Auth with Spotify
 // @route   GET /auth/spotify
-router.get('/spotify', passport.authenticate('spotify'));
+router.get('/spotify', passport.authenticate('spotify', {
+    scope: ['user-read-email', 'user-read-private', 'user-read-recently-played'],
+    showDialog: true,
+  })
+);
 
 // @desc    Google auth callback
 // @route   GET /auth/google/callback
