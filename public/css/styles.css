@@ -38,7 +38,7 @@
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth; } }
-    
+
 body {
   margin: 0;
   font-family: var(--bs-font-sans-serif);
@@ -59,53 +59,6 @@ hr {
   background-color: currentColor;
   border: 0;
   opacity: 0.25; }
-
-    .bigText {
-      color:#D8719E;
-      padding-left: 0px;
-      font-size: 30px;
-      font-weight: 20%;
-    }
-    .info {
-      color: white;
-      padding-left: 20px;
-    }
-    .hours {
-      color:white;
-      padding-left: 150px;
-      padding-bottom: 20px;
-    }
-    #listening_time {
-      position: relative;
-      background-color: #273465;
-      margin-top: 15%;
-      left: 10%;
-      width: 40%;
-      height: 30%;
-      float:left;
-      top: -400px;
-    }
-table{
-  margin-top: 20px;
-  margin-right: 20px;
-  margin-left: 20px;
-  }
-#song-history{
-  position: relative;
-  background-color: #273465;
-  margin-top: 15%;
-  top: -400px;
-}
-.my-custom-scrollbar {
-  position: relative;
-  height: 400px;
-  overflow: auto;
-}
-.table-wrapper-scroll-y {
-    display: block;
-}
-
-  
 
 hr:not([size]) {
   height: 1px; }

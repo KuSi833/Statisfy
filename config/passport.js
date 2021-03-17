@@ -16,7 +16,7 @@ module.exports = (passport) => {
                     displayName: profile.displayName,
                     accessToken: accessToken,
                     refreshToken: refreshToken,
-                    image: profile.photos[0].value,
+                    image: profile.photos[0].value === null ? undefined : profile.photos[0].value,
                 };
                 
                 // If user doesn't exist in database create one
