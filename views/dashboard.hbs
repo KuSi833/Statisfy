@@ -132,36 +132,16 @@
             <thead>
               <tr>
                 <th class="info" scope="col">#</th>
-                <th class="info" scope="col">Title</th>
                 <th class="info" scope="col">Artist</th>
               </tr>
             </thead>
             <tbody>
+              {{#each topArtists}}
               <tr>
                 <th class="info" scope="row">1</th>
-                <td class="info" >Fly Me To The Moon</td>
-                <td class="info" >Frank Sinatra</td>
+                <td class="info" >{{this.name}}</td>
               </tr>
-              <tr>
-                <th class="info" scope="row">2</th>
-                <td class="info" >Watermelon Sugar</td>
-                <td class="info" >Haryy Styles</td>
-              </tr>
-              <tr>
-                <th class="info" scope="row">3</th>
-                <td class="info" >Slow Dancing In The Dark</td>
-                <td class="info" >Joji</td>
-              </tr>
-              <tr>
-                <th class="info" scope="row">4</th>
-                <td class="info" >Some other song</td>
-                <td class="info" >idk</td>
-              </tr>
-              <tr>
-                <th class="info" scope="row">5</th>
-                <td class="info" >song</td>
-                <td class="info" >artist</td>
-              </tr>
+              {{/each}}
             </tbody>
           </table>
           </table>

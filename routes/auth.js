@@ -5,13 +5,13 @@ const router = express.Router();
 // @desc    Auth with Spotify
 // @route   GET /auth/spotify
 router.get('/spotify', passport.authenticate('spotify', {
-    scope: ['user-read-email', 'user-read-private', 'user-read-recently-played'],
+    scope: ['user-read-email', 'user-read-private', 'user-read-recently-played', 'user-top-read'],
     showDialog: true,
   })
 );
 
 // @desc    Google auth callback
-// @route   GET /auth/google/callback
+// @route   GET /auth/spotify/callback
 router.get(
     '/spotify/callback',
     passport.authenticate('spotify', {
@@ -21,5 +21,12 @@ router.get(
         res.redirect('/dashboard');
     }
 );
+
+// @desc    Logout user
+// @route   /auth/logout
+router.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+})
 
 module.exports = router;
