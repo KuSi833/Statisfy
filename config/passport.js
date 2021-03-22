@@ -10,15 +10,16 @@ module.exports = (passport) => {
                 callbackURL: `http://localhost:${process.env.PORT}/auth/spotify/callback`, // http://localhost:3100/auth/spotify/callback/
             },
             async (accessToken, refreshToken, expires_in, profile, done) => {
+                console.log(profile);
                 // Creating User object
                 const newUser = {
                     spotifyId: profile.id,
                     displayName: profile.displayName,
                     accessToken: accessToken,
                     refreshToken: refreshToken,
-                    image: profile.photos[0].value === null ? undefined : profile.photos[0].value,
+                    image: profile.photos[0] === undefined ? undefined : profile.photos[0].value,
                 };
-                
+
                 // If user doesn't exist in database create one
                 try {
                     var user = await User.findOne({
