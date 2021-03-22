@@ -174,7 +174,7 @@ body {
 
         .top-stuff {
           background: $light-blue;
-          color: #D8719E;
+          color: white;
         }
 
 
@@ -195,8 +195,30 @@ body {
       }
 
       #widget-c {
+
         width: 33%;
         height: 100%;
+
+        .top-stuff {
+          background: $light-blue;
+          color: #D8719E;
+        }
+
+
+        .top-buttons {
+          border-color: white;
+          color: #D8719E;
+          margin-top: 0;
+        }
+
+        .btn-group {
+          padding: 0;
+          margin: 0;
+        }
+
+        .top-texts {
+          margin-top: 10px;
+        }
       }
 
       #widget-wide {

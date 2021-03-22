@@ -1,157 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>Statisfy - Dashboard</title>
-
-    <!-- Required meta tags always come first -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/styles.css">
-
-    <!-- Custom Font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-  <!-- <a href="/info"  class="btn btn-primary" role="button">info</a> -->
-    <div class="page-container" id="dashboard">
-        <div class="navbar">
+   <head>
+      <title>Statisfy - Dashboard</title>
+      <!-- Required meta tags always come first -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" href="/css/styles.css">
+      <!-- Custom Font -->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+   </head>
+   <body>
+      <!-- <a href="/info"  class="btn btn-primary" role="button">info</a> -->
+      <div class="page-container" id="dashboard">
+         <div class="navbar">
             <nav class="navbar navbar-dark navbar-expand-sm sticky-top">
-                <div class="container-fluid">
-                    <a href="./index.html" class="navbar-brand"><img alt = "logo" src="img/statisfy_logo.png" height="60"></a>
-                    <div class="collapse navbar-collapse" id="Navbar">
-                        <ul class="navbar-nav me-auto">
-                            <li class="nav-item active"><a class="nav-link active" href=""><span class="fa fa-list fa-lg"></span> Dashboard</a></li>
-                            <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-info fa-lg"></span> About Us</a></li>
-                        </ul>
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-cogs fa-lg"></span> </a></li>
-                            <li class="nav-item"><a class="nav-link" href="./login.html"><span class="fa fa-user fa-lg"></span> </a></li>
-                        </ul>
-                    </div>
-                </div>
+               <div class="container-fluid">
+                  <a href="./index.html" class="navbar-brand"><img alt = "logo" src="img/statisfy_logo.png" height="60"></a>
+                  <div class="collapse navbar-collapse" id="Navbar">
+                     <ul class="navbar-nav me-auto">
+                        <li class="nav-item active"><a class="nav-link active" href=""><span class="fa fa-list fa-lg"></span> Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-info fa-lg"></span> About Us</a></li>
+                     </ul>
+                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-cogs fa-lg"></span> </a></li>
+                        <li class="nav-item"><a class="nav-link" href="./login.html"><span class="fa fa-user fa-lg"></span> </a></li>
+                     </ul>
+                  </div>
+               </div>
             </nav>
-        </div>
-        <div class="middle">
+         </div>
+         <div class="middle">
             <div class="sidebar-left">
-                <ul>
-                    <li><a href="#" id="icon"><em class="fa fa-apple fa-lg"></em></a></li>
-                    <li><a href="#" id="icon"><em class="fa fa-bug fa-lg"></em></a></li>
-                    <li><a href="#" id="icon"><em class="fa fa-balance-scale fa-lg"></em></a></li>
-                </ul>
+               <ul>
+                  <li><a href="#" id="icon"><em class="fa fa-apple fa-lg"></em></a></li>
+                  <li><a href="#" id="icon"><em class="fa fa-bug fa-lg"></em></a></li>
+                  <li><a href="#" id="icon"><em class="fa fa-balance-scale fa-lg"></em></a></li>
+               </ul>
             </div>
             <div class="page-content">
-                <div class="page-row">
-                    <div class="widget" id='widget-a' >
-                    	<div class='card top-stuff'>
-						<div class="card-header header-color">
-			    			<h4>Top Tracks</h4>
-			  			</div>
-			  			<div class="card-body">
-			  				<div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for top tracks">
-						  		<button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
-						  		<button type="button" class="btn btn-outline-primary top-buttons">Months</button>
-						  		<button type="button" class="btn btn-outline-primary top-buttons">Years</button>
-							</div>
-
-			    		<ol class="card-text top-texts">
-					    	<li>Track 1</li>
-					    	<li>Track 2</li>
-					    	<li>Track 3</li>
-					    	<li>Track 4</li>
-					    	<li>Track 5</li>
-			    		</ol>
-			  			</div>
-						</div>
-					</div>
-
-
-                    <div class="widget" id="widget-b">
-                    <div class='card top-stuff'>
-					<div class="card-header">
-			    		<h4>Top Albums</h4>
-			  		</div>
-			 		 <div class="card-body">
-			  			<div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for top albums">
-						  <button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
-						  <button type="button" class="btn btn-outline-primary top-buttons">Months</button>
-						  <button type="button" class="btn btn-outline-primary top-buttons">Years</button>
-						</div>
-					    <ol class="card-text top-texts">
-					    	<li>Album 1</li>
-					    	<li>Album 2</li>
-					    	<li>Album 3</li>
-					    	<li>Album 4</li>
-					    	<li>Album 5</li>
-					    </ol>
-			  		</div>
-					</div>
-					</div>
-
-                    <div class="widget" id="widget-c"><p>WIDGET C</p></div>
+               <div class="page-row">
+                  <div class="widget" id='widget-a' >
+                     <div class='card top-stuff'>
+                        <div class="card-header header-color">
+                           <h4>Top Tracks</h4>
+                        </div>
+                        <div class="card-body">
+                           <div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for top tracks">
+                              <button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
+                              <button type="button" class="btn btn-outline-primary top-buttons">Months</button>
+                              <button type="button" class="btn btn-outline-primary top-buttons">Years</button>
+                           </div>
+                           <ol class="card-text top-texts">
+                              <li>Track 1</li>
+                              <li>Track 2</li>
+                              <li>Track 3</li>
+                              <li>Track 4</li>
+                              <li>Track 5</li>
+                           </ol>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="widget" id="widget-b">
+                     <div class='card top-stuff'>
+                        <div class="card-header">
+                           <h4>Top Albums</h4>
+                        </div>
+                        <div class="card-body"></div>
+                           <div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for top albums">
+                              <button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
+                              <button type="button" class="btn btn-outline-primary top-buttons">Months</button>
+                              <button type="button" class="btn btn-outline-primary top-buttons">Years</button>
+                           </div>
+                           <ol class="card-text top-texts">
+                              <li>Album 1</li>
+                              <li>Album 2</li>
+                              <li>Album 3</li>
+                              <li>Album 4</li>
+                              <li>Album 5</li>
+                           </ol>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="widget" id="widget-c">
+                    <div class="card-header">
+                        <h4>Listening Time</h4>
                     </div>
-
-                <div class="page-row">
-                    <div class="widget" id="widget-wide"><p>WIDGET WIDE</p></div>
-                </div>
-                </div>
+                    <div class="card-body"></div>
+                        <div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for top albums"></div>
+                            <button type="button" class="btn btn-outline-primary top-buttons">Yesterday</button>
+                            <button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
+                            <button type="button" class="btn btn-outline-primary top-buttons">Month</button>
+                            <button type="button" class="btn btn-outline-primary top-buttons">Year</button>
+                        </div>
+                    </div>
+                    <!--Mockup hours as an example, also I will need to add some script to change the info based on the buttons-->
+                    <p class="hours">3 hours</p>
+                    </div>
+                    </div>
+               <div class="page-row">
+                  <div class="widget" id="widget-wide">
+                     <p>WIDGET WIDE</p>
+                  </div>
+               </div>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+      </div>
 
-<!--Listening Time Widget-->
-    <div class="container widget rounded d-flex justify-content-center p-2" id="listening_time">
-        <div class="col-xs-4 col-sm-5 col-md-5 col-lg-2 col-xl-9">
-                <h3 class="bigText">Listening Time</h3>
-                <p class="info">Total Listening time:</p>
+      {{!-- <!--Listening Time Widget-->
+      <div class="container widget rounded d-flex justify-content-center p-2" id="listening_time">
+         <div class="col-xs-4 col-sm-5 col-md-5 col-lg-2 col-xl-9">
+            <h3 class="bigText">Listening Time</h3>
+            <p class="info">Total Listening time:</p>
+            <div clas="row">
+               <button type="button" href="/aboutus" class="btn btn-outline-primary top-buttons">Yesterday</button>
+               <button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
+               <button type="button" class="btn btn-outline-primary top-buttons">Month</button>
+               <button type="button" class="btn btn-outline-primary top-buttons">Year</button>
+               <!--Mockup hours as an example, also I will need to add some script to change the info based on the buttons-->
+               <p class="hours">3 hours</p>
+            </div>
+         </div>
+      </div> --}}
 
-                <div clas="row">
-                    <button type="button" href="/aboutus" class="btn btn-outline-primary top-buttons">Yesterday</button>
-                    <button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
-                    <button type="button" class="btn btn-outline-primary top-buttons">Month</button>
-                    <button type="button" class="btn btn-outline-primary top-buttons">Year</button>
-                        <!--Mockup hours as an example, also I will need to add some script to change the info based on the buttons-->
-                        <p class="hours">3 hours</p>
-                </div>
-        </div>
-    </div>
+      <!--Song History Widget-->
+      <div class="container widget rounded col-xl-4 d-flex justify-content-center p-2" id="song-history">
+         <h1 class="bigText">Top Artists</h1>
+         <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-striped table-hover col-xl-9">
+               <thead>
+                  <tr>
+                     <th class="info" scope="col">#</th>
+                     <th class="info" scope="col">Artist</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {{#each topArtistsShort}}
+                  <tr>
+                     <th class="info" scope="row">1</th>
+                     <td class="info" >{{this.name}}</td>
+                  </tr>
+                  {{/each}}
+               </tbody>
+            </table>
+            </table>
+         </div>
+      </div>
 
-    <!--Song History Widget-->
-    <div class="container widget rounded col-xl-4 d-flex justify-content-center p-2" id="song-history">
-        <h1 class="bigText">Top Artists</h1>
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
-          <table class="table table-striped table-hover col-xl-9">
-            <thead>
-              <tr>
-                <th class="info" scope="col">#</th>
-                <th class="info" scope="col">Artist</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each topArtistsShort}}
-              <tr>
-                <th class="info" scope="row">1</th>
-                <td class="info" >{{this.name}}</td>
-              </tr>
-              {{/each}}
-            </tbody>
-          </table>
-          </table>
-          </div>
-    </div>
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
-    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
-    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
-</body>
-
+      <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+      <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+      <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+      <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="js/scripts.js"></script>
+   </body>
 </html>

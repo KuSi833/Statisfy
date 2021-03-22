@@ -7511,7 +7511,7 @@ body {
         height: 100%; }
         #dashboard .middle .page-content #widget-b .top-stuff {
           background: #273465;
-          color: #D8719E; }
+          color: white; }
         #dashboard .middle .page-content #widget-b .top-buttons {
           border-color: white;
           color: #D8719E;
@@ -7524,6 +7524,18 @@ body {
       #dashboard .middle .page-content #widget-c {
         width: 33%;
         height: 100%; }
+        #dashboard .middle .page-content #widget-c .top-stuff {
+          background: #273465;
+          color: #D8719E; }
+        #dashboard .middle .page-content #widget-c .top-buttons {
+          border-color: white;
+          color: #D8719E;
+          margin-top: 0; }
+        #dashboard .middle .page-content #widget-c .btn-group {
+          padding: 0;
+          margin: 0; }
+        #dashboard .middle .page-content #widget-c .top-texts {
+          margin-top: 10px; }
       #dashboard .middle .page-content #widget-wide {
         width: 100%;
         height: 100%; }
