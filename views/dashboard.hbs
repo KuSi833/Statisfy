@@ -13,6 +13,7 @@
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
    </head>
+
    <body>
       <!-- <a href="/info"  class="btn btn-primary" role="button">info</a> -->
       <div class="page-container" id="dashboard">
@@ -41,93 +42,123 @@
                   <li><a href="#" id="icon"><em class="fa fa-balance-scale fa-lg"></em></a></li>
                </ul>
             </div>
+
             <div class="page-content">
-               <div class="page-row">
-                  <div class="widget" id='widget-a' >
-                     <div class='card top-stuff'>
-                        <div class="card-header header-color">
-                           <h4>Top Tracks</h4>
+                
+                <div class="page-row">
+                    <div class="widget" id='widget-a' >
+                        <div class='card top-stuff'>
+                            <div class="card-header header-color">
+                            <h4>Top Tracks</h4>
+                            </div>
+                            <div class="card-body">
+                            <div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for top tracks">
+                                <button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
+                                <button type="button" class="btn btn-outline-primary top-buttons">Months</button>
+                                <button type="button" class="btn btn-outline-primary top-buttons">Years</button>
+                            </div>
+                            <ol class="card-text top-texts">
+                                <li>Track 1</li>
+                                <li>Track 2</li>
+                                <li>Track 3</li>
+                                <li>Track 4</li>
+                                <li>Track 5</li>
+                            </ol>
+                            </div>
                         </div>
-                        <div class="card-body">
-                           <div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for top tracks">
-                              <button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
-                              <button type="button" class="btn btn-outline-primary top-buttons">Months</button>
-                              <button type="button" class="btn btn-outline-primary top-buttons">Years</button>
-                           </div>
-                           <ol class="card-text top-texts">
-                              <li>Track 1</li>
-                              <li>Track 2</li>
-                              <li>Track 3</li>
-                              <li>Track 4</li>
-                              <li>Track 5</li>
-                           </ol>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="widget" id="widget-b">
-                     <div class='card top-stuff'>
-                        <div class="card-header">
-                           <h4>Top Albums</h4>
-                        </div>
-                        <div class="card-body"></div>
-                           <div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for top albums">
-                              <button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
-                              <button type="button" class="btn btn-outline-primary top-buttons">Months</button>
-                              <button type="button" class="btn btn-outline-primary top-buttons">Years</button>
-                           </div>
-                           <ol class="card-text top-texts">
-                              <li>Album 1</li>
-                              <li>Album 2</li>
-                              <li>Album 3</li>
-                              <li>Album 4</li>
-                              <li>Album 5</li>
-                           </ol>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="widget" id="widget-c">
-                    <div class="card-header">
-                        <h4>Listening Time</h4>
                     </div>
-                    <div class="card-body"></div>
-                        <div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for top albums"></div>
-                            <button type="button" class="btn btn-outline-primary top-buttons">Yesterday</button>
+
+                    <div class="widget" id="widget-b">
+                        <div class='card top-stuff'>
+                            <div class="card-header">
+                            <h4>Top Albums</h4>
+                            </div>
+                            <div class="card-body">
+                            <div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for Top Albums">
                             <button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
-                            <button type="button" class="btn btn-outline-primary top-buttons">Month</button>
-                            <button type="button" class="btn btn-outline-primary top-buttons">Year</button>
+                            <button type="button" class="btn btn-outline-primary top-buttons">Months</button>
+                            <button type="button" class="btn btn-outline-primary top-buttons">Years</button>
+                            </div>
+                            <ol class="card-text top-texts">
+                            <li>Album 1</li>
+                            <li>Album 2</li>
+                            <li>Album 3</li>
+                            <li>Album 4</li>
+                            <li>Album 5</li>
+                            </ol>
+                            </div>
                         </div>
                     </div>
-                    <!--Mockup hours as an example, also I will need to add some script to change the info based on the buttons-->
-                    <p class="hours">3 hours</p>
+
+                    <div class="widget" id="widget-c">  
+                        <div class="card top-stuff">
+                            <div class="card-header">
+                                <h4>Listening Time</h4>
+                            </div>
+                            <div class="card-body">
+                            <div class="btn-group container-fluid" role="tracks-time" aria-label="Time range for Total listening time">
+                                <button type="button" class="btn btn-outline-primary top-buttons">Yesterday</button>
+                                <button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
+                                <button type="button" class="btn btn-outline-primary top-buttons">Month</button>
+                                <button type="button" class="btn btn-outline-primary top-buttons">Year</button>
+                            </div>
+                            <p class = "super-large">3hrs 6mins 39secs</p>
+                            </div>
+                        </div>
                     </div>
+                <!--Mockup hours as an example, also I will need to add some script to change the info based on the buttons-->
+                </div>
+                <div class="page-row">
+                    <div class="widget" id="widget-wide">
+                        <canvas id="myChart" width="400" height="400"></canvas>
+                        <script>
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                datasets: [{
+                                    label: '# of Votes',
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                        </script>
                     </div>
-               <div class="page-row">
-                  <div class="widget" id="widget-wide">
-                     <p>WIDGET WIDE</p>
-                  </div>
-               </div>
+                </div>
             </div>
+            
          </div>
       </div>
-      </div>
 
-      {{!-- <!--Listening Time Widget-->
-      <div class="container widget rounded d-flex justify-content-center p-2" id="listening_time">
-         <div class="col-xs-4 col-sm-5 col-md-5 col-lg-2 col-xl-9">
-            <h3 class="bigText">Listening Time</h3>
-            <p class="info">Total Listening time:</p>
-            <div clas="row">
-               <button type="button" href="/aboutus" class="btn btn-outline-primary top-buttons">Yesterday</button>
-               <button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
-               <button type="button" class="btn btn-outline-primary top-buttons">Month</button>
-               <button type="button" class="btn btn-outline-primary top-buttons">Year</button>
-               <!--Mockup hours as an example, also I will need to add some script to change the info based on the buttons-->
-               <p class="hours">3 hours</p>
-            </div>
-         </div>
-      </div> --}}
-
-      <!--Song History Widget-->
+      <!--Top Artists Widgets-->
+      {{!-- 
       <div class="container widget rounded col-xl-4 d-flex justify-content-center p-2" id="song-history">
          <h1 class="bigText">Top Artists</h1>
          <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -150,11 +181,12 @@
             </table>
          </div>
       </div>
-
+      --}}
       <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
       <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
       <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
       <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script scr="node_modules/"
       <script src="js/scripts.js"></script>
    </body>
 </html>

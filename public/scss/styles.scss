@@ -1,5 +1,6 @@
 // Your variable overrides
 $dark-blue: #1C264A;
+$darker-blue:#11182e;
 $light-blue: #273465;
 $gradient: linear-gradient($dark-blue, $light-blue);
 // $body-bg: #1C264A;  BUG1 For some reason this can't be set to the variable gradient
@@ -138,7 +139,7 @@ body {
       .widget {
         background: #2B3B70;
         border-radius: 5px;
-        margin: 10px 25px 25px 0px;
+        margin: 10px 15px 25px 0px;
       }
 
       #widget-a {
@@ -179,8 +180,8 @@ body {
 
 
         .top-buttons {
-          border-color: white;
-          color: #D8719E;
+          border-color: $primary;
+          color: white;
           margin-top: 0;
         }
 
@@ -195,19 +196,18 @@ body {
       }
 
       #widget-c {
-
         width: 33%;
         height: 100%;
 
         .top-stuff {
-          background: $light-blue;
-          color: #D8719E;
+          background: $darker-blue;
+          color: white;
         }
 
 
         .top-buttons {
-          border-color: white;
-          color: #D8719E;
+          border-color: $primary;
+          color: white;
           margin-top: 0;
         }
 
@@ -218,6 +218,11 @@ body {
 
         .top-texts {
           margin-top: 10px;
+        }
+        .super-large{
+          padding-top: 20px;
+          font-size: 30px;
+          text-align: center;
         }
       }
 
