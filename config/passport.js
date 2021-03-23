@@ -32,7 +32,7 @@ module.exports = (passport) => {
                         done(null, user);
                     }
                 } catch (error) {
-                    console.error(err);
+                    console.error(error);
                 }
             }
         )
