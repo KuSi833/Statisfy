@@ -7490,66 +7490,36 @@ body {
         background: #2B3B70;
         border-radius: 5px;
         margin: 0px 15px 0px 0px; }
-      #dashboard .middle .page-content #widget-a {
+      #dashboard .middle .page-content #widget-13 {
         width: 33%;
         height: 100%; }
-        #dashboard .middle .page-content #widget-a .top-stuff {
+        #dashboard .middle .page-content #widget-13 .top-stuff {
           background: #2B3B70;
           color: white;
           font-weight: 200; }
-        #dashboard .middle .page-content #widget-a .top-buttons {
+        #dashboard .middle .page-content #widget-13 .top-buttons {
           border-color: #D8719E;
           color: white;
           margin-top: 0; }
-        #dashboard .middle .page-content #widget-a .btn-group {
+        #dashboard .middle .page-content #widget-13 .btn-group {
           padding: 0;
           margin: 0; }
-        #dashboard .middle .page-content #widget-a .top-texts {
+        #dashboard .middle .page-content #widget-13 .top-texts {
           margin-top: 10px; }
-      #dashboard .middle .page-content #widget-b {
-        width: 33%;
-        height: 100%; }
-        #dashboard .middle .page-content #widget-b .top-stuff {
-          background: #2B3B70;
-          color: white; }
-        #dashboard .middle .page-content #widget-b .top-buttons {
-          border-color: #D8719E;
-          color: white;
-          margin-top: 0; }
-        #dashboard .middle .page-content #widget-b .btn-group {
-          padding: 0;
-          margin: 0; }
-        #dashboard .middle .page-content #widget-b .top-texts {
-          margin-top: 10px; }
-      #dashboard .middle .page-content #widget-c {
-        width: 33%;
-        height: 100%; }
-        #dashboard .middle .page-content #widget-c .top-stuff {
-          background: #2B3B70;
-          color: white; }
-        #dashboard .middle .page-content #widget-c .top-buttons {
-          border-color: #D8719E;
-          color: white;
-          margin-top: 0; }
-        #dashboard .middle .page-content #widget-c .btn-group {
-          padding: 0;
-          margin: 0; }
-        #dashboard .middle .page-content #widget-c .top-texts {
-          margin-top: 10px; }
-        #dashboard .middle .page-content #widget-c .super-large {
-          padding-top: 20px;
-          font-size: 30px;
-          text-align: center; }
-      #dashboard .middle .page-content #widget-wide {
-        width: 100%;
-        height: 100%; }
-      #dashboard .middle .page-content #widget-2 {
+      #dashboard .middle .page-content #widget-23 {
         width: 66%;
         height: 100%; }
-        #dashboard .middle .page-content #widget-2 .top-stuff {
+        #dashboard .middle .page-content #widget-23 .top-stuff {
           background: #273465;
           color: white;
           font-weight: 200; }
+        #dashboard .middle .page-content #widget-23 .bottom-stuff {
+          background: #2B3B70;
+          color: white;
+          font-weight: 200; }
+      #dashboard .middle .page-content #widget-33 {
+        width: 100%;
+        height: 100%; }
 
 #about-us {
   flex-direction: column; }
