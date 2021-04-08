@@ -2,6 +2,7 @@
 $dark-blue: #1C264A;
 $darker-blue:#11182e;
 $light-blue: #273465;
+$widget-bg: #2B3B70;
 $gradient: linear-gradient($dark-blue, $light-blue);
 // $body-bg: #1C264A;  BUG1 For some reason this can't be set to the variable gradient
 // $body-color: #1C264A;
@@ -86,7 +87,7 @@ body {
   .navbar {
     display: flex;
     flex-direction: row;
-    height: 70px;
+    height: 80px;
     align-items: center;
 
     color: white;
@@ -103,7 +104,7 @@ body {
       flex-direction: column;
       align-items: center;
       background: $primary-gradient;
-      margin: 10px 20px 0px 20px;
+      margin: 0px 20px 0px 20px;
       width: 80px;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
@@ -137,9 +138,9 @@ body {
       }
 
       .widget {
-        background: #2B3B70;
+        background: $widget-bg;
         border-radius: 5px;
-        margin: 10px 15px 25px 0px;
+        margin: 0px 15px 0px 0px;
       }
 
       #widget-a {
@@ -147,7 +148,7 @@ body {
         height: 100%;
 
         .top-stuff {
-          background: $light-blue;
+          background: $widget-bg;
           color: white;
           font-weight: 200;
         }
@@ -174,7 +175,7 @@ body {
         height: 100%;
 
         .top-stuff {
-          background: $light-blue;
+          background: $widget-bg;
           color: white;
         }
 
@@ -200,7 +201,7 @@ body {
         height: 100%;
 
         .top-stuff {
-          background: $darker-blue;
+          background: $widget-bg;
           color: white;
         }
 
@@ -229,6 +230,17 @@ body {
       #widget-wide {
         width: 100%;
         height: 100%;
+      }
+
+      #widget-2 {
+        width: 66%;
+        height: 100%;
+
+        .top-stuff {
+          background: $light-blue;
+          color: white;
+          font-weight: 200;
+        }
       }
     }
   }
