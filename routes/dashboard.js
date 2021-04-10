@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { ensureAuth } = require('../middleware/auth');
 const SpotifyWebApi = require('spotify-web-api-node');
+const User = require('../models/User')
 
 const TopArtistsShort = require('../models/TopArtistsShort');
 const TopArtistsMedium = require('../models/TopArtistsMedium');
@@ -17,6 +18,29 @@ router.get('/', ensureAuth, async (req, res) => {
         const spotifyApi = new SpotifyWebApi({
             accessToken: req.user.accessToken,
         });
+
+        spotifyApi.setRefreshToken(req.user.refreshToken);
+        spotifyApi.setClientId(process.env.SPOTIFY_CLIENT_ID);
+        spotifyApi.setClientSecret(process.env.SPOTIFY_CLIENT_SECRET);
+
+        await spotifyApi.refreshAccessToken().then(
+          function(data) {
+            console.log('The access token has been refreshed!');
+            try {
+                var user = User.findOneAndUpdate({
+                    spotifyId: req.user.spotifyId,}, {accessToken: data.body['access_token'],
+                }, (error, doc) => {});
+            } catch (error) {
+                console.error(error);
+            }
+
+            spotifyApi.setAccessToken(data.body['access_token']);
+          },
+          function(err) {
+            console.log('Could not refresh access token', err);
+          }
+        );
+
         const topArtistsShort = await (await spotifyApi.getMyTopArtists({time_range: 'short_term'})).body.items;
         const topArtistsMedium = await (await spotifyApi.getMyTopArtists({time_range: 'medium_term'})).body.items;
         const topArtistsLong = await (await spotifyApi.getMyTopArtists({time_range: 'long_term'})).body.items;
