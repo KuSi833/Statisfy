@@ -65,7 +65,7 @@
 						</div>
 
 						<div class="widget" id="widget-13">
-                            <div class='card top-stuff h-100'>
+                            <div class='card top-stuff h-100 text-center'>
 								<div class="card-header">
 									<h4>Top Genres</h4>
 								</div>
@@ -82,17 +82,17 @@
 					<div class="page-row">
 
 						<div class="widget" id='widget-13' >
-							<div class='card top-stuff h-100'>
+							<div class='card top-stuff h-100 text-center'>
 								<div class="card-header">
 									<h4>Top Tracks</h4>
 								</div>
 								<div class="card-body">
-									<div class="btn-group container-fluid" role="tracks-time" aria-label="Time range for top tracks">
+									<div class=" btn-group container-fluid" role="tracks-time" aria-label="Time range for top tracks">
 										<button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
 										<button type="button" class="btn btn-outline-primary top-buttons">Months</button>
 										<button type="button" class="btn btn-outline-primary top-buttons">Years</button>
 									</div>
-									<ol class="card-text top-texts">
+									<ol class="card-text top-texts text-center">
 										<li>Track 1</li>
 										<li>Track 2</li>
 										<li>Track 3</li>
@@ -104,7 +104,7 @@
 						</div>
 
 						<div class="widget" id="widget-13">
-							<div class='card top-stuff h-100'>
+							<div class='card top-stuff h-100 text-center'>
 								<div class="card-header">
 									<h4>Top Albums</h4>
 								</div>
@@ -126,27 +126,23 @@
 						</div>
 
 						<div class="widget" id="widget-13">
-							<div class='card top-stuff h-100'>
+                            <div class='card top-stuff h-100 text-center'>
 								<div class="card-header">
 									<h4>Top Artists</h4>
 								</div>
-								<table class="card-table table">
-									<thead>
-										<tr>
-											<th scope="col">#</th>
-											<th scope="col">Artist</th>
-										</tr>
-									</thead>
-									<tbody>
-										{{#each topArtistsShort}}
-										<tr>
-											<td>1</th>
-											<td>{{this.name}}</td>
-										</tr>
+								<div class="card-body">
+									<div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for Top Albums">
+										<button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
+										<button type="button" class="btn btn-outline-primary top-buttons">Months</button>
+										<button type="button" class="btn btn-outline-primary top-buttons">Years</button>
+									</div>
+									<ol class="card-text top-texts">
+										{{#each topArtistsShort}}											
+											<li>{{this.name}}</li>
 										{{/each}}
-									</tbody>
-							    </table>
-                            </div>
+									</ol>
+								</div>
+							</div>
 						</div>
 
 

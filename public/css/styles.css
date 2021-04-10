@@ -7502,6 +7502,8 @@ body {
           position: relative;
           width: 100%;
           height: 99%; }
+        #dashboard .middle .page-content #widget-13 .card-table {
+          color: white; }
         #dashboard .middle .page-content #widget-13 .top-buttons {
           border-color: #D8719E;
           color: white;

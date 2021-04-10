@@ -29,6 +29,15 @@ var doughnut = new Chart(ctx, {
                 }
             }
         },
+        animations: {
+            tension: {
+              duration: 1000,
+              easing: 'linear',
+              from: 1,
+              to: 0,
+              loop: true
+            }
+          },
         maintainAspectRatio: false
     }
 });
