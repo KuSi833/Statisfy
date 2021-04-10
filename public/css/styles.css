@@ -7500,7 +7500,8 @@ body {
           font-weight: 200; }
         #dashboard .middle .page-content #widget-13 .chart-container {
           position: relative;
-          width: 66%; }
+          width: 100%;
+          height: 99%; }
         #dashboard .middle .page-content #widget-13 .top-buttons {
           border-color: #D8719E;
           color: white;

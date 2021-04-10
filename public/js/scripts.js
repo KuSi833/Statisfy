@@ -4,12 +4,12 @@ var cty;
 var doughnut = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+        labels: ["Pop", "Classical", "Alternative", "Hip-Hop", "Bollywood"],
         datasets: [
             {
-                label: "Population (millions)",
-                data: [2478,5267,734,784,433],
-                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"]
+                label: "Genres (%)",
+                data: [10, 20, 15, 40, 15], 
+                backgroundColor: ["#28536B", "#D8719E", "#FFE8C2", "#35CE8D", "#F0A868"]
             }
         ]
     },
@@ -18,8 +18,17 @@ var doughnut = new Chart(ctx, {
     options: {
         plugins: {
             legend: {
-                position: "right"
+                position: "right",
+                title: {
+                    color: "white",
+                    display: true,
+                    text: "Genre:"
+                },
+                labels: {
+                    color: "white"
+                }
             }
-        }
+        },
+        maintainAspectRatio: false
     }
 });
