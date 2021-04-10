@@ -7492,7 +7492,8 @@ body {
         margin: 0px 15px 0px 0px; }
       #dashboard .middle .page-content #widget-13 {
         width: 33%;
-        height: 100%; }
+        height: 100%;
+        position: relative; }
         #dashboard .middle .page-content #widget-13 .top-stuff {
           background: #2B3B70;
           color: white;
