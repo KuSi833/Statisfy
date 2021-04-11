@@ -12,9 +12,10 @@ router.get('/', ensureGuest, (req, res) => {
 
 // @desc    Login/Landing page
 // @route   GET /
-router.get('/aboutus', ensureGuest, (req, res) => {
+router.get('/aboutus', (req, res) => {
     res.render('aboutus', {
         layout: 'main',
+        aboutus: true
     });
 });
 

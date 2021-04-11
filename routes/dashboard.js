@@ -177,7 +177,10 @@ router.get('/', ensureAuth, async (req, res) => {
         }
 
 
-        res.render('dashboard', spotifyInfo);
+        res.render('dashboard', {
+          dashboard: true,
+          spotifyInfo
+        });
 
     } catch (error) {
         console.log(error);
@@ -185,28 +188,3 @@ router.get('/', ensureAuth, async (req, res) => {
 });
 
 module.exports = router;
-
-
-//
-// * Get the current user's top artists based on calculated affinity.
-// * @param {Object} [options] Options, being time_range, limit, offset.
-// * @param {requestCallback} [callback] Optional callback method to be called instead of the promise.
-// * @returns {Promise|undefined} A promise that if successful, resolves into a paging object of artists,
-// *          otherwise an error. Not returned if a callback is given.
-// */
-// getMyTopArtists: function(options, callback) {
-//  return WebApiRequest.builder(this.getAccessToken())
-//    .withPath('/v1/me/top/artists')
-//    .withQueryParameters(options)
-//    .build()
-//    .execute(HttpManager.get, callback);
-// },
-//
-// /* Get a User’s Top Tracks*/
-// spotifyApi.getMyTopTracks()
-//   .then(function(data) {
-//     let topTracks = data.body.items;
-//     console.log(topTracks);
-//   }, function(err) {
-//     console.log('Something went wrong!', err);
-//   });

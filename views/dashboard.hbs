@@ -1,202 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>Statisfy - Dashboard</title>
-		<!-- Required meta tags always come first -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css">
-		<link rel="stylesheet" href="/css/styles.css">
-
-
-		<!-- Custom Font -->
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-	</head>
-
-	<body>
-		<!-- <a href="/info"  class="btn btn-primary" role="button">info</a> -->
-		<div class="page-container" id="dashboard">
-
-			<nav class="navbar navbar-dark navbar-expand-sm sticky-top">
-				<div class="container-fluid">
-					<a href="./index.html" class="navbar-brand"><img alt = "logo" src="img/statisfy_logo.png" height="60"></a>
-					<div class="collapse navbar-collapse" id="Navbar">
-						<ul class="nav navbar-nav me-auto">
-							<li class="nav-item active"><a class="nav-link active" href="">Dashboard</a></li>
-							<li class="nav-item"><a class="nav-link" href="./aboutus.html">About Us</a></li>
-						</ul>
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a href="/auth/logout" class="nav-link"><img alt = "log out" src="img/logout-button.png" height="50"></a>
-                            </li>
-                        </ul>
-					</div>
+<div class="page-content">
+	<div class="page-row">
+		<div class="widget" id="widget-23">
+			<div class="card text-center h-100">
+				<div class="card-header top-stuff">
+					<h4>Your Profile</h4>
 				</div>
-			</nav>
-
-			<div class="middle">
-
-				<div class="sidebar-left">
-					<ul>
-						<li><a href="#" id="icon"><em class="fa fa-apple fa-lg"></em></a></li>
-						<li><a href="#" id="icon"><em class="fa fa-bug fa-lg"></em></a></li>
-						<li><a href="#" id="icon"><em class="fa fa-balance-scale fa-lg"></em></a></li>
-					</ul>
-				</div>
-
-				<div class="page-content">
-
-					<div class="page-row">
-
-						<div class="widget" id="widget-23">
-							<div class="card text-center h-100">
-								<div class="card-header top-stuff">
-									<h4>Your Profile</h4>
-								</div>
-								<div class="card-body bottom-stuff">
-									<p>Welcome </p>
-									<P>Email: </p>
-								</div>
-							</div>
-						</div>
-
-						<div class="widget" id="widget-13">
-                            <div class='card top-stuff h-100 text-center'>
-								<div class="card-header">
-									<h4>Top Genres</h4>
-								</div>
-								<div class="card-body">
-									 <div class="chart-container" id="widget-13">
-                                        <canvas id="doughnut-chart" style:"width: 100% height: 100%"></canvas>
-                                    </div> 
-								</div>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="page-row">
-
-						<div class="widget" id='widget-13' >
-							<div class='card top-stuff h-100 text-center'>
-								<div class="card-header">
-									<h4>Top Tracks</h4>
-								</div>
-								<div class="card-body">
-									<div class=" btn-group container-fluid" role="tracks-time" aria-label="Time range for top tracks">
-										<button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
-										<button type="button" class="btn btn-outline-primary top-buttons">Months</button>
-										<button type="button" class="btn btn-outline-primary top-buttons">Years</button>
-									</div>
-									<ol class="card-text top-texts text-center">
-										<li>Track 1</li>
-										<li>Track 2</li>
-										<li>Track 3</li>
-										<li>Track 4</li>
-										<li>Track 5</li>
-									</ol>
-								</div>
-							</div>
-						</div>
-
-						<div class="widget" id="widget-13">
-							<div class='card top-stuff h-100 text-center'>
-								<div class="card-header">
-									<h4>Top Albums</h4>
-								</div>
-								<div class="card-body">
-									<div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for Top Albums">
-										<button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
-										<button type="button" class="btn btn-outline-primary top-buttons">Months</button>
-										<button type="button" class="btn btn-outline-primary top-buttons">Years</button>
-									</div>
-									<ol class="card-text top-texts">
-										<li>Album 1</li>
-										<li>Album 2</li>
-										<li>Album 3</li>
-										<li>Album 4</li>
-										<li>Album 5</li>
-									</ol>
-								</div>
-							</div>
-						</div>
-
-						<div class="widget" id="widget-13">
-                            <div class='card top-stuff h-100 text-center'>
-								<div class="card-header">
-									<h4>Top Artists</h4>
-								</div>
-								<div class="card-body">
-									<div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for Top Albums">
-										<button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
-										<button type="button" class="btn btn-outline-primary top-buttons">Months</button>
-										<button type="button" class="btn btn-outline-primary top-buttons">Years</button>
-									</div>
-									<ol class="card-text top-texts">
-										{{#each topArtistsShort}}											
-											<li>{{this.name}}</li>
-										{{/each}}
-									</ol>
-								</div>
-							</div>
-						</div>
-
-
-					</div>
-
-					<div class="page-row">
-						<div class="widget" id="widget-33">
-						</div>
-					</div>
-
+				<div class="card-body bottom-stuff">
+					<p>Welcome </p>
+					<P>Email: </p>
 				</div>
 			</div>
 		</div>
-        
-		<!--Top Artists Widgets-->
 
-		{{!-- <div class="container widget rounded col-xl-4 d-flex justify-content-center p-2" id="song-history">
-			<h1 class="bigText">Top Artists</h1>
-			<div class="table-wrapper-scroll-y my-custom-scrollbar">
-				<table class="table table-striped table-hover col-xl-9">
-					<thead>
-						<tr>
-							<th class="info" scope="col">#</th>
-							<th class="info" scope="col">Artist</th>
-						</tr>
-					</thead>
-					<tbody>
-						{{#each topArtistsShort}}
-						<tr>
-							<th class="info" scope="row">1</th>
-							<td class="info" >{{this.name}}</td>
-						</tr>
-						{{/each}}
-					</tbody>
-				</table>
-				</table>
+		<div class="widget" id="widget-13">
+			<div class='card top-stuff h-100 text-center'>
+				<div class="card-header">
+					<h4>Top Genres</h4>
+				</div>
+				<div class="card-body">
+						<div class="chart-container" id="widget-13">
+						<canvas id="doughnut-chart" style:"width: 100% height: 100%"></canvas>
+					</div> 
+				</div>
 			</div>
-		</div> --}}
+		</div>
+
+	</div>
+
+	<div class="page-row">
+		<div class="widget" id='widget-13' >
+			<div class='card top-stuff h-100 text-center'>
+				<div class="card-header">
+					<h4>Top Tracks</h4>
+				</div>
+				<div class="card-body">
+					<div class=" btn-group container-fluid" role="tracks-time" aria-label="Time range for top tracks">
+						<button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
+						<button type="button" class="btn btn-outline-primary top-buttons">Months</button>
+						<button type="button" class="btn btn-outline-primary top-buttons">Years</button>
+					</div>
+					<ol class="card-text top-texts text-center">
+						<li>Track 1</li>
+						<li>Track 2</li>
+						<li>Track 3</li>
+						<li>Track 4</li>
+						<li>Track 5</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+
+		<div class="widget" id="widget-13">
+			<div class='card top-stuff h-100 text-center'>
+				<div class="card-header">
+					<h4>Top Albums</h4>
+				</div>
+				<div class="card-body">
+					<div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for Top Albums">
+						<button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
+						<button type="button" class="btn btn-outline-primary top-buttons">Months</button>
+						<button type="button" class="btn btn-outline-primary top-buttons">Years</button>
+					</div>
+					<ol class="card-text top-texts">
+						<li>Album 1</li>
+						<li>Album 2</li>
+						<li>Album 3</li>
+						<li>Album 4</li>
+						<li>Album 5</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+
+		<div class="widget" id="widget-13">
+			<div class='card top-stuff h-100 text-center'>
+				<div class="card-header">
+					<h4>Top Artists</h4>
+				</div>
+				<div class="card-body">
+					<div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for Top Albums">
+						<button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
+						<button type="button" class="btn btn-outline-primary top-buttons">Months</button>
+						<button type="button" class="btn btn-outline-primary top-buttons">Years</button>
+					</div>
+					<ol class="card-text top-texts">
+						{{#each spotifyInfo.topArtistsShort}}											
+							<li>{{this.name}}</li>
+						{{/each}}
+					</ol>
+				</div>
+			</div>
+		</div>
 
 
+	</div>
 
-        <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<div class="page-row">
+		<div class="widget" id="widget-33">
+		</div>
+	</div>
 
-        <!-- Chart.js and canvas -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js" integrity="sha512-FJ2OYvUIXUqCcPf1stu+oTBlhn54W0UisZB/TNrZaVMHHhYvLBV9jMbvJYtvDe5x/WVaoXZ6KB+Uqe5hT2vlyA==" crossorigin="anonymous"></script>
+</div>
 
-		<script scr="node_modules/"></script>
-		<script src="js/scripts.js"></script>
-        
-        <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
-		{{!-- <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
-		<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-		<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script> --}}
-	</body>
-</html>
+

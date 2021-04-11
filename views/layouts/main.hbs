@@ -1,1 +1,41 @@
-{{{body}}}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Statisfy</title>
+		<!-- Required meta tags always come first -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css">
+		<link rel="stylesheet" href="/css/styles.css">
+
+
+		<!-- Custom Font -->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="page-container" id="dashboard">
+            {{> navBar}}
+
+			<div class="middle">
+				<div class="page-content">
+                    {{{body}}}
+				</div>
+			</div>
+		</div>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+        <!-- Chart.js and canvas -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js" integrity="sha512-FJ2OYvUIXUqCcPf1stu+oTBlhn54W0UisZB/TNrZaVMHHhYvLBV9jMbvJYtvDe5x/WVaoXZ6KB+Uqe5hT2vlyA==" crossorigin="anonymous"></script>
+
+		<script scr="node_modules/"></script>
+		<script src="js/scripts.js"></script>
+	</body>
+</html>
