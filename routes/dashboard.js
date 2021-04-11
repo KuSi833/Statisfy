@@ -179,6 +179,7 @@ router.get('/', ensureAuth, async (req, res) => {
 
         res.render('dashboard', {
           dashboard: true,
+          title: "Dashboard",
           spotifyInfo
         });
 

@@ -7490,43 +7490,40 @@ body {
         background: #2B3B70;
         border-radius: 5px;
         margin: 0px 15px 0px 0px; }
-      #dashboard .middle .page-content #widget-13 {
+      #dashboard .middle .page-content .top_widget {
         width: 33%;
         height: 100%;
         position: relative; }
-        #dashboard .middle .page-content #widget-13 .top-stuff {
+        #dashboard .middle .page-content .top_widget .top-stuff {
           background: #2B3B70;
           color: white;
           font-weight: 200; }
-        #dashboard .middle .page-content #widget-13 .chart-container {
+        #dashboard .middle .page-content .top_widget .chart-container {
           position: relative;
           width: 100%;
           height: 99%; }
-        #dashboard .middle .page-content #widget-13 .card-table {
+        #dashboard .middle .page-content .top_widget .card-table {
           color: white; }
-        #dashboard .middle .page-content #widget-13 .top-buttons {
+        #dashboard .middle .page-content .top_widget .top-buttons {
           border-color: #D8719E;
           color: white;
           margin-top: 0; }
-        #dashboard .middle .page-content #widget-13 .btn-group {
+        #dashboard .middle .page-content .top_widget .btn-group {
           padding: 0;
           margin: 0; }
-        #dashboard .middle .page-content #widget-13 .top-texts {
+        #dashboard .middle .page-content .top_widget .top-texts {
           margin-top: 5px; }
-      #dashboard .middle .page-content #widget-23 {
+      #dashboard .middle .page-content #profile_widget {
         width: 66%;
         height: 100%; }
-        #dashboard .middle .page-content #widget-23 .top-stuff {
+        #dashboard .middle .page-content #profile_widget .top-stuff {
           background: #273465;
           color: white;
           font-weight: 200; }
-        #dashboard .middle .page-content #widget-23 .bottom-stuff {
+        #dashboard .middle .page-content #profile_widget .bottom-stuff {
           background: #2B3B70;
           color: white;
           font-weight: 200; }
-      #dashboard .middle .page-content #widget-33 {
-        width: 100%;
-        height: 100%; }
 
 #about-us {
   flex-direction: column; }

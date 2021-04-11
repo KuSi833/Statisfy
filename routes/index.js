@@ -15,7 +15,8 @@ router.get('/', ensureGuest, (req, res) => {
 router.get('/aboutus', (req, res) => {
     res.render('aboutus', {
         layout: 'main',
-        aboutus: true
+        aboutus: true,
+        title: "About us"
     });
 });
 

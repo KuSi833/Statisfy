@@ -143,7 +143,7 @@ body {
         margin: 0px 15px 0px 0px;
       }
 
-      #widget-13 {
+      .top_widget {
         width: 33%;
         height: 100%;
         position: relative;
@@ -163,7 +163,6 @@ body {
           color: white;
         }
 
-
         .top-buttons {
           border-color: $primary;
           color: white;
@@ -180,7 +179,7 @@ body {
         }
       }
       
-      #widget-23 {
+      #profile_widget {
         width: 66%;
         height: 100%;
 
@@ -195,11 +194,6 @@ body {
           color: white;
           font-weight: 200;
         }
-      }
-
-      #widget-33 {
-        width: 100%;
-        height: 100%;
       }
     }
   }
