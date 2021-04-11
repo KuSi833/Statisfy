@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema({
     spotifyId: {
         type: String,
         required: true
-    }, 
+    },
     displayName: {
         type: String,
         required: true
@@ -21,8 +21,7 @@ const UserSchema = new mongoose.Schema({
         type: String
     },
     createdAt: {
-        type: Date,
-        defualt: Date.now
+        type: Number,
     }
 });
 

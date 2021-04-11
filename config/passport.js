@@ -11,6 +11,7 @@ module.exports = (passport) => {
             },
             async (accessToken, refreshToken, expires_in, profile, done) => {
                 console.log(profile);
+                date_in_ms = Date.now();
                 // Creating User object
                 const newUser = {
                     spotifyId: profile.id,
@@ -18,6 +19,7 @@ module.exports = (passport) => {
                     accessToken: accessToken,
                     refreshToken: refreshToken,
                     image: profile.photos[0] === undefined ? undefined : profile.photos[0].value,
+                    createdAt: date_in_ms
                 };
 
                 // If user doesn't exist in database create one
