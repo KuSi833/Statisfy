@@ -22,7 +22,25 @@ const UserSchema = new mongoose.Schema({
     },
     createdAt: {
         type: Number,
-    }
+    },
+    averageAcousticness: {
+        type: Number,
+    },
+    averageEnergy: {
+        type: Number,
+    },
+    averageValence: {
+        type: Number,
+    },
+    averageDanceability: {
+        type: Number,
+    },
+    averageInstrumentalness: {
+        type: Number,
+    },
+    genres: {
+      type: Array
+    },
 });
 
 module.exports = mongoose.model('User', UserSchema)
