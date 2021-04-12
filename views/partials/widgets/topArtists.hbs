@@ -5,12 +5,12 @@
         </div>
         <div class="card-body">
             <div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for Top Albums">
-                <button type="button" class="btn btn-outline-primary top-buttons">Weeks</button>
-                <button type="button" class="btn btn-outline-primary top-buttons">Months</button>
-                <button type="button" class="btn btn-outline-primary top-buttons">Years</button>
+                <button type="button" class="btn btn-outline-primary top-buttons">Last Month</button>
+                <button type="button" class="btn btn-outline-primary top-buttons">Last 6 Months</button>
+                <button type="button" class="btn btn-outline-primary top-buttons">Last Years</button>
             </div>
             <ol class="card-text top-texts">
-                {{#each spotifyInfo.topArtistsShort}}											
+                {{#each spotifyInfo.topArtistsShort}}
                     <li>{{this.name}}</li>
                 {{/each}}
             </ol>

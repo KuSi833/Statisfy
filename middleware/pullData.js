@@ -55,22 +55,22 @@ const pullData = async (req, res) => {
         );
 
         const topArtistsShort = await (
-            await spotifyApi.getMyTopArtists({ time_range: 'short_term' })
+            await spotifyApi.getMyTopArtists({ time_range: 'short_term', limit: '5' })
         ).body.items;
         const topArtistsMedium = await (
-            await spotifyApi.getMyTopArtists({ time_range: 'medium_term' })
+            await spotifyApi.getMyTopArtists({ time_range: 'medium_term', limit: '5'})
         ).body.items;
         const topArtistsLong = await (
-            await spotifyApi.getMyTopArtists({ time_range: 'long_term' })
+            await spotifyApi.getMyTopArtists({ time_range: 'long_term', limit: '5' })
         ).body.items;
         const topTracksShort = await (
-            await spotifyApi.getMyTopTracks({ time_range: 'short_term' })
+            await spotifyApi.getMyTopTracks({ time_range: 'short_term', limit: '5' })
         ).body.items;
         const topTracksMedium = await (
-            await spotifyApi.getMyTopTracks({ time_range: 'medium_term' })
+            await spotifyApi.getMyTopTracks({ time_range: 'medium_term', limit: '5' })
         ).body.items;
         const topTracksLong = await (
-            await spotifyApi.getMyTopTracks({ time_range: 'long_term' })
+            await spotifyApi.getMyTopTracks({ time_range: 'long_term', limit: '5' })
         ).body.items;
 
         const spotifyInfo = {

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { ensureAuth } = require('../middleware/auth');
 const pullData = require('../middleware/pullData');
-
 // @desc    Dashboard
 // @route   GET /dashboard
 router.get('/', ensureAuth, async (req, res) => {
