@@ -73,6 +73,27 @@ const pullData = async (req, res) => {
             await spotifyApi.getMyTopTracks({ time_range: 'long_term', limit: '5' })
         ).body.items;
 
+
+        var genres = [];
+        const allTopArtistsMedium = await (
+            await spotifyApi.getMyTopArtists({ time_range: 'medium_term' })
+        ).body.items;
+        console.log('AAAAAAAAAAAAAAAAAAA');
+        for (var item of allTopArtistsMedium) {
+          for (var genre of item.genres) {
+            index = genres.indexOf(genre);
+            if (index == -1) {
+              genres.push(genre);
+              genres.push(1);
+            }
+            else {
+              genres[index + 1] += 1;
+            }
+          }
+        }
+
+
+
         const allTopTracksMedium = await (
             await spotifyApi.getMyTopTracks({ time_range: 'medium_term' })
         ).body.items;
@@ -96,6 +117,7 @@ const pullData = async (req, res) => {
         averageValence = averageValence/allTopTracksMedium.length;
 
 
+
         const spotifyInfo = {
             topArtistsShort,
             topArtistsMedium,
@@ -108,6 +130,7 @@ const pullData = async (req, res) => {
             averageValence,
             averageDanceability,
             averageInstrumentalness,
+            genres,
         };
 
         for (var item of topArtistsShort) {
