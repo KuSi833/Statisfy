@@ -10,13 +10,13 @@ router.get('/', ensureGuest, (req, res) => {
     });
 });
 
-// @desc    Login/Landing page
+// @desc    About us page
 // @route   GET /
 router.get('/aboutus', (req, res) => {
     res.render('aboutus', {
         layout: 'main',
         aboutus: true,
-        title: "About us"
+        title: 'About us',
     });
 });
 

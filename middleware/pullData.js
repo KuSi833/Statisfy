@@ -8,195 +8,214 @@ const TopTracksShort = require('../models/TopTracksShort');
 const TopTracksMedium = require('../models/TopTracksMedium');
 const TopTracksLong = require('../models/TopTracksLong');
 
-const pullData = async (req, res) => {
-    try {
-        const spotifyApi = new SpotifyWebApi({
-            accessToken: req.user.accessToken,
-        });
+const redis = require('redis');
+const client = redis.createClient(process.env.REDIS_PORT);
 
-        spotifyApi.setRefreshToken(req.user.refreshToken);
-        spotifyApi.setClientId(process.env.SPOTIFY_CLIENT_ID);
-        spotifyApi.setClientSecret(process.env.SPOTIFY_CLIENT_SECRET);
+const pullData = async (req, res, next) => {
+    if (req.spotifyInfo === null || req.spotifyInfo === undefined) {
+        // Only pull data if it isn't already in cache
+        console.log('No data found in cache...');
+        console.log('Getting data from MongoDB');
+        try {
+            const spotifyApi = new SpotifyWebApi({
+                accessToken: req.user.accessToken,
+            });
 
-        var date_in_ms = Date.now();
-        await User.findOne(
-            { spotifyId: req.user.spotifyId },
-            function (err, obj) {
-                if (date_in_ms - obj.createdAt > 3300000) {
-                    spotifyApi.refreshAccessToken().then(
-                        function (data) {
-                            console.log('The access token has been refreshed!');
-                            try {
-                                var user = User.findOneAndUpdate(
-                                    {
-                                        spotifyId: req.user.spotifyId,
-                                    },
-                                    {
-                                        accessToken: data.body['access_token'],
-                                        createdAt: date_in_ms,
-                                    },
-                                    (error, doc) => {}
+            spotifyApi.setRefreshToken(req.user.refreshToken);
+            spotifyApi.setClientId(process.env.SPOTIFY_CLIENT_ID);
+            spotifyApi.setClientSecret(process.env.SPOTIFY_CLIENT_SECRET);
+
+            var date_in_ms = Date.now();
+            await User.findOne(
+                { spotifyId: req.user.spotifyId },
+                function (err, obj) {
+                    if (date_in_ms - obj.createdAt > 3300000) {
+                        spotifyApi.refreshAccessToken().then(
+                            function (data) {
+                                console.log(
+                                    'The access token has been refreshed!'
                                 );
-                            } catch (error) {
-                                console.error(error);
-                            }
+                                try {
+                                    var user = User.findOneAndUpdate(
+                                        {
+                                            spotifyId: req.user.spotifyId,
+                                        },
+                                        {
+                                            accessToken:
+                                                data.body['access_token'],
+                                            createdAt: date_in_ms,
+                                        },
+                                        (error, doc) => {}
+                                    );
+                                } catch (error) {
+                                    console.error(error);
+                                }
 
-                            spotifyApi.setAccessToken(
-                                data.body['access_token']
-                            );
-                            console.log(user);
-                        },
-                        function (error) {
-                            console.log('Could not refresh access token', err);
-                        }
+                                spotifyApi.setAccessToken(
+                                    data.body['access_token']
+                                );
+                                console.log(user);
+                            },
+                            function (error) {
+                                console.log(
+                                    'Could not refresh access token',
+                                    err
+                                );
+                            }
+                        );
+                    }
+                }
+            );
+
+            const topArtistsShort = await (
+                await spotifyApi.getMyTopArtists({ time_range: 'short_term' })
+            ).body.items;
+            const topArtistsMedium = await (
+                await spotifyApi.getMyTopArtists({ time_range: 'medium_term' })
+            ).body.items;
+            const topArtistsLong = await (
+                await spotifyApi.getMyTopArtists({ time_range: 'long_term' })
+            ).body.items;
+            const topTracksShort = await (
+                await spotifyApi.getMyTopTracks({ time_range: 'short_term' })
+            ).body.items;
+            const topTracksMedium = await (
+                await spotifyApi.getMyTopTracks({ time_range: 'medium_term' })
+            ).body.items;
+            const topTracksLong = await (
+                await spotifyApi.getMyTopTracks({ time_range: 'long_term' })
+            ).body.items;
+
+            const spotifyInfo = {
+                topArtistsShort,
+                topArtistsMedium,
+                topArtistsLong,
+                topTracksShort,
+                topTracksMedium,
+                topTracksLong,
+            };
+
+            for (var item of topArtistsShort) {
+                const newArtistShort = {
+                    artistShortId: item.id,
+                    userId: req.user.spotifyId,
+                    artistShortName: item.name,
+                    artistShortLink: item.href,
+                    artistShortGenres: item.genres,
+                };
+                var topArtistsS = await TopArtistsShort.findOne({
+                    artistShortId: item.id,
+                    userId: req.user.spotifyId,
+                });
+                if (topArtistsS) {
+                    continue;
+                } else {
+                    topArtistsS = await TopArtistsShort.create(newArtistShort);
+                }
+            }
+
+            for (item of topArtistsMedium) {
+                const newArtistMedium = {
+                    artistMediumId: item.id,
+                    userId: req.user.spotifyId,
+                    artistMediumName: item.name,
+                    artistMediumLink: item.href,
+                    artistMediumGenres: item.genres,
+                };
+                var topArtistsM = await TopArtistsMedium.findOne({
+                    artistMediumId: item.id,
+                    userId: req.user.spotifyId,
+                });
+                if (topArtistsM) {
+                    continue;
+                } else {
+                    topArtistsM = await TopArtistsMedium.create(
+                        newArtistMedium
                     );
                 }
             }
-        );
 
-        const topArtistsShort = await (
-            await spotifyApi.getMyTopArtists({ time_range: 'short_term' })
-        ).body.items;
-        const topArtistsMedium = await (
-            await spotifyApi.getMyTopArtists({ time_range: 'medium_term' })
-        ).body.items;
-        const topArtistsLong = await (
-            await spotifyApi.getMyTopArtists({ time_range: 'long_term' })
-        ).body.items;
-        const topTracksShort = await (
-            await spotifyApi.getMyTopTracks({ time_range: 'short_term' })
-        ).body.items;
-        const topTracksMedium = await (
-            await spotifyApi.getMyTopTracks({ time_range: 'medium_term' })
-        ).body.items;
-        const topTracksLong = await (
-            await spotifyApi.getMyTopTracks({ time_range: 'long_term' })
-        ).body.items;
-
-        const spotifyInfo = {
-            topArtistsShort,
-            topArtistsMedium,
-            topArtistsLong,
-            topTracksShort,
-            topTracksMedium,
-            topTracksLong,
-        };
-
-        for (var item of topArtistsShort) {
-            const newArtistShort = {
-                artistShortId: item.id,
-                userId: req.user.spotifyId,
-                artistShortName: item.name,
-                artistShortLink: item.href,
-                artistShortGenres: item.genres,
-            };
-            var topArtistsS = await TopArtistsShort.findOne({
-                artistShortId: item.id,
-                userId: req.user.spotifyId,
-            });
-            if (topArtistsS) {
-                continue;
-            } else {
-                topArtistsS = await TopArtistsShort.create(newArtistShort);
+            for (item of topArtistsLong) {
+                const newArtistLong = {
+                    artistLongId: item.id,
+                    userId: req.user.spotifyId,
+                    artistLongName: item.name,
+                    artistLongLink: item.href,
+                    artistLongGenres: item.genres,
+                };
+                var topArtistsL = await TopArtistsLong.findOne({
+                    artistLongId: item.id,
+                    userId: req.user.spotifyId,
+                });
+                if (topArtistsL) {
+                    continue;
+                } else {
+                    topArtistsL = await TopArtistsLong.create(newArtistLong);
+                }
             }
-        }
 
-        for (item of topArtistsMedium) {
-            const newArtistMedium = {
-                artistMediumId: item.id,
-                userId: req.user.spotifyId,
-                artistMediumName: item.name,
-                artistMediumLink: item.href,
-                artistMediumGenres: item.genres,
-            };
-            var topArtistsM = await TopArtistsMedium.findOne({
-                artistMediumId: item.id,
-                userId: req.user.spotifyId,
-            });
-            if (topArtistsM) {
-                continue;
-            } else {
-                topArtistsM = await TopArtistsMedium.create(newArtistMedium);
+            for (item of topTracksShort) {
+                const newTracksShort = {
+                    trackShortId: item.id,
+                    userId: req.user.spotifyId,
+                    trackShortName: item.name,
+                    trackShortLink: item.external_urls,
+                };
+                var topTracksS = await TopTracksShort.findOne({
+                    trackShortId: item.id,
+                    userId: req.user.spotifyId,
+                });
+                if (topTracksS) {
+                    continue;
+                } else {
+                    topTracksS = await TopTracksShort.create(newTracksShort);
+                }
             }
-        }
 
-        for (item of topArtistsLong) {
-            const newArtistLong = {
-                artistLongId: item.id,
-                userId: req.user.spotifyId,
-                artistLongName: item.name,
-                artistLongLink: item.href,
-                artistLongGenres: item.genres,
-            };
-            var topArtistsL = await TopArtistsLong.findOne({
-                artistLongId: item.id,
-                userId: req.user.spotifyId,
-            });
-            if (topArtistsL) {
-                continue;
-            } else {
-                topArtistsL = await TopArtistsLong.create(newArtistLong);
+            for (item of topTracksMedium) {
+                const newTracksMedium = {
+                    trackMediumId: item.id,
+                    userId: req.user.spotifyId,
+                    trackMediumName: item.name,
+                    trackMediumLink: item.external_urls,
+                };
+                var topTracksM = await TopTracksMedium.findOne({
+                    trackMediumId: item.id,
+                    userId: req.user.spotifyId,
+                });
+                if (topTracksM) {
+                    continue;
+                } else {
+                    topTracksM = await TopTracksMedium.create(newTracksMedium);
+                }
             }
-        }
 
-        for (item of topTracksShort) {
-            const newTracksShort = {
-                trackShortId: item.id,
-                userId: req.user.spotifyId,
-                trackShortName: item.name,
-                trackShortLink: item.external_urls,
-            };
-            var topTracksS = await TopTracksShort.findOne({
-                trackShortId: item.id,
-                userId: req.user.spotifyId,
-            });
-            if (topTracksS) {
-                continue;
-            } else {
-                topTracksS = await TopTracksShort.create(newTracksShort);
+            for (item of topTracksLong) {
+                const newTracksLong = {
+                    trackLongId: item.id,
+                    userId: req.user.spotifyId,
+                    trackLongName: item.name,
+                    trackLongLink: item.external_urls,
+                };
+                var topTracksL = await TopTracksLong.findOne({
+                    trackLongId: item.id,
+                    userId: req.user.spotifyId,
+                });
+                if (topTracksL) {
+                    continue;
+                } else {
+                    topTracksL = await TopTracksLong.create(newTracksLong);
+                }
             }
-        }
+            req.spotifyInfo = spotifyInfo;
 
-        for (item of topTracksMedium) {
-            const newTracksMedium = {
-                trackMediumId: item.id,
-                userId: req.user.spotifyId,
-                trackMediumName: item.name,
-                trackMediumLink: item.external_urls,
-            };
-            var topTracksM = await TopTracksMedium.findOne({
-                trackMediumId: item.id,
-                userId: req.user.spotifyId,
-            });
-            if (topTracksM) {
-                continue;
-            } else {
-                topTracksM = await TopTracksMedium.create(newTracksMedium);
-            }
+            // Set data to Redis (caching)
+            client.hset("spotify_data", req.user.spotifyId, JSON.stringify(spotifyInfo));
+        } catch (error) {
+            console.log(error);
         }
-
-        for (item of topTracksLong) {
-            const newTracksLong = {
-                trackLongId: item.id,
-                userId: req.user.spotifyId,
-                trackLongName: item.name,
-                trackLongLink: item.external_urls,
-            };
-            var topTracksL = await TopTracksLong.findOne({
-                trackLongId: item.id,
-                userId: req.user.spotifyId,
-            });
-            if (topTracksL) {
-                continue;
-            } else {
-                topTracksL = await TopTracksLong.create(newTracksLong);
-            }
-        }
-
-        return spotifyInfo;
-    } catch (error) {
-        console.log(error);
     }
+    next();
 };
 
 module.exports = pullData;
