@@ -22,15 +22,9 @@ router.get('/', ensureAuth, cache, pullData, async (req, res) => {
 
 // @desc    Refresh
 // @route   GET /
-router.get('/refresh', (req, res) => {
-    console.log('test');
-
-    res.render('dashboard', {
-        dashboard: true,
-        title: 'Dashboard',
-        chart: 'scripts.js',
-        spotifyInfo,
-    });
+router.get('/refresh', pullData, (req, res) => {
+    console.log("Refreshing");
+    res.redirect('/dashboard');
 });
 
 module.exports = router;
