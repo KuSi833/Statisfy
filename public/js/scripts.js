@@ -1,1 +1,0 @@
-//const { registerables } = require("chart.js");
