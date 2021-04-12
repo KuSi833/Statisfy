@@ -131,6 +131,13 @@ const pullData = async (req, res) => {
             (error, doc) => {}
         );
 
+        const user = await spotifyApi.getMe();
+        const country = user.body.country;
+        const name = user.body.display_name;
+        const url = user.body.external_urls.spotify;
+        const product = user.body.product;
+        const email = user.body.email;
+
 
         const spotifyInfo = {
             topArtistsShort,
@@ -139,6 +146,12 @@ const pullData = async (req, res) => {
             topTracksShort,
             topTracksMedium,
             topTracksLong,
+            averageAcousticness,
+            country,
+            name,
+            url,
+            product,
+            email,
         };
 
         for (var item of topArtistsShort) {
