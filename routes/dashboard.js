@@ -9,12 +9,13 @@ const pullData = require('../middleware/pullData');
 router.get('/', ensureAuth, cache, pullData, async (req, res) => {
     const spotifyInfo = req.spotifyInfo;
 
-    const username = req.user.displayName;
+    var audioFeatures = [req.user.averageAcousticness, req.user.averageDanceability, req.user.averageEnergy, req.user.averageInstrumentalness, req.user.averageValence];
+    audioFeatures = "[" + audioFeatures + "]"
 
     res.render('dashboard', {
         dashboard: true,
         title: 'Dashboard',
-        username,
+        audioFeatures,
         spotifyInfo,
     });
 });
@@ -27,6 +28,7 @@ router.get('/refresh', (req, res) => {
     res.render('dashboard', {
         dashboard: true,
         title: 'Dashboard',
+        chart: 'scripts.js',
         spotifyInfo,
     });
 });
