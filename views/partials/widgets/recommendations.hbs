@@ -5,12 +5,14 @@
         </div>
         <div class="card-body">
             <div class=" btn-group container-fluid" role="tracks-time" aria-label="Time range for top tracks">
-                <button type="button" class="btn btn-outline-primary top-buttons">Last Month</button>
-                <button type="button" class="btn btn-outline-primary top-buttons">Last 6 Months</button>
-                <button type="button" class="btn btn-outline-primary top-buttons">Last Years</button>
+                <button type="button" class="btn btn-outline-primary top-buttons">Artists</button>
+                <button type="button" class="btn btn-outline-primary top-buttons">Songs</button>
+                <button type="button" class="btn btn-outline-primary top-buttons">Genres</button>
             </div>
             <ol class="card-text top-texts text-center">
-                
+                {{#each spotifyInfo.recommendationsA}}
+                    <li>{{this.name}} - {{this.artists.0.name}}</li>
+                {{/each}}
             </ol>
         </div>
     </div>
