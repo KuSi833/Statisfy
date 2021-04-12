@@ -1,3 +1,5 @@
+//const { registerables } = require("chart.js");
+
 var ctx = document.getElementById("doughnut-chart");
 var cty = document.getElementById("bar-chart");
 
@@ -9,7 +11,14 @@ var doughnut = new Chart(ctx, {
             {
                 label: "Genres (%)",
                 data: [10, 20, 15, 40, 15], 
-                backgroundColor: ["#28536B", "#D8719E", "#FFE8C2", "#35CE8D", "#F0A868"]
+                backgroundColor: [
+                  'rgba(255, 99, 132, 0.8)',
+                  'rgba(255, 159, 64, 0.8)',
+                  'rgba(255, 205, 86, 0.8)',
+                  'rgba(75, 192, 192, 0.8)',
+                  'rgba(153, 102, 255, 0.8)',
+                  'rgba(201, 203, 207, 0.8)'
+                ]
             }
         ]
     },
@@ -49,6 +58,7 @@ var bar = new Chart(cty, {
       datasets: [
         {
           label: "Audio Feature",
+          color: "rgb(256,256,256)",
           backgroundColor: [
             'rgba(255, 99, 132, 0.4)',
             'rgba(255, 159, 64, 0.4)',
@@ -76,6 +86,25 @@ var bar = new Chart(cty, {
       title: {
         display: true,
         text: 'Average Audio Feature accross your Taste'
+      },
+      plugins: {
+        legend: {
+            labels: {
+              color: "white"
+            }
+        }
+      },
+      scales: {
+        y: {
+          ticks:{
+            color: "rgb(256,256,256)"
+          }
+        },
+        x: {
+          ticks:{
+            color: "rgb(256,256,256)"
+          }
+        }
       },
       maintainAspectRatio: false,
       indexAxis: "y"
