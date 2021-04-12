@@ -73,6 +73,29 @@ const pullData = async (req, res) => {
             await spotifyApi.getMyTopTracks({ time_range: 'long_term', limit: '5' })
         ).body.items;
 
+        const allTopTracksMedium = await (
+            await spotifyApi.getMyTopTracks({ time_range: 'medium_term' })
+        ).body.items;
+        var averageDanceability = 0;
+        var averageAcousticness = 0;
+        var averageEnergy = 0;
+        var averageInstrumentalness = 0;
+        var averageValence = 0;
+        for (var item of allTopTracksMedium) {
+           const audioFeatures = await spotifyApi.getAudioFeaturesForTrack(item.id);
+           averageDanceability = averageDanceability + audioFeatures.body.danceability;
+           averageAcousticness = averageAcousticness + audioFeatures.body.acousticness;
+           averageEnergy = averageEnergy + audioFeatures.body.acousticness;
+           averageInstrumentalness = averageInstrumentalness + audioFeatures.body.instrumentalness;
+           averageValence = averageValence + audioFeatures.body.valence;
+        }
+        averageDanceability = averageDanceability/allTopTracksMedium.length;
+        averageAcousticness = averageAcousticness/allTopTracksMedium.length;
+        averageEnergy = averageEnergy/allTopTracksMedium.length;
+        averageInstrumentalness = averageInstrumentalness/allTopTracksMedium.length;
+        averageValence = averageValence/allTopTracksMedium.length;
+
+
         const spotifyInfo = {
             topArtistsShort,
             topArtistsMedium,
@@ -80,6 +103,11 @@ const pullData = async (req, res) => {
             topTracksShort,
             topTracksMedium,
             topTracksLong,
+            averageAcousticness,
+            averageEnergy,
+            averageValence,
+            averageDanceability,
+            averageInstrumentalness,
         };
 
         for (var item of topArtistsShort) {
