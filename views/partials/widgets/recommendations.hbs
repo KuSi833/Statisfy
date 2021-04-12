@@ -1,18 +1,16 @@
-<div class="widget top_widget" id='topArtists_widget' >
+<div class="widget top_widget" id='topTracks_widget' >
     <div class='card top-stuff h-100 text-center'>
         <div class="card-header">
-            <h4>Top Artists</h4>
+            <h4>Recommendations</h4>
         </div>
         <div class="card-body">
-            <div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for Top Albums">
+            <div class=" btn-group container-fluid" role="tracks-time" aria-label="Time range for top tracks">
                 <button type="button" class="btn btn-outline-primary top-buttons">Last Month</button>
                 <button type="button" class="btn btn-outline-primary top-buttons">Last 6 Months</button>
                 <button type="button" class="btn btn-outline-primary top-buttons">Last Years</button>
             </div>
-            <ol class="card-text top-texts">
-                {{#each spotifyInfo.topArtistsShort}}
-                    <li>{{this.name}}</li>
-                {{/each}}
+            <ol class="card-text top-texts text-center">
+                
             </ol>
         </div>
     </div>

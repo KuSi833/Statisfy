@@ -192,7 +192,37 @@ body {
           color: white;
           font-weight: 200;
         }
+
+        .chart-container{
+          position: relative;
+          width: 100%;
+          height: 99%;
+        }
       }
+
+      #AF_widget {
+        width: 66%;
+        height: 100%;
+
+        .top-stuff {
+          background: $light-blue;
+          color: white;
+          font-weight: 200;
+        }
+
+        .bottom-stuff {
+          background: $widget-bg;
+          color: white;
+          font-weight: 200;
+        }
+
+        .chart-container{
+          position: relative;
+          width: 100%;
+          height: 99%;
+        }
+      }
+
     }
   }
 }

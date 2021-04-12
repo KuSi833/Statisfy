@@ -68,23 +68,110 @@ const pullData = async (req, res, next) => {
             );
 
             const topArtistsShort = await (
-                await spotifyApi.getMyTopArtists({ time_range: 'short_term' })
+                await spotifyApi.getMyTopArtists({
+                    time_range: 'short_term',
+                    limit: '5',
+                })
             ).body.items;
             const topArtistsMedium = await (
-                await spotifyApi.getMyTopArtists({ time_range: 'medium_term' })
+                await spotifyApi.getMyTopArtists({
+                    time_range: 'medium_term',
+                    limit: '5',
+                })
             ).body.items;
             const topArtistsLong = await (
-                await spotifyApi.getMyTopArtists({ time_range: 'long_term' })
+                await spotifyApi.getMyTopArtists({
+                    time_range: 'long_term',
+                    limit: '5',
+                })
             ).body.items;
             const topTracksShort = await (
-                await spotifyApi.getMyTopTracks({ time_range: 'short_term' })
+                await spotifyApi.getMyTopTracks({
+                    time_range: 'short_term',
+                    limit: '5',
+                })
             ).body.items;
             const topTracksMedium = await (
-                await spotifyApi.getMyTopTracks({ time_range: 'medium_term' })
+                await spotifyApi.getMyTopTracks({
+                    time_range: 'medium_term',
+                    limit: '5',
+                })
             ).body.items;
             const topTracksLong = await (
-                await spotifyApi.getMyTopTracks({ time_range: 'long_term' })
+                await spotifyApi.getMyTopTracks({
+                    time_range: 'long_term',
+                    limit: '5',
+                })
             ).body.items;
+
+            var genres = [];
+            const allTopArtistsMedium = await (
+                await spotifyApi.getMyTopArtists({ time_range: 'medium_term' })
+            ).body.items;
+            for (var item of allTopArtistsMedium) {
+                for (var genre of item.genres) {
+                    var index = genres.indexOf(genre);
+                    if (index == -1) {
+                        genres.push(genre);
+                        genres.push(1);
+                    } else {
+                        genres[index + 1] += 1;
+                    }
+                }
+            }
+
+            const allTopTracksMedium = await (
+                await spotifyApi.getMyTopTracks({ time_range: 'medium_term' })
+            ).body.items;
+            var averageDanceability = 0;
+            var averageAcousticness = 0;
+            var averageEnergy = 0;
+            var averageInstrumentalness = 0;
+            var averageValence = 0;
+            for (var item of allTopTracksMedium) {
+                const audioFeatures = await spotifyApi.getAudioFeaturesForTrack(
+                    item.id
+                );
+                averageDanceability =
+                    averageDanceability + audioFeatures.body.danceability;
+                averageAcousticness =
+                    averageAcousticness + audioFeatures.body.acousticness;
+                averageEnergy = averageEnergy + audioFeatures.body.acousticness;
+                averageInstrumentalness =
+                    averageInstrumentalness +
+                    audioFeatures.body.instrumentalness;
+                averageValence = averageValence + audioFeatures.body.valence;
+            }
+            averageDanceability =
+                averageDanceability / allTopTracksMedium.length;
+            averageAcousticness =
+                averageAcousticness / allTopTracksMedium.length;
+            averageEnergy = averageEnergy / allTopTracksMedium.length;
+            averageInstrumentalness =
+                averageInstrumentalness / allTopTracksMedium.length;
+            averageValence = averageValence / allTopTracksMedium.length;
+
+            var Features = User.findOneAndUpdate(
+                {
+                    spotifyId: req.user.spotifyId,
+                },
+                {
+                    averageAcousticness: averageAcousticness,
+                    averageEnergy: averageEnergy,
+                    averageValence: averageValence,
+                    averageDanceability: averageDanceability,
+                    averageInstrumentalness: averageInstrumentalness,
+                    genres: genres,
+                },
+                (error, doc) => {}
+            );
+
+            const user = await spotifyApi.getMe();
+            const country = user.body.country;
+            const name = user.body.display_name;
+            const url = user.body.external_urls.spotify;
+            const product = user.body.product;
+            const email = user.body.email;
 
             const spotifyInfo = {
                 topArtistsShort,
@@ -93,7 +180,23 @@ const pullData = async (req, res, next) => {
                 topTracksShort,
                 topTracksMedium,
                 topTracksLong,
+                averageAcousticness,
+                country,
+                name,
+                url,
+                product,
+                email,
             };
+
+            for (var item of topArtistsShort) {
+                const newArtistShort = {
+                    artistShortId: item.id,
+                    userId: req.user.spotifyId,
+                    artistShortName: item.name,
+                    artistShortLink: item.href,
+                    artistShortGenres: item.genres,
+                };
+            }
 
             for (var item of topArtistsShort) {
                 const newArtistShort = {
@@ -210,7 +313,11 @@ const pullData = async (req, res, next) => {
             req.spotifyInfo = spotifyInfo;
 
             // Set data to Redis (caching)
-            client.hset("spotify_data", req.user.spotifyId, JSON.stringify(spotifyInfo));
+            client.hset(
+                'spotify_data',
+                req.user.spotifyId,
+                JSON.stringify(spotifyInfo)
+            );
         } catch (error) {
             console.log(error);
         }
