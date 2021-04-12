@@ -7478,7 +7478,6 @@ body {
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-      overflow-y: scroll;
       margin-left: 10px; }
       #dashboard .middle .page-content .page-row {
         display: flex;
@@ -7492,8 +7491,7 @@ body {
         margin: 0px 15px 0px 0px; }
       #dashboard .middle .page-content .top_widget {
         width: 33%;
-        height: 100%;
-        position: relative; }
+        height: 100%; }
         #dashboard .middle .page-content .top_widget .top-stuff {
           background: #2B3B70;
           color: white;

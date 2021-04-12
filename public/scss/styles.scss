@@ -126,7 +126,6 @@ body {
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-      overflow-y: scroll;
       margin-left: 10px;
 
       .page-row {
@@ -146,7 +145,6 @@ body {
       .top_widget {
         width: 33%;
         height: 100%;
-        position: relative;
 
         .top-stuff {
           background: $widget-bg;

@@ -10,11 +10,9 @@
                 <button type="button" class="btn btn-outline-primary top-buttons">Years</button>
             </div>
             <ol class="card-text top-texts text-center">
-                <li>Track 1</li>
-                <li>Track 2</li>
-                <li>Track 3</li>
-                <li>Track 4</li>
-                <li>Track 5</li>
+                {{#each spotifyInfo.topTracksShort}}											
+                    <li>{{this.name}}</li>
+                {{/each}}
             </ol>
         </div>
     </div>
