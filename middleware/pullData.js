@@ -166,9 +166,25 @@ const pullData = async (req, res, next) => {
                 (error, doc) => {}
             );
 
+            var seed_artists = [];
+            for (artist of topArtistsLong) {
+              seed_artists.push(artist.id);
+            }
+
+            var seed_tracks = [];
+            for (track of topTracksLong) {
+              seed_tracks.push(track.id);
+              }
+
+            var seed_genres = [];
 
             const recommendationsA =await (
-                await spotifyApi.getRecommendations({ seed_artists: [topArtistsShort[0].id, topArtistsShort[1].id, topArtistsShort[2].id, topArtistsShort[3].id, topArtistsShort[4].id], limit: '5' })).body.tracks;
+                await spotifyApi.getRecommendations({ seed_artists: seed_artists,
+                  limit: '5' })).body.tracks;
+
+            const recommendationsT =await (
+                await spotifyApi.getRecommendations({ seed_tracks: seed_tracks,
+                  limit: '5' })).body.tracks;
 
 
             const user = await spotifyApi.getMe();
@@ -191,6 +207,7 @@ const pullData = async (req, res, next) => {
                 product,
                 email,
                 recommendationsA,
+                recommendationsT,
             };
 
             for (var item of topArtistsShort) {
