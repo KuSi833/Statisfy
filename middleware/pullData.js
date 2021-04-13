@@ -11,6 +11,33 @@ const TopTracksLong = require('../models/TopTracksLong');
 const redis = require('redis');
 const client = redis.createClient(process.env.REDIS_PORT);
 
+const getGenres = async (spotifyApi) => {
+    const allTopArtistsMedium = await (
+        await spotifyApi.getMyTopArtists({ time_range: 'medium_term' })
+    ).body.items;
+    var genresDict = {};
+    for (var item of allTopArtistsMedium) {
+        for (var genre of item.genres) {
+            if (genre in genresDict) {
+                genresDict[genre] += 1;
+            } else {
+                genresDict[genre] = 1;
+            }
+        }
+    }
+    return genresDict;
+};
+const dictToArray = (dictionary) => {
+    var returnArray = [];
+    for (var key in dictionary) {
+        if (dictionary.hasOwnProperty(key)) {
+            returnArray.push([key, dictionary[key]]);
+        }
+    }
+    return returnArray;
+};
+const getTopGenres = (gernes, n) => {};
+
 const pullData = async (req, res, next) => {
     if (req.spotifyInfo === null || req.spotifyInfo === undefined) {
         // Only pull data if it isn't already in cache
@@ -104,21 +131,12 @@ const pullData = async (req, res, next) => {
                 })
             ).body.items;
 
-            var genres = [];
-            const allTopArtistsMedium = await (
-                await spotifyApi.getMyTopArtists({ time_range: 'medium_term' })
-            ).body.items;
-            for (var item of allTopArtistsMedium) {
-                for (var genre of item.genres) {
-                    var index = genres.indexOf(genre);
-                    if (index == -1) {
-                        genres.push(genre);
-                        genres.push(1);
-                    } else {
-                        genres[index + 1] += 1;
-                    }
-                }
-            }
+            // Getting genres
+            const genresDict = await getGenres(spotifyApi);
+            var genresArray = dictToArray(genresDict).sort(
+                (key, value) => value[1] - key[1]
+            );
+            console.log(genresArray);
 
             const allTopTracksMedium = await (
                 await spotifyApi.getMyTopTracks({ time_range: 'medium_term' })
@@ -161,7 +179,7 @@ const pullData = async (req, res, next) => {
                     averageValence: averageValence,
                     averageDanceability: averageDanceability,
                     averageInstrumentalness: averageInstrumentalness,
-                    genres: genres,
+                    genres: genresDict,
                 },
                 (error, doc) => {}
             );
@@ -193,6 +211,7 @@ const pullData = async (req, res, next) => {
                 topTracksShort,
                 topTracksMedium,
                 topTracksLong,
+                genresDict,
                 country,
                 name,
                 url,

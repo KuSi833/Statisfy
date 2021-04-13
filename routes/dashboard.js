@@ -9,8 +9,17 @@ const pullData = require('../middleware/pullData');
 router.get('/', ensureAuth, cache, pullData, async (req, res) => {
     const spotifyInfo = req.spotifyInfo;
 
-    var audioFeatures = [req.user.averageAcousticness, req.user.averageDanceability, req.user.averageEnergy, req.user.averageInstrumentalness, req.user.averageValence];
-    audioFeatures = "[" + audioFeatures + "]"
+    // console.log(Object.keys(spotifyInfo));
+    console.log(spotifyInfo.genres);
+
+    var audioFeatures = [
+        req.user.averageAcousticness,
+        req.user.averageDanceability,
+        req.user.averageEnergy,
+        req.user.averageInstrumentalness,
+        req.user.averageValence,
+    ];
+    audioFeatures = '[' + audioFeatures + ']';
 
     res.render('dashboard', {
         dashboard: true,
@@ -23,7 +32,7 @@ router.get('/', ensureAuth, cache, pullData, async (req, res) => {
 // @desc    Refresh
 // @route   GET /
 router.get('/refresh', pullData, (req, res) => {
-    console.log("Refreshing");
+    console.log('Refreshing');
     res.redirect('/dashboard');
 });
 
