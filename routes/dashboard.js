@@ -9,7 +9,6 @@ const pullData = require('../middleware/pullData');
 router.get('/', ensureAuth, cache, pullData, async (req, res) => {
     const spotifyInfo = req.spotifyInfo;
 
-    // console.log(Object.keys(spotifyInfo));
     console.log(spotifyInfo.genres);
 
     var audioFeatures = [
@@ -20,9 +19,6 @@ router.get('/', ensureAuth, cache, pullData, async (req, res) => {
         req.user.averageValence,
     ];
     audioFeatures = '[' + audioFeatures + ']';
-
-    console.log('HERE');
-    console.log(spotifyInfo.topGenresChartData.labels);
 
     res.render('dashboard', {
         dashboard: true,
