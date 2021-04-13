@@ -38,6 +38,12 @@ const UserSchema = new mongoose.Schema({
     averageInstrumentalness: {
         type: Number,
     },
+    averageLoudness: {
+        type: Number,
+    },
+    averageTempo: {
+        type: Number,
+    },
     genres: {
       type: Array
     },

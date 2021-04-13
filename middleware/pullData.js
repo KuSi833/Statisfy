@@ -128,6 +128,8 @@ const pullData = async (req, res, next) => {
             var averageEnergy = 0;
             var averageInstrumentalness = 0;
             var averageValence = 0;
+            var averageLoudness = 0;
+            var averageTempo = 0;
             for (var item of allTopTracksMedium) {
                 const audioFeatures = await spotifyApi.getAudioFeaturesForTrack(
                     item.id
@@ -141,6 +143,8 @@ const pullData = async (req, res, next) => {
                     averageInstrumentalness +
                     audioFeatures.body.instrumentalness;
                 averageValence = averageValence + audioFeatures.body.valence;
+                averageLoudness = averageLoudness + audioFeatures.body.loudness;
+                averageTempo = averageTempo + audioFeatures.body.tempo;
             }
             averageDanceability =
                 averageDanceability / allTopTracksMedium.length;
@@ -150,6 +154,8 @@ const pullData = async (req, res, next) => {
             averageInstrumentalness =
                 averageInstrumentalness / allTopTracksMedium.length;
             averageValence = averageValence / allTopTracksMedium.length;
+            averageLoudness = averageLoudness / allTopTracksMedium.length;
+            averageTempo = averageTempo / allTopTracksMedium.length;
 
             var Features = User.findOneAndUpdate(
                 {
@@ -161,6 +167,8 @@ const pullData = async (req, res, next) => {
                     averageValence: averageValence,
                     averageDanceability: averageDanceability,
                     averageInstrumentalness: averageInstrumentalness,
+                    averageLoudness: averageLoudness,
+                    averageTempo: averageTempo,
                     genres: genres,
                 },
                 (error, doc) => {}
