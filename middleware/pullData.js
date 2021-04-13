@@ -166,10 +166,18 @@ const pullData = async (req, res, next) => {
                 (error, doc) => {}
             );
 
-
-            const recommendationsA =await (
-                await spotifyApi.getRecommendations({ seed_artists: [topArtistsShort[0].id, topArtistsShort[1].id, topArtistsShort[2].id, topArtistsShort[3].id, topArtistsShort[4].id], limit: '5' })).body.tracks;
-
+            const recommendationsA = await (
+                await spotifyApi.getRecommendations({
+                    seed_artists: [
+                        topArtistsShort[0].id,
+                        topArtistsShort[1].id,
+                        topArtistsShort[2].id,
+                        topArtistsShort[3].id,
+                        topArtistsShort[4].id,
+                    ],
+                    limit: '5',
+                })
+            ).body.tracks;
 
             const user = await spotifyApi.getMe();
             const country = user.body.country;
