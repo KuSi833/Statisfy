@@ -27,7 +27,8 @@ router.get('/aboutus', (req, res) => {
         title: 'About us',
     });
 });
-
+//@desc delete all data about userId
+//@route GET /delete
 router.get('/delete', (req, res) => {
     User.findOneAndRemove({spotifyId: req.user.spotifyId}, (error, dic) => {});
     TopArtistsShort.deleteMany({userId: req.user.spotifyId}, (error, dic) => {});
@@ -41,5 +42,7 @@ router.get('/delete', (req, res) => {
       layout: 'login',
     });
 });
+
+
 
 module.exports = router;
