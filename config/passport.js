@@ -11,7 +11,7 @@ module.exports = (passport) => {
             },
             async (accessToken, refreshToken, expires_in, profile, done) => {
                 console.log(profile);
-                date_in_ms = Date.now();
+                var date_in_ms = Date.now();
                 // Creating User object
                 const newUser = {
                     spotifyId: profile.id,
