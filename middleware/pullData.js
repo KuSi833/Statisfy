@@ -36,7 +36,38 @@ const dictToArray = (dictionary) => {
     }
     return returnArray;
 };
-const getTopGenres = (gernes, n) => {};
+const intArrayToString = (list) => {
+    return '[' + list + ']';
+};
+const stringArrayToString = (list) => {
+    var returnString = '[';
+    for (var element of list){
+        returnString += "\'" + element + "\',"
+    }
+    returnString = returnString.slice(0, -1);
+    returnString += ']';
+    return returnString;
+};
+const getTopGenresChartData = (genresArray, n) => {
+    // Returns labels and data for top genres chart
+    var labels = [];
+    var data = [];
+    for (var i = 0; i < n; i++) {
+        console.log(genresArray[i]);
+        var genre;
+        var value;
+        [genre, value] = genresArray[i];
+        labels.push(genre);
+        data.push(value);
+    }
+    labels = stringArrayToString(labels);
+    data = intArrayToString(data);
+    var topGenresChartData = {
+        labels,
+        data,
+    };
+    return topGenresChartData;
+};
 
 const pullData = async (req, res, next) => {
     if (req.spotifyInfo === null || req.spotifyInfo === undefined) {
@@ -136,7 +167,8 @@ const pullData = async (req, res, next) => {
             var genresArray = dictToArray(genresDict).sort(
                 (key, value) => value[1] - key[1]
             );
-            console.log(genresArray);
+            // Getting genres data for chart
+            var topGenresChartData = getTopGenresChartData(genresArray, 6);
 
             const allTopTracksMedium = await (
                 await spotifyApi.getMyTopTracks({ time_range: 'medium_term' })
@@ -194,24 +226,29 @@ const pullData = async (req, res, next) => {
 
             var seed_artists = [];
             for (var artist of topArtistsLong) {
-              seed_artists.push(artist.id);
+                seed_artists.push(artist.id);
             }
 
             var seed_tracks = [];
             for (var track of topTracksLong) {
-              seed_tracks.push(track.id);
-              }
+                seed_tracks.push(track.id);
+            }
 
             var seed_genres = [];
 
-            const recommendationsA =await (
-                await spotifyApi.getRecommendations({ seed_artists: seed_artists,
-                  limit: '5' })).body.tracks;
+            const recommendationsA = await (
+                await spotifyApi.getRecommendations({
+                    seed_artists: seed_artists,
+                    limit: '5',
+                })
+            ).body.tracks;
 
-            const recommendationsT =await (
-                await spotifyApi.getRecommendations({ seed_tracks: seed_tracks,
-                  limit: '5' })).body.tracks;
-
+            const recommendationsT = await (
+                await spotifyApi.getRecommendations({
+                    seed_tracks: seed_tracks,
+                    limit: '5',
+                })
+            ).body.tracks;
 
             const user = await spotifyApi.getMe();
             const country = user.body.country;
@@ -227,7 +264,8 @@ const pullData = async (req, res, next) => {
                 topTracksShort,
                 topTracksMedium,
                 topTracksLong,
-                genresDict,
+                genresArray,
+                topGenresChartData,
                 country,
                 name,
                 url,

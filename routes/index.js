@@ -20,6 +20,14 @@ router.get('/', ensureGuest, (req, res) => {
 
 // @desc    About us page
 // @route   GET /
+router.get('/aboutus', (req, res) => {
+    res.render('aboutus', {
+        layout: 'main',
+        aboutus: true,
+        title: 'About us',
+    });
+});
+
 router.get('/delete', (req, res) => {
     User.findOneAndRemove({spotifyId: req.user.spotifyId}, (error, dic) => {});
     TopArtistsShort.deleteMany({userId: req.user.spotifyId}, (error, dic) => {});
