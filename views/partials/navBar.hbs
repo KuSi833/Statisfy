@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark primary navbar-expand-sm sticky-top">
     <div class="container-fluid">
-        <a href="/dashboard" class="navbar-brand"><img alt = "logo" src="img/statisfy_logo.png" height="60"></a>
+        <a href="/dashboard" class="navbar-brand"><img alt = "logo" src="img/statisfy_logo.png" height="60" title ="Statisfy"></a>
         <div class="collapse navbar-collapse" id="Navbar">
             <ul class="nav navbar-nav me-auto">
                 {{#if dashboard}}
@@ -14,19 +14,19 @@
             </ul>
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a href="/auth/logout" class="nav-link"><img alt = "log out" src="img/trash-can.png" height="50"></a>
+                    <a href="/auth/logout" class="nav-link"><img alt = "delete from database" title="Delete all user data" src="img/trash-can.png" height="50"></a>
                 </li>
             </ul>
             <ul class="nav navbar-nav ml-auto">
                 {{#if dashboard}}
                 <li class="nav-item active">
-                    <a href="/dashboard/refresh" class="nav-link"><img alt = "refresh" src="img/refresh-button.png" height="50"></a>
+                    <a href="/dashboard/refresh" class="nav-link"><img alt = "refresh" src="img/refresh-button.png" height="50" title="Refresh Page"></a>
                 </li>
                 {{/if}}
             </ul>
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a href="/auth/logout" class="nav-link"><img alt = "log out" src="img/logout-button.png" height="50"></a>
+                    <a href="/auth/logout" class="nav-link"><img alt = "log-out " src="img/logout-button.png" height="50" title="Log out"></a>
                 </li>
             </ul>
         </div>
