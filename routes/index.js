@@ -22,7 +22,6 @@ router.get('/', ensureGuest, (req, res) => {
 // @route   GET /
 router.get('/aboutus', (req, res) => {
     res.render('aboutus', {
-        layout: 'aboutLayout',
         aboutus: true,
         title: 'About us',
     });

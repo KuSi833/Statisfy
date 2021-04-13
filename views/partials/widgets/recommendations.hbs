@@ -1,5 +1,5 @@
-<div class="widget top_widget" id='topTracks_widget' >
-    <div class='card top-stuff h-100 text-center'>
+<div class="widget col-12 col-lg-5 col-xxl-4" id='topTracks_widget' >
+    <div class='card h-100 text-center'>
         <div class="card-header">
             <h4>Recommendations</h4>
         </div>
@@ -9,7 +9,7 @@
                 <button type="button" class="btn btn-outline-primary top-buttons">Songs</button>
                 <button type="button" class="btn btn-outline-primary top-buttons">Genres</button>
             </div>
-            <ol class="card-text top-texts text-center">
+            <ol class="card-text text-center">
                 {{#each spotifyInfo.recommendationsA}}
                     <li>{{this.name}} - {{this.artists.0.name}}</li>
                 {{/each}}

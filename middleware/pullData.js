@@ -11,6 +11,21 @@ const TopTracksLong = require('../models/TopTracksLong');
 const redis = require('redis');
 const client = redis.createClient(process.env.REDIS_PORT);
 
+// Handlebars helpers
+const intArrayToString = (list) => {
+    return '[' + list + ']';
+};
+const stringArrayToString = (list) => {
+    var returnString = '[';
+    for (var element of list){
+        returnString += "\'" + element + "\',"
+    }
+    returnString = returnString.slice(0, -1);
+    returnString += ']';
+    return returnString;
+};
+
+// Genres
 const getGenres = async (spotifyApi) => {
     const allTopArtistsMedium = await (
         await spotifyApi.getMyTopArtists({ time_range: 'medium_term' })
@@ -36,24 +51,11 @@ const dictToArray = (dictionary) => {
     }
     return returnArray;
 };
-const intArrayToString = (list) => {
-    return '[' + list + ']';
-};
-const stringArrayToString = (list) => {
-    var returnString = '[';
-    for (var element of list){
-        returnString += "\'" + element + "\',"
-    }
-    returnString = returnString.slice(0, -1);
-    returnString += ']';
-    return returnString;
-};
 const getTopGenresChartData = (genresArray, n) => {
     // Returns labels and data for top genres chart
     var labels = [];
     var data = [];
     for (var i = 0; i < n; i++) {
-        console.log(genresArray[i]);
         var genre;
         var value;
         [genre, value] = genresArray[i];
@@ -112,7 +114,6 @@ const pullData = async (req, res, next) => {
                                 spotifyApi.setAccessToken(
                                     data.body['access_token']
                                 );
-                                console.log(user);
                             },
                             function (error) {
                                 console.log(
@@ -162,7 +163,7 @@ const pullData = async (req, res, next) => {
                 })
             ).body.items;
 
-            // Getting genres
+            // Getting Genres
             const genresDict = await getGenres(spotifyApi);
             var genresArray = dictToArray(genresDict).sort(
                 (key, value) => value[1] - key[1]

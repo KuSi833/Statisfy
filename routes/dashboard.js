@@ -9,8 +9,6 @@ const pullData = require('../middleware/pullData');
 router.get('/', ensureAuth, cache, pullData, async (req, res) => {
     const spotifyInfo = req.spotifyInfo;
 
-    console.log(spotifyInfo.genres);
-
     var audioFeatures = [
         req.user.averageAcousticness,
         req.user.averageDanceability,
