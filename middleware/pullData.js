@@ -51,6 +51,7 @@ const dictToArray = (dictionary) => {
     }
     return returnArray;
 };
+var labelsArray = [];
 const getTopGenresChartData = (genresArray, n) => {
     // Returns labels and data for top genres chart
     var labels = [];
@@ -62,6 +63,7 @@ const getTopGenresChartData = (genresArray, n) => {
         labels.push(genre);
         data.push(value);
     }
+    labelsArray =labels;
     labels = stringArrayToString(labels);
     data = intArrayToString(data);
     var topGenresChartData = {
@@ -129,7 +131,7 @@ const pullData = async (req, res, next) => {
             const topArtistsShort = await (
                 await spotifyApi.getMyTopArtists({
                     time_range: 'short_term',
-                    limit: '5',
+                    limit: '10',
                 })
             ).body.items;
             const topArtistsMedium = await (
@@ -147,7 +149,7 @@ const pullData = async (req, res, next) => {
             const topTracksShort = await (
                 await spotifyApi.getMyTopTracks({
                     time_range: 'short_term',
-                    limit: '5',
+                    limit: '10',
                 })
             ).body.items;
             const topTracksMedium = await (
@@ -235,21 +237,31 @@ const pullData = async (req, res, next) => {
                 seed_tracks.push(track.id);
             }
 
-            var seed_genres = [];
+            var topGenres = getTopGenresChartData(genresArray, 5);
+            var seed_genres = labelsArray;
 
             const recommendationsA = await (
                 await spotifyApi.getRecommendations({
                     seed_artists: seed_artists,
-                    limit: '5',
+                    limit: '10',
                 })
             ).body.tracks;
 
             const recommendationsT = await (
                 await spotifyApi.getRecommendations({
                     seed_tracks: seed_tracks,
-                    limit: '5',
+                    limit: '10',
                 })
             ).body.tracks;
+
+            const recommendationsG = await (
+                await spotifyApi.getRecommendations({
+                    seed_genres: seed_genres,
+                    limit: '10',
+                })
+            ).body.tracks;
+
+
 
             const user = await spotifyApi.getMe();
             const country = user.body.country;
@@ -274,6 +286,7 @@ const pullData = async (req, res, next) => {
                 email,
                 recommendationsA,
                 recommendationsT,
+                recommendationsG,
             };
 
             for (var item of topArtistsShort) {
