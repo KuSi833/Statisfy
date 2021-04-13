@@ -11,7 +11,7 @@
             </div>
             <ol class="card-text top-texts text-center">
                 {{#each spotifyInfo.topTracksShort}}
-                    <li>{{this.name}}</li>
+                    <li>{{this.name}} - {{this.artists.0.name}}</li>
                 {{/each}}
             </ol>
         </div>
