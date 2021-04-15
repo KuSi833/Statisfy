@@ -277,6 +277,8 @@ const pullData = async (req, res, next) => {
             const product = spotifyUser.body.product;
             const email = spotifyUser.body.email;
 
+            console.log(spotifyUser);
+
             const userData = {
                 name,
                 image,
