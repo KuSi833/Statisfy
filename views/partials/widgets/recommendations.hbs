@@ -11,7 +11,7 @@
             </div>
             <ol class="card-text text-center">
                 {{#each spotifyInfo.recommendationsG}}
-                    <li>{{this.name}} - {{this.artists.0.name}}</li>
+                    <li><a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
                 {{/each}}
             </ol>
         </div>
