@@ -173,35 +173,7 @@ const pullData = async (req, res, next) => {
                 })
             ).body.items;
 
-            const userPlaylists = await (
-              await spotifyApi.getUserPlaylists()
-            ).body.items;
-
-            let playlistId = null;
-            for (let item of userPlaylists) {
-              if (item.name == 'Top tracks - Statisfy') {
-                playlistId = item.id;
-                console.log(playlistId);
-                console.log("found playlist named top tracks");
-              }
-            };
-
-            if (playlistId) {
-              for (let item of topTracksShort) {
-                await spotifyApi.addTracksToPlaylist(playlistId, [item.uri]);
-              };
-            }
-            else {
-              const createPlaylist = await (
-                  await spotifyApi.createPlaylist('Top tracks - Statisfy', {'description':
-                  'Created by Statisfy', 'collaborative': 'false', 'public': 'true'})
-                  ).body;
-                  playlistId = createPlaylist.id;
-                  for (let item of topTracksShort) {
-                    await spotifyApi.addTracksToPlaylist(playlistId, [item.uri]);
-                  }
-                  console.log("created new playist");
-            };
+          
 
 
             const recentlyPlayed = await (
