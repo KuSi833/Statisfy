@@ -1,70 +1,72 @@
 <script>
-    var cty = document.getElementById('bar-chart');
+    window.addEventListener('load', () => {
+        var cty = document.getElementById('bar-chart');
 
-    var bar = new Chart(cty, {
-        type: 'bar',
-        data: {
-            labels: [
-                'Acousticness',
-                'Danceability',
-                'Energy',
-                'Instrumentalness',
-                'Valence'
-            ],
-            datasets: [
-                {
-                    label: 'Audio Feature',
-                    data: {{ audioFeatures }},
-                    color: 'rgb(256,256,256)',
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.4)',
-                        'rgba(255, 159, 64, 0.4)',
-                        'rgba(255, 205, 86, 0.4)',
-                        'rgba(75, 192, 192, 0.4)',
-                        'rgba(54, 162, 235, 0.4)',
-                        'rgba(153, 102, 255, 0.4)',
-                        'rgba(201, 203, 207, 0.4)',
-                    ],
-                    borderColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(255, 159, 64)',
-                        'rgb(255, 205, 86)',
-                        'rgb(75, 192, 192)',
-                        'rgb(54, 162, 235)',
-                        'rgb(153, 102, 255)',
-                        'rgb(201, 203, 207)',
-                    ],
-                    borderWidth: 1,
-                },
-            ],
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Average Audio Feature accross your Taste',
-            },
-            plugins: {
-                legend: {
-                    display: false, // Stopepd displaying the label
-                    labels: {
-                        color: 'white',
-                    },
-                },
-            },
-            scales: {
-                y: {
-                    ticks: {
+        var bar = new Chart(cty, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Acousticness',
+                    'Danceability',
+                    'Energy',
+                    'Instrumentalness',
+                    'Valence'
+                ],
+                datasets: [
+                    {
+                        label: 'Audio Feature',
+                        data: {{ audioFeatures }},
                         color: 'rgb(256,256,256)',
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.4)',
+                            'rgba(255, 159, 64, 0.4)',
+                            'rgba(255, 205, 86, 0.4)',
+                            'rgba(75, 192, 192, 0.4)',
+                            'rgba(54, 162, 235, 0.4)',
+                            'rgba(153, 102, 255, 0.4)',
+                            'rgba(201, 203, 207, 0.4)',
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)',
+                        ],
+                        borderWidth: 1,
                     },
-                },
-                x: {
-                    ticks: {
-                        color: 'rgb(256,256,256)',
-                    },
-                },
+                ],
             },
-            maintainAspectRatio: false,
-            indexAxis: 'y'
-        },
-    });
+            options: {
+                title: {
+                    display: true,
+                    text: 'Average Audio Feature accross your Taste',
+                },
+                plugins: {
+                    legend: {
+                        display: false, // Stopepd displaying the label
+                        labels: {
+                            color: 'white',
+                        },
+                    },
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            color: 'rgb(256,256,256)',
+                        },
+                    },
+                    x: {
+                        ticks: {
+                            color: 'rgb(256,256,256)',
+                        },
+                    },
+                },
+                maintainAspectRatio: false,
+                indexAxis: 'y'
+            },
+        });
+    })
 </script>
