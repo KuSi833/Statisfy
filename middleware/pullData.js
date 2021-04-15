@@ -289,15 +289,6 @@ const pullData = async (req, res, next) => {
                 recommendationsG,
             };
 
-            for (var item of topArtistsShort) {
-                const newArtistShort = {
-                    artistShortId: item.id,
-                    userId: req.user.spotifyId,
-                    artistShortName: item.name,
-                    artistShortLink: item.href,
-                    artistShortGenres: item.genres,
-                };
-            }
 
             for (var item of topArtistsShort) {
                 const newArtistShort = {
