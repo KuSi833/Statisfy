@@ -151,7 +151,7 @@ const pullData = async (req, res, next) => {
             const topArtistsLong = await (
                 await spotifyApi.getMyTopArtists({
                     time_range: 'long_term',
-                    limit: '10',
+                    limit: '5',
                 })
             ).body.items;
             const topTracksShort = await (
@@ -169,7 +169,7 @@ const pullData = async (req, res, next) => {
             const topTracksLong = await (
                 await spotifyApi.getMyTopTracks({
                     time_range: 'long_term',
-                    limit: '10',
+                    limit: '5',
                 })
             ).body.items;
 
@@ -204,6 +204,10 @@ const pullData = async (req, res, next) => {
             };
 
 
+            const recentlyPlayed = await (
+              await spotifyApi.getMyRecentlyPlayedTracks()
+            ).body.items;
+            console.log(recentlyPlayed);
 
 
 
@@ -303,12 +307,24 @@ const pullData = async (req, res, next) => {
                 })
             ).body.tracks;
 
-            const user = await spotifyApi.getMe();
-            const country = user.body.country;
-            const name = user.body.display_name;
-            const url = user.body.external_urls.spotify;
-            const product = user.body.product;
-            const email = user.body.email;
+            const spotifyUser = await spotifyApi.getMe();
+            const name = spotifyUser.body.display_name;
+            const image = spotifyUser.body.images[0];
+            const country = spotifyUser.body.country;
+            const url = spotifyUser.body.external_urls.spotify;
+            const product = spotifyUser.body.product;
+            const email = spotifyUser.body.email;
+
+            console.log(spotifyUser);
+
+            const userData = {
+                name,
+                image,
+                country,
+                url,
+                product,
+                email
+            }
 
             const spotifyInfo = {
                 topArtistsShort,
@@ -319,11 +335,7 @@ const pullData = async (req, res, next) => {
                 topTracksLong,
                 genresArray,
                 topGenresChartData,
-                country,
-                name,
-                url,
-                product,
-                email,
+                userData,
                 recommendationsA,
                 recommendationsT,
                 recommendationsG,
