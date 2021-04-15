@@ -173,10 +173,6 @@ const pullData = async (req, res, next) => {
                 })
             ).body.items;
 
-<<<<<<< HEAD
-          
-
-=======
             const userPlaylists = await (await spotifyApi.getUserPlaylists())
                 .body.items;
 
@@ -211,7 +207,6 @@ const pullData = async (req, res, next) => {
                 }
                 console.log('created new playist');
             }
->>>>>>> bbe2a6cb0d0762ec87e3777293f7c9e14205784e
 
             const recentlyPlayed = await (
                 await spotifyApi.getMyRecentlyPlayedTracks()
