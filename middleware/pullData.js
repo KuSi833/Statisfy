@@ -139,13 +139,13 @@ const pullData = async (req, res, next) => {
             const topArtistsShort = await (
                 await spotifyApi.getMyTopArtists({
                     time_range: 'short_term',
-                    limit: '10',
+                    limit: '20',
                 })
             ).body.items;
             const topArtistsMedium = await (
                 await spotifyApi.getMyTopArtists({
                     time_range: 'medium_term',
-                    limit: '10',
+                    limit: '20',
                 })
             ).body.items;
             const topArtistsLong = await (
@@ -157,13 +157,13 @@ const pullData = async (req, res, next) => {
             const topTracksShort = await (
                 await spotifyApi.getMyTopTracks({
                     time_range: 'short_term',
-                    limit: '10',
+                    limit: '20',
                 })
             ).body.items;
             const topTracksMedium = await (
                 await spotifyApi.getMyTopTracks({
                     time_range: 'medium_term',
-                    limit: '10',
+                    limit: '20',
                 })
             ).body.items;
             const topTracksLong = await (
