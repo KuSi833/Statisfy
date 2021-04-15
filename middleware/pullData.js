@@ -16,9 +16,9 @@ const intArrayToString = (list) => {
     return '[' + list + ']';
 };
 const stringArrayToString = (list) => {
-    var returnString = '[';
-    for (var element of list){
-        returnString += "\'" + element + "\',"
+    let returnString = '[';
+    for (let element of list) {
+        returnString += "'" + element + "',";
     }
     returnString = returnString.slice(0, -1);
     returnString += ']';
@@ -30,9 +30,9 @@ const getGenres = async (spotifyApi) => {
     const allTopArtistsMedium = await (
         await spotifyApi.getMyTopArtists({ time_range: 'medium_term' })
     ).body.items;
-    var genresDict = {};
-    for (var item of allTopArtistsMedium) {
-        for (var genre of item.genres) {
+    let genresDict = {};
+    for (let item of allTopArtistsMedium) {
+        for (let genre of item.genres) {
             if (genre in genresDict) {
                 genresDict[genre] += 1;
             } else {
@@ -43,33 +43,41 @@ const getGenres = async (spotifyApi) => {
     return genresDict;
 };
 const dictToArray = (dictionary) => {
-    var returnArray = [];
-    for (var key in dictionary) {
+    let returnArray = [];
+    for (let key in dictionary) {
         if (dictionary.hasOwnProperty(key)) {
             returnArray.push([key, dictionary[key]]);
         }
     }
     return returnArray;
 };
-var labelsArray = [];
+let labelsArray = [];
 const getTopGenresChartData = (genresArray, n) => {
     // Returns labels and data for top genres chart
-    var labels = [];
-    var data = [];
-    for (var i = 0; i < n; i++) {
-        var genre;
-        var value;
+    let labels = [];
+    let data = [];
+    let total_value = 0
+    for (let i = 0; i < n; i++) {
+        let genre;
+        let value;
         [genre, value] = genresArray[i];
         labels.push(genre);
-        data.push(value);
+        total_value += value;
     }
-    labelsArray =labels;
+    for (let i = 0; i < n; i++) {
+        let value;
+        value = genresArray[i][1];
+        data.push(value*100/total_value);
+    }
+
+    labelsArray = labels;
     labels = stringArrayToString(labels);
     data = intArrayToString(data);
-    var topGenresChartData = {
+    let topGenresChartData = {
         labels,
         data,
     };
+
     return topGenresChartData;
 };
 
@@ -87,7 +95,7 @@ const pullData = async (req, res, next) => {
             spotifyApi.setClientId(process.env.SPOTIFY_CLIENT_ID);
             spotifyApi.setClientSecret(process.env.SPOTIFY_CLIENT_SECRET);
 
-            var date_in_ms = Date.now();
+            let date_in_ms = Date.now();
             await User.findOne(
                 { spotifyId: req.user.spotifyId },
                 function (err, obj) {
@@ -98,7 +106,7 @@ const pullData = async (req, res, next) => {
                                     'The access token has been refreshed!'
                                 );
                                 try {
-                                    var user = User.findOneAndUpdate(
+                                    User.findOneAndUpdate(
                                         {
                                             spotifyId: req.user.spotifyId,
                                         },
@@ -167,23 +175,23 @@ const pullData = async (req, res, next) => {
 
             // Getting Genres
             const genresDict = await getGenres(spotifyApi);
-            var genresArray = dictToArray(genresDict).sort(
+            let genresArray = dictToArray(genresDict).sort(
                 (key, value) => value[1] - key[1]
             );
             // Getting genres data for chart
-            var topGenresChartData = getTopGenresChartData(genresArray, 6);
+            let topGenresChartData = getTopGenresChartData(genresArray, 6);
 
             const allTopTracksMedium = await (
                 await spotifyApi.getMyTopTracks({ time_range: 'medium_term' })
             ).body.items;
-            var averageDanceability = 0;
-            var averageAcousticness = 0;
-            var averageEnergy = 0;
-            var averageInstrumentalness = 0;
-            var averageValence = 0;
-            var averageLoudness = 0;
-            var averageTempo = 0;
-            for (var item of allTopTracksMedium) {
+            let averageDanceability = 0;
+            let averageAcousticness = 0;
+            let averageEnergy = 0;
+            let averageInstrumentalness = 0;
+            let averageValence = 0;
+            let averageLoudness = 0;
+            let averageTempo = 0;
+            for (let item of allTopTracksMedium) {
                 const audioFeatures = await spotifyApi.getAudioFeaturesForTrack(
                     item.id
                 );
@@ -210,7 +218,7 @@ const pullData = async (req, res, next) => {
             averageLoudness = averageLoudness / allTopTracksMedium.length;
             averageTempo = averageTempo / allTopTracksMedium.length;
 
-            var Features = User.findOneAndUpdate(
+            User.findOneAndUpdate(
                 {
                     spotifyId: req.user.spotifyId,
                 },
@@ -227,18 +235,18 @@ const pullData = async (req, res, next) => {
                 (error, doc) => {}
             );
 
-            var seed_artists = [];
-            for (var artist of topArtistsLong) {
+            let seed_artists = [];
+            for (let artist of topArtistsLong) {
                 seed_artists.push(artist.id);
             }
 
-            var seed_tracks = [];
-            for (var track of topTracksLong) {
+            let seed_tracks = [];
+            for (let track of topTracksLong) {
                 seed_tracks.push(track.id);
             }
 
-            var topGenres = getTopGenresChartData(genresArray, 5);
-            var seed_genres = labelsArray;
+            // let topGenres = getTopGenresChartData(genresArray, 5);  WTF IS THIS
+            let seed_genres = genresArray[0].splice(0, 5);
 
             const recommendationsA = await (
                 await spotifyApi.getRecommendations({
@@ -260,8 +268,6 @@ const pullData = async (req, res, next) => {
                     limit: '10',
                 })
             ).body.tracks;
-
-
 
             const user = await spotifyApi.getMe();
             const country = user.body.country;
@@ -289,8 +295,7 @@ const pullData = async (req, res, next) => {
                 recommendationsG,
             };
 
-
-            for (var item of topArtistsShort) {
+            for (let item of topArtistsShort) {
                 const newArtistShort = {
                     artistShortId: item.id,
                     userId: req.user.spotifyId,
@@ -298,7 +303,7 @@ const pullData = async (req, res, next) => {
                     artistShortLink: item.href,
                     artistShortGenres: item.genres,
                 };
-                var topArtistsS = await TopArtistsShort.findOne({
+                let topArtistsS = await TopArtistsShort.findOne({
                     artistShortId: item.id,
                     userId: req.user.spotifyId,
                 });
@@ -309,7 +314,7 @@ const pullData = async (req, res, next) => {
                 }
             }
 
-            for (item of topArtistsMedium) {
+            for (let item of topArtistsMedium) {
                 const newArtistMedium = {
                     artistMediumId: item.id,
                     userId: req.user.spotifyId,
@@ -317,7 +322,7 @@ const pullData = async (req, res, next) => {
                     artistMediumLink: item.href,
                     artistMediumGenres: item.genres,
                 };
-                var topArtistsM = await TopArtistsMedium.findOne({
+                let topArtistsM = await TopArtistsMedium.findOne({
                     artistMediumId: item.id,
                     userId: req.user.spotifyId,
                 });
@@ -330,7 +335,7 @@ const pullData = async (req, res, next) => {
                 }
             }
 
-            for (item of topArtistsLong) {
+            for (let item of topArtistsLong) {
                 const newArtistLong = {
                     artistLongId: item.id,
                     userId: req.user.spotifyId,
@@ -338,7 +343,7 @@ const pullData = async (req, res, next) => {
                     artistLongLink: item.href,
                     artistLongGenres: item.genres,
                 };
-                var topArtistsL = await TopArtistsLong.findOne({
+                let topArtistsL = await TopArtistsLong.findOne({
                     artistLongId: item.id,
                     userId: req.user.spotifyId,
                 });
@@ -349,14 +354,14 @@ const pullData = async (req, res, next) => {
                 }
             }
 
-            for (item of topTracksShort) {
+            for (let item of topTracksShort) {
                 const newTracksShort = {
                     trackShortId: item.id,
                     userId: req.user.spotifyId,
                     trackShortName: item.name,
                     trackShortLink: item.external_urls,
                 };
-                var topTracksS = await TopTracksShort.findOne({
+                let topTracksS = await TopTracksShort.findOne({
                     trackShortId: item.id,
                     userId: req.user.spotifyId,
                 });
@@ -367,14 +372,14 @@ const pullData = async (req, res, next) => {
                 }
             }
 
-            for (item of topTracksMedium) {
+            for (let item of topTracksMedium) {
                 const newTracksMedium = {
                     trackMediumId: item.id,
                     userId: req.user.spotifyId,
                     trackMediumName: item.name,
                     trackMediumLink: item.external_urls,
                 };
-                var topTracksM = await TopTracksMedium.findOne({
+                let topTracksM = await TopTracksMedium.findOne({
                     trackMediumId: item.id,
                     userId: req.user.spotifyId,
                 });
@@ -385,14 +390,14 @@ const pullData = async (req, res, next) => {
                 }
             }
 
-            for (item of topTracksLong) {
+            for (let item of topTracksLong) {
                 const newTracksLong = {
                     trackLongId: item.id,
                     userId: req.user.spotifyId,
                     trackLongName: item.name,
                     trackLongLink: item.external_urls,
                 };
-                var topTracksL = await TopTracksLong.findOne({
+                let topTracksL = await TopTracksLong.findOne({
                     trackLongId: item.id,
                     userId: req.user.spotifyId,
                 });

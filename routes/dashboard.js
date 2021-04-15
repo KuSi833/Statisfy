@@ -8,13 +8,12 @@ const pullData = require('../middleware/pullData');
 // @route   GET /dashboard
 router.get('/', ensureAuth, cache, pullData, async (req, res) => {
     const spotifyInfo = req.spotifyInfo;
-
     var audioFeatures = [
         req.user.averageAcousticness,
         req.user.averageDanceability,
         req.user.averageEnergy,
         req.user.averageInstrumentalness,
-        req.user.averageValence,
+        req.user.averageValence
     ];
     audioFeatures = '[' + audioFeatures + ']';
 
