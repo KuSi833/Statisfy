@@ -269,12 +269,22 @@ const pullData = async (req, res, next) => {
                 })
             ).body.tracks;
 
-            const user = await spotifyApi.getMe();
-            const country = user.body.country;
-            const name = user.body.display_name;
-            const url = user.body.external_urls.spotify;
-            const product = user.body.product;
-            const email = user.body.email;
+            const spotifyUser = await spotifyApi.getMe();
+            const name = spotifyUser.body.display_name;
+            const image = spotifyUser.body.images[0];
+            const country = spotifyUser.body.country;
+            const url = spotifyUser.body.external_urls.spotify;
+            const product = spotifyUser.body.product;
+            const email = spotifyUser.body.email;
+
+            const userData = {
+                name,
+                image,
+                country,
+                url,
+                product,
+                email
+            }
 
             const spotifyInfo = {
                 topArtistsShort,
@@ -285,11 +295,7 @@ const pullData = async (req, res, next) => {
                 topTracksLong,
                 genresArray,
                 topGenresChartData,
-                country,
-                name,
-                url,
-                product,
-                email,
+                userData,
                 recommendationsA,
                 recommendationsT,
                 recommendationsG,

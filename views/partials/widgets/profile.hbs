@@ -4,11 +4,12 @@
             <h4>Your Profile</h4>
         </div>
         <div class="card-body">
-            <p>Welcome, {{spotifyInfo.name}}</p>
-            <P>Email: {{spotifyInfo.email}}</p>
-            <P>Country: {{spotifyInfo.country}}</p>
-            <P>Subscription: {{spotifyInfo.product}}</p>
-            <P>URL: <a href = {{{spotifyInfo.url}}}>{{spotifyInfo.url}}</a></p>
+            <img alt="profile_image" src="{{{spotifyInfo.userData.image.url}}}">
+            <p>Welcome, {{spotifyInfo.userData.name}}</p>
+            <P>Email: {{spotifyInfo.userData.email}}</p>
+            <P>Country: {{spotifyInfo.userData.country}}</p>
+            <P>Subscription: {{spotifyInfo.userData.product}}</p>
+            <P>URL: <a href = {{{spotifyInfo.url}}}>{{spotifyInfo.userData.url}}</a></p>
         </div>
     </div>
 </div>
