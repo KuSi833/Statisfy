@@ -24,16 +24,16 @@ body {
 }
 
 body::-webkit-scrollbar {
-  width: 15px;
-  background-color: $dark-blue;
+    width: 15px;
+    background-color: $dark-blue;
 }
- 
+
 body::-webkit-scrollbar-track {
-  //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-  border-radius: 10px;
-  background-image: $gradient;
+    //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-image: $gradient;
 }
- 
+
 body::-webkit-scrollbar-thumb {
   border-radius: 7px;
   //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
@@ -276,10 +276,11 @@ body::-webkit-scrollbar-thumb {
 
 .btn {
     color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    padding: 7px 10px;
-    border-radius: 25px;
+    // font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 5px 0px 5px 0px;
+    border-radius: 8px;
 }
 
 .widget {
@@ -290,16 +291,57 @@ body::-webkit-scrollbar-thumb {
         background: $widget-bg;
         color: white;
 
-    .card-header {
-        background: $light-blue;
+        .card-header {
+            background: $light-blue;
+            display: flex;
+            flex-direction: row;
+        }
+    }
+    .scrollable {
+        overflow-y: auto;
+        max-height: 400px;
+    }
+}
+
+.top_widgets {
+    .btn-group {
+        padding: 0px;
+        margin: 15px 0px 15px 0px;
+    }
+    .card-body {
+        padding-top: 0px;
+        .card-text {
+            // padding: 5px 5px 5px 15px;
+            img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+            a {
+                font-size: 20px; 
+                padding-left: 10px; 
+                color:white; 
+                text-decoration: none;
+            }
+        }
+    }
+    .entry {
         display: flex;
         flex-direction: row;
+        padding-bottom: 16px;
+        .song-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            #artist-name {
+                font-size: 15px; 
+                padding-left: 10px; 
+                color:lightgrey; 
+                text-decoration: none;
+            }
+        }
     }
-  }
-  .scrollable{
-    overflow-y: auto;
-    max-height: 400px;
-  }
 }
 
 #login-to-spotify-button {

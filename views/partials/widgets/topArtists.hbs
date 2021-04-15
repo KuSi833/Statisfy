@@ -1,30 +1,30 @@
-<div class="widget col-12 col-lg-4" id='topArtists_widget' >
+<div class="widget top_widgets col-12 col-lg-4" id='topArtists_widget' >
     <div class='card top-stuff h-100 '>
         <div class="card-header text-center">
             <h4>Top Artists</h4>
         </div>
         <div class="card-body">
-            <div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for Top Albums">
+            <div class="btn-group container-fluid" role="tracks-time" aria-label="Time range for Top Albums">
                 <button onclick = "makeActive(0, '#topArtists_widget')" type="button" class="btn btn-outline-primary top-buttons">1 Month</button>
                 <button onclick = "makeActive(1, '#topArtists_widget')" type="button" class="btn btn-outline-primary top-buttons">6 Months</button>
                 <button onclick = "makeActive(2, '#topArtists_widget')" type="button" class="btn btn-outline-primary top-buttons">All Time</button>
             </div>
             <div class="scrollable">
-                <div id = "short" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                <div id = "short" class = "card-text">
                     {{#each spotifyInfo.topArtistsShort}}
-                        <p><img alt = "artist_img" src="{{{this.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}}</a></p>
+                        <p><img alt = "artist_img" src="{{{this.images.2.url}}}"><a href= {{{this.external_urls.spotify}}}>{{this.name}}</a></p>
                     {{/each}}
                 </div>
 
                 <div id = "medium" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
                     {{#each spotifyInfo.topArtistsMedium}}
-                        <p><img alt = "artist_img" src="{{{this.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}}</a></p>
+                        <p><img alt = "artist_img" src="{{{this.images.2.url}}}"><a href= {{{this.external_urls.spotify}}}>{{this.name}}</a></p>
                     {{/each}}
                 </div>
 
                 <div id = "long" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
                     {{#each spotifyInfo.topArtistsLong}}
-                        <p><img alt = "artist_img" src="{{{this.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}}</a></p>
+                        <p><img alt = "artist_img" src="{{{this.images.2.url}}}"><a href= {{{this.external_urls.spotify}}}>{{this.name}}</a></p>
                     {{/each}}
                 </div>
             </div>

@@ -1,4 +1,4 @@
-<div class="widget col-12 col-lg-4" id='topTracks_widget' >
+<div class="widget top_widgets col-12 col-lg-4" id='topTracks_widget' >
     <div class='card small h-100'>
         <div class="card-header text-center">
             <h4>Top Tracks</h4>
@@ -11,21 +11,39 @@
             </div>
 
             <div class="scrollable">
-                <div id = "shortTracks" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                <div id = "shortTracks" class = "card-text">
                     {{#each spotifyInfo.topTracksShort}}
-                        <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                        <div class="entry">
+                            <img src="{{{this.album.images.2.url}}}">
+                            <div class="song-info">
+                                <a id="song-name" href={{{this.external_urls.spotify}}}>{{this.name}}</a>
+                                <a id="artist-name" href="{{{this.artists.0.external_urls.spotify}}}">{{this.artists.0.name}}</a>
+                            </div>
+                        </div>
                     {{/each}}
                 </div>
 
-                <div id = "mediumTracks" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                <div id = "mediumTracks" class = "card-text">
                     {{#each spotifyInfo.topTracksMedium}}
-                        <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                    <div class="entry">
+                        <img src="{{{this.album.images.2.url}}}">
+                        <div class="song-info">
+                            <a id="song-name" href={{{this.external_urls.spotify}}}>{{this.name}}</a>
+                            <a id="artist-name" href="{{{this.artists.0.external_urls.spotify}}}">{{this.artists.0.name}}</a>
+                        </div>
+                    </div>
                     {{/each}}
                 </div>
 
-                <div id = "longTracks" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                <div id = "longTracks" class = "card-text">
                     {{#each spotifyInfo.topTracksLong}}
-                        <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                    <div class="entry">
+                        <img src="{{{this.album.images.2.url}}}">
+                        <div class="song-info">
+                            <a id="song-name" href={{{this.external_urls.spotify}}}>{{this.name}}</a>
+                            <a id="artist-name" href="{{{this.artists.0.external_urls.spotify}}}">{{this.artists.0.name}}</a>
+                        </div>
+                    </div>
                     {{/each}}
                 </div>
             </div>
