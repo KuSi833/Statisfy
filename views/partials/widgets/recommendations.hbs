@@ -1,13 +1,13 @@
-<div class="widget col-12 col-lg-4" id='topTracks_widget' >
+<div class="widget col-12 col-lg-4" id='recommendations_widget' >
     <div class='card h-100 text-center'>
         <div class="card-header">
             <h4>Recommendations</h4>
         </div>
         <div class="card-body">
             <div class=" btn-group container-fluid" role="tracks-time" aria-label="Time range for top tracks">
-                <button onclick = "displayA()" type="button" class="btn btn-outline-primary top-buttons">Artists</button>
-                <button onclick = "displayT()" type="button" class="btn btn-outline-primary top-buttons">Songs</button>
-                <button onclick = "displayG()" type="button" class="btn btn-outline-primary top-buttons">Genres</button>
+                <button onclick = "makeActive(0, '#recommendations_widget')" type="button" class="btn btn-outline-primary top-buttons">Artists</button>
+                <button onclick = "makeActive(1, '#recommendations_widget')" type="button" class="btn btn-outline-primary top-buttons">Songs</button>
+                <button onclick = "makeActive(2, '#recommendations_widget')" type="button" class="btn btn-outline-primary top-buttons">Genres</button>
             </div>
             <ol id = "artists" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.recommendationsA}}
@@ -29,22 +29,7 @@
 </div>
 
 <script>
-  function displayA() {
-    document.getElementById("artists").style.display = "block";
-    document.getElementById("tracks").style.display = "none";
-    document.getElementById("genres").style.display = "none";
-    }
-
-  function displayT() {
-    document.getElementById("artists").style.display = "none";
-    document.getElementById("tracks").style.display = "block";
-    document.getElementById("genres").style.display = "none";
-
-  }
-  function displayG() {
-    document.getElementById("artists").style.display = "none";
-    document.getElementById("tracks").style.display = "none";
-    document.getElementById("genres").style.display = "block";
-
-  }
+    window.addEventListener('load', () => {
+        makeActive(0, '#recommendations_widget');
+    })
 </script>

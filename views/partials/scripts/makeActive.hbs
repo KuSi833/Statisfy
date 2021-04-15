@@ -1,0 +1,15 @@
+<script>
+    const makeActive = (n, widgetId) => {
+        const elements = document.querySelectorAll(widgetId + ' .card-text');
+        const buttons = document.querySelectorAll(widgetId + ' .btn');
+        for (var i = 0; i < elements.length; i++) {
+            if (i === n) {
+                elements[i].style.display = 'block';
+                buttons[i].classList.add('active');
+            } else {
+                elements[i].style.display = 'none';
+                buttons[i].classList.remove('active');
+            }
+        }
+    };
+</script>
