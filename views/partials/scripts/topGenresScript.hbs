@@ -1,4 +1,5 @@
 <script>
+window.addEventListener('load', () => {
   var ctx = document.getElementById("doughnut-chart");
 
   var doughnut = new Chart(ctx, {
@@ -49,4 +50,5 @@
       maintainAspectRatio: false,
     },
   });
+})
 </script>
