@@ -189,7 +189,6 @@ const pullData = async (req, res, next) => {
             if (playlistId) {
               for (let item of topTracksShort) {
                 await spotifyApi.addTracksToPlaylist(playlistId, [item.uri]);
-                console.log("playlist id not null");
               };
             }
             else {
