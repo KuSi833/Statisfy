@@ -14,7 +14,9 @@
                 <div id = "shortTracks" class = "card-text">
                     {{#each spotifyInfo.topTracksShort}}
                         <div class="entry">
-                            <img src="{{{this.album.images.2.url}}}">
+                            <a href="{{{this.album.external_urls.spotify}}}">
+                                <img src="{{{this.album.images.2.url}}}">
+                            </a>
                             <div class="song-info">
                                 <a id="song-name" href={{{this.external_urls.spotify}}}>{{this.name}}</a>
                                 <a id="artist-name" href="{{{this.artists.0.external_urls.spotify}}}">{{this.artists.0.name}}</a>
@@ -26,7 +28,9 @@
                 <div id = "mediumTracks" class = "card-text">
                     {{#each spotifyInfo.topTracksMedium}}
                     <div class="entry">
-                        <img src="{{{this.album.images.2.url}}}">
+                        <a href="{{{this.album.external_urls.spotify}}}">
+                            <img src="{{{this.album.images.2.url}}}">
+                        </a>
                         <div class="song-info">
                             <a id="song-name" href={{{this.external_urls.spotify}}}>{{this.name}}</a>
                             <a id="artist-name" href="{{{this.artists.0.external_urls.spotify}}}">{{this.artists.0.name}}</a>
@@ -38,7 +42,9 @@
                 <div id = "longTracks" class = "card-text">
                     {{#each spotifyInfo.topTracksLong}}
                     <div class="entry">
-                        <img src="{{{this.album.images.2.url}}}">
+                        <a href="{{{this.album.external_urls.spotify}}}">
+                            <img src="{{{this.album.images.2.url}}}">
+                        </a>
                         <div class="song-info">
                             <a id="song-name" href={{{this.external_urls.spotify}}}>{{this.name}}</a>
                             <a id="artist-name" href="{{{this.artists.0.external_urls.spotify}}}">{{this.artists.0.name}}</a>
