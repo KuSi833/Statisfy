@@ -272,16 +272,14 @@ body {
         background: $widget-bg;
         color: white;
 
-        .card-header {
-            background: $light-blue;
-            display: flex;
-            flex-direction: row;
-        }
-
-        .small {
-            height: 100px;
-        }
+    .card-header {
+        background: $light-blue;
     }
+  }
+  .scrollable{
+    overflow-y: auto;
+    max-height: 400px;
+  }
 }
 
 #login-to-spotify-button {

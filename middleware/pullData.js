@@ -139,37 +139,37 @@ const pullData = async (req, res, next) => {
             const topArtistsShort = await (
                 await spotifyApi.getMyTopArtists({
                     time_range: 'short_term',
-                    limit: '10',
+                    limit: '20',
                 })
             ).body.items;
             const topArtistsMedium = await (
                 await spotifyApi.getMyTopArtists({
                     time_range: 'medium_term',
-                    limit: '10',
+                    limit: '20',
                 })
             ).body.items;
             const topArtistsLong = await (
                 await spotifyApi.getMyTopArtists({
                     time_range: 'long_term',
-                    limit: '10',
+                    limit: '5',
                 })
             ).body.items;
             const topTracksShort = await (
                 await spotifyApi.getMyTopTracks({
                     time_range: 'short_term',
-                    limit: '10',
+                    limit: '20',
                 })
             ).body.items;
             const topTracksMedium = await (
                 await spotifyApi.getMyTopTracks({
                     time_range: 'medium_term',
-                    limit: '10',
+                    limit: '20',
                 })
             ).body.items;
             const topTracksLong = await (
                 await spotifyApi.getMyTopTracks({
                     time_range: 'long_term',
-                    limit: '10',
+                    limit: '5',
                 })
             ).body.items;
 
@@ -192,21 +192,27 @@ const pullData = async (req, res, next) => {
                     ]);
                 }
             } else {
-                const createPlaylist = await (
-                    await spotifyApi.createPlaylist('Top tracks - Statisfy', {
-                        description: 'Created by Statisfy',
-                        collaborative: 'false',
-                        public: 'true',
+              const createPlaylist = await (
+                  await spotifyApi.createPlaylist('Top tracks - Statisfy', {
+                      'description': 'Created by Statisfy', 
+                      'collaborative': 'false', 
+                      'public': 'true'
                     })
-                ).body;
-                playlistId = createPlaylist.id;
-                for (let item of topTracksShort) {
-                    await spotifyApi.addTracksToPlaylist(playlistId, [
-                        item.uri,
-                    ]);
-                }
-                console.log('created new playist');
-            }
+                  ).body;
+                  playlistId = createPlaylist.id;
+                  for (let item of topTracksShort) {
+                    await spotifyApi.addTracksToPlaylist(playlistId, [item.uri]);
+                  }
+                  console.log("created new playist");
+            };
+
+
+            const recentlyPlayed = await (
+              await spotifyApi.getMyRecentlyPlayedTracks()
+            ).body.items;
+            console.log(recentlyPlayed);
+
+
 
             // Getting Genres
             const genresDict = await getGenres(spotifyApi);
