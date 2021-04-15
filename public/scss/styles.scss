@@ -275,10 +275,10 @@ body {
     .card-header {
         background: $light-blue;
     }
-    
-    .small{
-      height: 100px;
-    }
+  }
+  .scrollable{
+    overflow-y: auto;
+    max-height: 400px;
   }
 }
 

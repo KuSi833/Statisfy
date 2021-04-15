@@ -1,5 +1,5 @@
 <div class="widget col-12 col-lg-4" id='recommendations_widget' >
-    <div class='card h-100'>
+    <div class='card h-100 small'>
         <div class="card-header text-center">
             <h4>Recommendations</h4>
         </div>
@@ -9,46 +9,30 @@
                 <button onclick = "makeActive(1, '#recommendations_widget')" type="button" class="btn btn-outline-primary top-buttons">Songs</button>
                 <button onclick = "makeActive(2, '#recommendations_widget')" type="button" class="btn btn-outline-primary top-buttons">Genres</button>
             </div>
-
-            {{!-- <ol id = "artists" class="card-text text-center" style = "display:none">
-                {{#each spotifyInfo.recommendationsA}}
-                    <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
-                {{/each}}
-            </ol> --}}
-
-            <div id = "artists" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
-                {{#each spotifyInfo.recommendationsA}}
-                    <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
-                {{/each}}
-                <button type="button" id="createPlaylist" class="btn btn-outline-primary top-buttons" class=""> &#10133; Create Playlist</button>
+            
+            <div class="scrollable"> 
+                <div id = "artists" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                    {{#each spotifyInfo.recommendationsA}}
+                        <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                    {{/each}}
+                    
+                </div>
+                <div id = "tracks" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                    {{#each spotifyInfo.recommendationsT}}
+                        <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                    {{/each}}
+                    
+                </div>
+                <div id = "genres" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                    {{#each spotifyInfo.recommendationsG}}
+                        <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                    {{/each}}
+        
+                </div>
+                
             </div>
 
-            {{!-- <ol id = "tracks" class="card-text text-center" style = "display:none">
-                {{#each spotifyInfo.recommendationsT}}
-                    <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
-                {{/each}}
-            </ol> --}}
-
-            <div id = "tracks" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
-                {{#each spotifyInfo.recommendationsT}}
-                    <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
-                {{/each}}
-                <button type="button" id="createPlaylist" class="btn btn-outline-primary top-buttons" class=""> &#10133; Create Playlist</button>
-            </div>
-
-            {{!-- <ol id = "genres" class="card-text" style = "display:none">
-                {{#each spotifyInfo.recommendationsG}}
-                    <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
-                {{/each}}
-            </ol> --}}
-
-            <div id = "genres" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
-                {{#each spotifyInfo.recommendationsG}}
-                    <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
-                {{/each}}
-                <button type="button" id="createPlaylist" class="btn btn-outline-primary top-buttons" class=""> &#10133; Create Playlist</button>
-            </div>
-
+            <button type="button" id="createPlaylist" class="btn btn-outline-primary top-buttons" style="margin-left:110px"> &#10133; Create Playlist</button>
         </div>
     </div>
 </div>
