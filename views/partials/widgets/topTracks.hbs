@@ -5,9 +5,9 @@
         </div>
         <div class="card-body">
             <div class=" btn-group container-fluid" role="tracks-time" aria-label="Time range for top tracks">
-                <button onclick = "displayShortTracks()" type="button" class="btn btn-outline-primary top-buttons">Last Month</button>
-                <button onclick = "displayMediumTracks()" type="button" class="btn btn-outline-primary top-buttons">Last 6 Months</button>
-                <button onclick = "displayLongTracks()" type="button" class="btn btn-outline-primary top-buttons">Last Years</button>
+                <button onclick = "displayShortTracks()" type="button" class="btn btn-outline-primary top-buttons">1 Month</button>
+                <button onclick = "displayMediumTracks()" type="button" class="btn btn-outline-primary top-buttons">6 Months</button>
+                <button onclick = "displayLongTracks()" type="button" class="btn btn-outline-primary top-buttons">12 Months</button>
             </div>
             <ol id = "shortTracks" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.topTracksShort}}
