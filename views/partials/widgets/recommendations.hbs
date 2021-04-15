@@ -11,17 +11,17 @@
             </div>
             <ol id = "artists" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.recommendationsA}}
-                    <li><a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
+                    <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
                 {{/each}}
             </ol>
             <ol id = "tracks" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.recommendationsT}}
-                    <li><a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
+                    <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
                 {{/each}}
             </ol>
             <ol id = "genres" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.recommendationsG}}
-                    <li><a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
+                    <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
                 {{/each}}
             </ol>
         </div>
