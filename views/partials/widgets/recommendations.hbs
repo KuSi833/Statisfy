@@ -11,21 +11,39 @@
             </div>
             
             <div class="scrollable"> 
-                <div id = "artists" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                <div id = "artists" class = "card-text">
                     {{#each spotifyInfo.recommendationsA}}
-                        <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                        <div class="entry">
+                            <img src="{{{this.album.images.2.url}}}">
+                            <div class="song-info">
+                                <a id="song-name" href={{{this.external_urls.spotify}}}>{{this.name}}</a>
+                                <a id="artist-name" href="{{{this.artists.0.external_urls.spotify}}}">{{this.artists.0.name}}</a>
+                            </div>
+                        </div>
                     {{/each}}
                     
                 </div>
-                <div id = "tracks" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                <div id = "tracks" class = "card-text"">
                     {{#each spotifyInfo.recommendationsT}}
-                        <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                        <div class="entry">
+                            <img src="{{{this.album.images.2.url}}}">
+                            <div class="song-info">
+                                <a id="song-name" href={{{this.external_urls.spotify}}}>{{this.name}}</a>
+                                <a id="artist-name" href="{{{this.artists.0.external_urls.spotify}}}">{{this.artists.0.name}}</a>
+                            </div>
+                        </div>
                     {{/each}}
                     
                 </div>
-                <div id = "genres" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                <div id = "genres" class = "card-text">
                     {{#each spotifyInfo.recommendationsG}}
-                        <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                        <div class="entry">
+                            <img src="{{{this.album.images.2.url}}}">
+                            <div class="song-info">
+                                <a id="song-name" href={{{this.external_urls.spotify}}}>{{this.name}}</a>
+                                <a id="artist-name" href="{{{this.artists.0.external_urls.spotify}}}">{{this.artists.0.name}}</a>
+                            </div>
+                        </div>
                     {{/each}}
         
                 </div>

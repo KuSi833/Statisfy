@@ -17,6 +17,8 @@ router.get('/', ensureAuth, cache, pullData, async (req, res) => {
     ];
     audioFeatures = '[' + audioFeatures + ']';
 
+    console.log(spotifyInfo.recommendationsT[0].artists[0].external_urls.spotify);
+
     res.render('dashboard', {
         dashboard: true,
         title: 'Dashboard',
