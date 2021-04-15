@@ -1,6 +1,6 @@
 <div class="widget col-12 col-lg-4" id='recommendations_widget' >
-    <div class='card h-100 text-center'>
-        <div class="card-header">
+    <div class='card h-100'>
+        <div class="card-header text-center">
             <h4>Recommendations</h4>
         </div>
         <div class="card-body">
@@ -9,21 +9,43 @@
                 <button onclick = "makeActive(1, '#recommendations_widget')" type="button" class="btn btn-outline-primary top-buttons">Songs</button>
                 <button onclick = "makeActive(2, '#recommendations_widget')" type="button" class="btn btn-outline-primary top-buttons">Genres</button>
             </div>
-            <ol id = "artists" class="card-text text-center" style = "display:none">
+
+            {{!-- <ol id = "artists" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.recommendationsA}}
-                    <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
+                    <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
                 {{/each}}
-            </ol>
-            <ol id = "tracks" class="card-text text-center" style = "display:none">
+            </ol> --}}
+
+            <div id = "artists" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                {{#each spotifyInfo.recommendationsA}}
+                    <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                {{/each}}
+            </div>
+
+            {{!-- <ol id = "tracks" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.recommendationsT}}
                     <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
                 {{/each}}
-            </ol>
-            <ol id = "genres" class="card-text text-center" style = "display:none">
+            </ol> --}}
+
+            <div id = "tracks" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                {{#each spotifyInfo.recommendationsT}}
+                    <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                {{/each}}
+            </div>
+
+            {{!-- <ol id = "genres" class="card-text" style = "display:none">
                 {{#each spotifyInfo.recommendationsG}}
                     <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
                 {{/each}}
-            </ol>
+            </ol> --}}
+
+            <div id = "genres" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                {{#each spotifyInfo.recommendationsG}}
+                    <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                {{/each}}
+            </div>
+
         </div>
     </div>
 </div>

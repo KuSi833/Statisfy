@@ -1,6 +1,6 @@
 <div class="widget col-12 col-lg-4" id='topArtists_widget' >
-    <div class='card top-stuff h-100 text-center'>
-        <div class="card-header">
+    <div class='card top-stuff h-100 '>
+        <div class="card-header text-center">
             <h4>Top Artists</h4>
         </div>
         <div class="card-body">
@@ -9,12 +9,25 @@
                 <button onclick = "makeActive(1, '#topArtists_widget')" type="button" class="btn btn-outline-primary top-buttons">6 Months</button>
                 <button onclick = "makeActive(2, '#topArtists_widget')" type="button" class="btn btn-outline-primary top-buttons">All Time</button>
             </div>
-            <ol id = "short" class="card-text top-texts" style = "display:none">
+
+            <div id = "short" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
                 {{#each spotifyInfo.topArtistsShort}}
-                    <li><img alt = "artist_img" src="{{{this.images.2.url}}}" width="50" height="50"> <a href = {{{this.external_urls.spotify}}}>{{this.name}}</a></li>
+                    <p><img alt = "artist_img" src="{{{this.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}}</a></p>
                 {{/each}}
-            </ol>
-            <ol id = "medium" class="card-text top-texts" style = "display:none">
+            </div>
+
+            <div id = "medium" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                {{#each spotifyInfo.topArtistsMedium}}
+                    <p><img src="{{{this.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}}</a></p>
+                {{/each}}
+            </div>
+
+            <div id = "long" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                {{#each spotifyInfo.topArtistsLong}}
+                    <p><img src="{{{this.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}}</a></p>
+                {{/each}}
+            </div>
+            {{!-- <ol id = "medium" class="card-text top-texts" style = "display:none">
                 {{#each spotifyInfo.topArtistsMedium}}
                     <li><img alt = "artist_img" src="{{{this.images.2.url}}}" width="50" height="50"><a href = {{{this.external_urls.spotify}}}>{{this.name}}</a></li>
                 {{/each}}
@@ -23,7 +36,12 @@
                 {{#each spotifyInfo.topArtistsLong}}
                     <li><img alt = "artist_img" src="{{{this.images.2.url}}}" width="50" height="50"><a href = {{{this.external_urls.spotify}}}>{{this.name}}</a></li>
                 {{/each}}
-            </ol>
+            </ol> --}}
+            {{!-- <ol id = "short" class="card-text top-texts" style = "display:none">
+                {{#each spotifyInfo.topArtistsShort}}
+                    <li><img src="{{{this.images.2.url}}}" width="50" height="50"> <a href = {{{this.external_urls.spotify}}}>{{this.name}}</a></li>
+                {{/each}}
+            </ol> --}}
         </div>
     </div>
 </div>
