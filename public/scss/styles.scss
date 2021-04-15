@@ -274,6 +274,8 @@ body {
 
     .card-header {
         background: $light-blue;
+        display: flex;
+        flex-direction: row;
     }
   }
   .scrollable{

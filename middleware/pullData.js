@@ -192,27 +192,26 @@ const pullData = async (req, res, next) => {
                     ]);
                 }
             } else {
-              const createPlaylist = await (
-                  await spotifyApi.createPlaylist('Top tracks - Statisfy', {
-                      'description': 'Created by Statisfy', 
-                      'collaborative': 'false', 
-                      'public': 'true'
+                const createPlaylist = await (
+                    await spotifyApi.createPlaylist('Top tracks - Statisfy', {
+                        description: 'Created by Statisfy',
+                        collaborative: 'false',
+                        public: 'true',
                     })
-                  ).body;
-                  playlistId = createPlaylist.id;
-                  for (let item of topTracksShort) {
-                    await spotifyApi.addTracksToPlaylist(playlistId, [item.uri]);
-                  }
-                  console.log("created new playist");
-            };
-
+                ).body;
+                playlistId = createPlaylist.id;
+                for (let item of topTracksShort) {
+                    await spotifyApi.addTracksToPlaylist(playlistId, [
+                        item.uri,
+                    ]);
+                }
+                console.log('created new playist');
+            }
 
             const recentlyPlayed = await (
-              await spotifyApi.getMyRecentlyPlayedTracks()
+                await spotifyApi.getMyRecentlyPlayedTracks()
             ).body.items;
             console.log(recentlyPlayed);
-
-
 
             // Getting Genres
             const genresDict = await getGenres(spotifyApi);
@@ -319,7 +318,7 @@ const pullData = async (req, res, next) => {
             const email = spotifyUser.body.email;
             const followers = spotifyUser.body.followers.total;
 
-            console.log("followers");
+            console.log('followers');
             console.log(followers);
 
             const userData = {
