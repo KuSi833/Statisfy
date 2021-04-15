@@ -56,7 +56,7 @@ const getTopGenresChartData = (genresArray, n) => {
     // Returns labels and data for top genres chart
     let labels = [];
     let data = [];
-    let total_value = 0
+    let total_value = 0;
     for (let i = 0; i < n; i++) {
         let genre;
         let value;
@@ -67,7 +67,7 @@ const getTopGenresChartData = (genresArray, n) => {
     for (let i = 0; i < n; i++) {
         let value;
         value = genresArray[i][1];
-        data.push(value*100/total_value);
+        data.push((value * 100) / total_value);
     }
 
     labelsArray = labels;
@@ -173,15 +173,50 @@ const pullData = async (req, res, next) => {
                 })
             ).body.items;
 
+<<<<<<< HEAD
           
 
+=======
+            const userPlaylists = await (await spotifyApi.getUserPlaylists())
+                .body.items;
+
+            let playlistId = null;
+            for (let item of userPlaylists) {
+                if (item.name == 'Top tracks - Statisfy') {
+                    playlistId = item.id;
+                    console.log(playlistId);
+                    console.log('found playlist named top tracks');
+                }
+            }
+
+            if (playlistId) {
+                for (let item of topTracksShort) {
+                    await spotifyApi.addTracksToPlaylist(playlistId, [
+                        item.uri,
+                    ]);
+                }
+            } else {
+                const createPlaylist = await (
+                    await spotifyApi.createPlaylist('Top tracks - Statisfy', {
+                        description: 'Created by Statisfy',
+                        collaborative: 'false',
+                        public: 'true',
+                    })
+                ).body;
+                playlistId = createPlaylist.id;
+                for (let item of topTracksShort) {
+                    await spotifyApi.addTracksToPlaylist(playlistId, [
+                        item.uri,
+                    ]);
+                }
+                console.log('created new playist');
+            }
+>>>>>>> bbe2a6cb0d0762ec87e3777293f7c9e14205784e
 
             const recentlyPlayed = await (
-              await spotifyApi.getMyRecentlyPlayedTracks()
+                await spotifyApi.getMyRecentlyPlayedTracks()
             ).body.items;
             console.log(recentlyPlayed);
-
-
 
             // Getting Genres
             const genresDict = await getGenres(spotifyApi);
@@ -286,8 +321,10 @@ const pullData = async (req, res, next) => {
             const url = spotifyUser.body.external_urls.spotify;
             const product = spotifyUser.body.product;
             const email = spotifyUser.body.email;
+            const followers = spotifyUser.body.followers.total;
 
-            console.log(spotifyUser);
+            console.log('followers');
+            console.log(followers);
 
             const userData = {
                 name,
@@ -295,8 +332,9 @@ const pullData = async (req, res, next) => {
                 country,
                 url,
                 product,
-                email
-            }
+                email,
+                followers,
+            };
 
             const spotifyInfo = {
                 topArtistsShort,
