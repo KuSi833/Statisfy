@@ -10,40 +10,44 @@
                 <button onclick = "makeActive(2, '#topTracks_widget')" type="button" id="button3" class="btn btn-outline-primary top-buttons">All Time</button>
             </div>
 
+
             {{!-- <ol id = "shortTracks" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.topTracksShort}}
-                    <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"> <a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
+                    <li><img alt="album cover" src="{{{this.album.images.2.url}}}" width="50" height="50"> <a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
                 {{/each}}
             </ol> --}}
 
             <div id = "shortTracks" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
                 {{#each spotifyInfo.topTracksShort}}
-                    <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                    <p><img alt="album cover" src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
                 {{/each}}
+                <button type="button" id="createPlaylist" class="btn btn-outline-primary top-buttons" class=""> &#10133; Create Playlist</button>
             </div>
 
             {{!-- <ol id = "mediumTracks" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.topTracksMedium}}
-                    <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"> <a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
+                    <li><img alt="album cover" src="{{{this.album.images.2.url}}}" width="50" height="50"> <a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
                 {{/each}}
             </ol> --}}
 
             <div id = "mediumTracks" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
                 {{#each spotifyInfo.topTracksMedium}}
-                    <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                    <p><img alt="album cover" src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
                 {{/each}}
+                <button type="button" id="createPlaylist" class="btn btn-outline-primary top-buttons" class=""> &#10133; Create Playlist</button>
             </div>
 
             {{!-- <ol id = "longTracks" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.topTracksLong}}
-                    <li><img src="{{{this.album.images.2.url}}}"  width="50" height="50"> <a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
+                    <li><img alt="album cover"src="{{{this.album.images.2.url}}}"  width="50" height="50"> <a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
                 {{/each}}
             </ol> --}}
 
             <div id = "longTracks" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
                 {{#each spotifyInfo.topTracksLong}}
-                    <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                    <p><img alt="album cover" src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
                 {{/each}}
+                <button type="button" id="createPlaylist" class="btn btn-outline-primary top-buttons" class=""> &#10133; Create Playlist</button>
             </div>
 
         </div>

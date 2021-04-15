@@ -20,6 +20,7 @@
                 {{#each spotifyInfo.recommendationsA}}
                     <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
                 {{/each}}
+                <button type="button" id="createPlaylist" class="btn btn-outline-primary top-buttons" class=""> &#10133; Create Playlist</button>
             </div>
 
             {{!-- <ol id = "tracks" class="card-text text-center" style = "display:none">
@@ -32,6 +33,7 @@
                 {{#each spotifyInfo.recommendationsT}}
                     <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
                 {{/each}}
+                <button type="button" id="createPlaylist" class="btn btn-outline-primary top-buttons" class=""> &#10133; Create Playlist</button>
             </div>
 
             {{!-- <ol id = "genres" class="card-text" style = "display:none">
@@ -44,6 +46,7 @@
                 {{#each spotifyInfo.recommendationsG}}
                     <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
                 {{/each}}
+                <button type="button" id="createPlaylist" class="btn btn-outline-primary top-buttons" class=""> &#10133; Create Playlist</button>
             </div>
 
         </div>
