@@ -11,17 +11,17 @@
             </div>
             <ol id = "shortTracks" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.topTracksShort}}
-                    <li> <a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
+                    <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"> <a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
                 {{/each}}
             </ol>
             <ol id = "mediumTracks" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.topTracksMedium}}
-                    <li> <a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
+                    <li><img src="{{{this.album.images.2.url}}}" width="50" height="50"> <a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
                 {{/each}}
             </ol>
             <ol id = "longTracks" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.topTracksLong}}
-                    <li> <a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
+                    <li><img src="{{{this.album.images.2.url}}}"  width="50" height="50"> <a href = {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></li>
                 {{/each}}
             </ol>
         </div>
@@ -39,12 +39,10 @@
     document.getElementById("shortTracks").style.display = "none";
     document.getElementById("mediumTracks").style.display = "block";
     document.getElementById("longTracks").style.display = "none";
-
   }
   function displayLongTracks() {
     document.getElementById("shortTracks").style.display = "none";
     document.getElementById("mediumTracks").style.display = "none";
     document.getElementById("longTracks").style.display = "block";
-
   }
 </script>
