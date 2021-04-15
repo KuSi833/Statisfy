@@ -276,10 +276,11 @@ body::-webkit-scrollbar-thumb {
 
 .btn {
     color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    padding: 7px 10px;
-    border-radius: 25px;
+    // font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 5px 0px 5px 0px;
+    border-radius: 8px;
 }
 
 .widget {
@@ -300,6 +301,12 @@ body::-webkit-scrollbar-thumb {
     overflow-y: auto;
     max-height: 400px;
   }
+}
+
+.top_widgets {
+    .btn-group {
+        margin-bottom: 7px;
+    }
 }
 
 #login-to-spotify-button {
@@ -374,3 +381,4 @@ body::-webkit-scrollbar-thumb {
     opacity: 1;
     transform: translateY(0);
 }
+
