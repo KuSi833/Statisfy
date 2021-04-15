@@ -5,9 +5,9 @@
         </div>
         <div class="card-body">
             <div class=" btn-group container-fluid" role="tracks-time" aria-label="Time range for top tracks">
-                <button onclick = "displayShortTracks()" type="button" class="btn btn-outline-primary top-buttons">1 Month</button>
-                <button onclick = "displayMediumTracks()" type="button" class="btn btn-outline-primary top-buttons">6 Months</button>
-                <button onclick = "displayLongTracks()" type="button" class="btn btn-outline-primary top-buttons">12 Months</button>
+                <button onclick = "makeActive(0, '#topTracks_widget')" type="button" id="button1" class="btn btn-outline-primary top-buttons active">1 Month</button>
+                <button onclick = "makeActive(1, '#topTracks_widget')" type="button" id="button2" class="btn btn-outline-primary top-buttons">6 Months</button>
+                <button onclick = "makeActive(2, '#topTracks_widget')" type="button" id="button3" class="btn btn-outline-primary top-buttons">All Time</button>
             </div>
             <ol id = "shortTracks" class="card-text text-center" style = "display:none">
                 {{#each spotifyInfo.topTracksShort}}
@@ -29,20 +29,7 @@
 </div>
 
 <script>
-  function displayShortTracks() {
-    document.getElementById("shortTracks").style.display = "block";
-    document.getElementById("mediumTracks").style.display = "none";
-    document.getElementById("longTracks").style.display = "none";
-    }
-
-  function displayMediumTracks() {
-    document.getElementById("shortTracks").style.display = "none";
-    document.getElementById("mediumTracks").style.display = "block";
-    document.getElementById("longTracks").style.display = "none";
-  }
-  function displayLongTracks() {
-    document.getElementById("shortTracks").style.display = "none";
-    document.getElementById("mediumTracks").style.display = "none";
-    document.getElementById("longTracks").style.display = "block";
-  }
+    window.addEventListener('load', () => {
+        makeActive(0, '#topTracks_widget');
+    })
 </script>

@@ -5,9 +5,9 @@
         </div>
         <div class="card-body">
             <div class="btn-group container-fluid " role="tracks-time" aria-label="Time range for Top Albums">
-                <button onclick = "displayS()" type="button" class="btn btn-outline-primary top-buttons">1 Month</button>
-                <button onclick = "displayM()" type="button" class="btn btn-outline-primary top-buttons">6 Months</button>
-                <button onclick = "displayL()" type="button" class="btn btn-outline-primary top-buttons">12 Months</button>
+                <button onclick = "makeActive(0, '#topArtists_widget')" type="button" class="btn btn-outline-primary top-buttons">1 Month</button>
+                <button onclick = "makeActive(1, '#topArtists_widget')" type="button" class="btn btn-outline-primary top-buttons">6 Months</button>
+                <button onclick = "makeActive(2, '#topArtists_widget')" type="button" class="btn btn-outline-primary top-buttons">All Time</button>
             </div>
             <ol id = "short" class="card-text top-texts" style = "display:none">
                 {{#each spotifyInfo.topArtistsShort}}
@@ -29,22 +29,7 @@
 </div>
 
 <script>
-  function displayS() {
-    document.getElementById("short").style.display = "block";
-    document.getElementById("medium").style.display = "none";
-    document.getElementById("long").style.display = "none";
-    }
-
-  function displayM() {
-    document.getElementById("short").style.display = "none";
-    document.getElementById("medium").style.display = "block";
-    document.getElementById("long").style.display = "none";
-
-  }
-  function displayL() {
-    document.getElementById("short").style.display = "none";
-    document.getElementById("medium").style.display = "none";
-    document.getElementById("long").style.display = "block";
-
-  }
+    window.addEventListener('load', () => {
+        makeActive(0, '#topArtists_widget');
+    })
 </script>
