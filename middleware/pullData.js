@@ -145,13 +145,13 @@ const pullData = async (req, res, next) => {
             const topArtistsMedium = await (
                 await spotifyApi.getMyTopArtists({
                     time_range: 'medium_term',
-                    limit: '5',
+                    limit: '10',
                 })
             ).body.items;
             const topArtistsLong = await (
                 await spotifyApi.getMyTopArtists({
                     time_range: 'long_term',
-                    limit: '5',
+                    limit: '10',
                 })
             ).body.items;
             const topTracksShort = await (
@@ -163,15 +163,49 @@ const pullData = async (req, res, next) => {
             const topTracksMedium = await (
                 await spotifyApi.getMyTopTracks({
                     time_range: 'medium_term',
-                    limit: '5',
+                    limit: '10',
                 })
             ).body.items;
             const topTracksLong = await (
                 await spotifyApi.getMyTopTracks({
                     time_range: 'long_term',
-                    limit: '5',
+                    limit: '10',
                 })
             ).body.items;
+
+            const userPlaylists = await (
+              await spotifyApi.getUserPlaylists()
+            ).body.items;
+
+            let playlistId = null;
+            for (let item of userPlaylists) {
+              if (item.name == 'Top tracks - Statisfy') {
+                playlistId = item.id;
+                console.log(playlistId);
+                console.log("found playlist named top tracks");
+              }
+            };
+
+            if (playlistId) {
+              for (let item of topTracksShort) {
+                await spotifyApi.addTracksToPlaylist(playlistId, [item.uri]);
+              };
+            }
+            else {
+              const createPlaylist = await (
+                  await spotifyApi.createPlaylist('Top tracks - Statisfy', {'description':
+                  'Created by Statisfy', 'collaborative': 'false', 'public': 'true'})
+                  ).body;
+                  playlistId = createPlaylist.id;
+                  for (let item of topTracksShort) {
+                    await spotifyApi.addTracksToPlaylist(playlistId, [item.uri]);
+                  }
+                  console.log("created new playist");
+            };
+
+
+
+
 
             // Getting Genres
             const genresDict = await getGenres(spotifyApi);
