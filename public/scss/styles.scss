@@ -292,6 +292,8 @@ body::-webkit-scrollbar-thumb {
 
     .card-header {
         background: $light-blue;
+        display: flex;
+        flex-direction: row;
     }
   }
   .scrollable{
@@ -317,10 +319,24 @@ body::-webkit-scrollbar-thumb {
         .profile-header {
             display: flex;
             flex-direction: row;
-            align-items: center;
-            h1 {
-                padding-left: 20px;
+            .name-div {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 10px;
+                h1 {
+                    padding-left: 20px;
+                }
+                p {
+                    padding-left: 10px;
+                }
             }
+        }
+        .other-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 20px;
         }
     }
     img {
