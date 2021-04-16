@@ -51,6 +51,19 @@
                             color: 'white',
                         },
                     },
+                    callbacks: {
+                        label: function (tooltipItem) {
+                            switch(tooltipItem.datasetIndex){
+                            case 1:
+                                line1 = "Acousticness:";  
+                                break;
+                            case 2:
+                                line1 = "Danceability";
+                                break;
+                            }
+                            return line1;
+                        }
+                    }
                 },
                 scales: {
                     y: {

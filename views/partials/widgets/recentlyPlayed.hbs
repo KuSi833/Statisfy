@@ -1,0 +1,36 @@
+<div class="widget col-12 col-lg-4" id='topTracks_widget' >
+    <div class='card small h-100'>
+        <div class="card-header text-center">
+            <h4>Recently Played</h4>
+        </div>
+        <div class="card-body">
+            <div class="scrollable">
+                {{!-- Edit Here --}}
+                <div id = "shortTracks" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                    {{#each spotifyInfo.topTracksShort}}
+                        <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                    {{/each}}
+                </div>
+
+                <div id = "mediumTracks" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                    {{#each spotifyInfo.topTracksMedium}}
+                        <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                    {{/each}}
+                </div>
+
+                <div id = "longTracks" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                    {{#each spotifyInfo.topTracksLong}}
+                        <p><img src="{{{this.album.images.2.url}}}" width="50" height="50"><a style="font-size: 20px; padding-left: 10px; color:white; text-decoration: none;" href= {{{this.external_urls.spotify}}}>{{this.name}} - {{this.artists.0.name}}</a></p>
+                    {{/each}}
+                </div>
+            </div>
+            <button type="button" id="createPlaylist" class="btn btn-outline-primary top-buttons" style="margin-left:110px"> &#10133; Create Playlist</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', () => {
+        makeActive(0, '#topTracks_widget');
+    })
+</script>
