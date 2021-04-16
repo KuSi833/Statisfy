@@ -9,8 +9,8 @@
                 <button onclick = "makeActive(1, '#recommendations_widget')" type="button" class="btn btn-outline-primary top-buttons">Songs</button>
                 <button onclick = "makeActive(2, '#recommendations_widget')" type="button" class="btn btn-outline-primary top-buttons">Genres</button>
             </div>
-            
-            <div class="scrollable"> 
+
+            <div class="scrollable">
                 <div id = "artists" class = "card-text">
                     {{#each spotifyInfo.recommendationsA}}
                         <div class="entry">
@@ -23,9 +23,9 @@
                             </div>
                         </div>
                     {{/each}}
-                    
+
                 </div>
-                <div id = "tracks" class = "card-text"">
+                <div id = "tracks" class = "card-text">
                     {{#each spotifyInfo.recommendationsT}}
                         <div class="entry">
                             <a href="{{{this.album.external_urls.spotify}}}">
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                     {{/each}}
-                    
+
                 </div>
                 <div id = "genres" class = "card-text">
                     {{#each spotifyInfo.recommendationsG}}
@@ -51,12 +51,12 @@
                             </div>
                         </div>
                     {{/each}}
-        
+
                 </div>
-                
+
             </div>
 
-            <button type="button" id="createPlaylist" class="btn btn-outline-primary active top-buttons"> &#10133; Create Playlist</button>
+            <button onclick = "location.href = '/dashboard/createGR';" type="button" id="createPlaylist" class="btn btn-outline-primary active top-buttons"> &#10133; Create Playlist</button>
         </div>
     </div>
 </div>
