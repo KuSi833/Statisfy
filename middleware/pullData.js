@@ -319,6 +319,7 @@ const pullData = async (req, res, next) => {
                 recommendationsA,
                 recommendationsT,
                 recommendationsG,
+                recentlyPlayed
             };
 
             for (let item of topArtistsShort) {
