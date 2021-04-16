@@ -177,14 +177,17 @@ body::-webkit-scrollbar-thumb {
             border-radius: 8px;
         }
         #createPlaylist {
-            margin: 10px 0px 0px auto;
+            margin: 16px 0px 0px auto;
             float: right;
-            padding: 5px 10px 5px 10px;
+            padding: 5px 15px 5px 10px;
             color: white;
-            font-weight: 400;
+            font-weight: 500;
             i {
                 color: white;
             }
+        }
+        #createPlaylist:hover {
+            background-color: $primary-shade;
         }
     }
     #profile_widget {
