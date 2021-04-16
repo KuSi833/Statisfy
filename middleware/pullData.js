@@ -291,7 +291,6 @@ const pullData = async (req, res, next) => {
                     url: '/img/default-avatar.png'
                 }
             }
-            console.log(image);
             const country = spotifyUser.body.country;
             const url = spotifyUser.body.external_urls.spotify;
             const product = spotifyUser.body.product;

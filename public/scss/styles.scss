@@ -212,11 +212,12 @@ body::-webkit-scrollbar-thumb {
             .profile-header {
                 display: flex;
                 flex-direction: row;
+                padding: 15px 0px 0px 20px;
                 .name-div {
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
-                    padding-top: 12px;
+                    padding-top: 25px;
                     h1 {
                         padding-left: 20px;
                     }
@@ -226,20 +227,24 @@ body::-webkit-scrollbar-thumb {
                     #followers {
                         color: lightgray;
                         font-size: 15px;
-                        padding-top: 10px;
+                        padding-top: 25px;
                     }
                 }
             }
             .other-info {
                 display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                padding-top: 20px;
+                flex-direction: row;
+                height: 100%;
+                align-items: center;
+                // justify-content: center;
+                p {
+                    padding-left: 20px;
+                }
             }
         }
         img {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
             border-radius: 50%;
         }
