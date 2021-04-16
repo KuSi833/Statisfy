@@ -138,6 +138,7 @@ body::-webkit-scrollbar-thumb {
         .card-body {
             padding-top: 0px;
             .card-text {
+                overflow: visible;
                 // padding: 5px 5px 5px 15px;
                 img {
                     width: 80px;
@@ -154,6 +155,8 @@ body::-webkit-scrollbar-thumb {
             display: flex;
             flex-direction: row;
             padding-bottom: 15px;
+            overflow: visible;
+
             .song-info {
                 display: flex;
                 flex-direction: column;
@@ -164,12 +167,19 @@ body::-webkit-scrollbar-thumb {
                     color: white;
                     text-decoration: none;
                 }
+                a:hover {
+                    color: $primary-shade;
+                }
 
                 #artist-name {
                     font-size: 15px;
                     padding-left: 10px;
                     color: lightgrey;
                     text-decoration: none;
+                }
+
+                #artist-name:hover {
+                    color: $primary-shade;
                 }
             }
         }
@@ -423,6 +433,19 @@ body::-webkit-scrollbar-thumb {
 
     color: white;
     font-size: large;
+
+    #refresh_button {
+        transition: 1s ease;
+    }
+    #refresh_button:hover {
+        transform: rotate(360deg);
+    }
+    #logout_button {
+        transition: 1s ease;
+    }
+    #logout_button:hover {
+        transform: translate(-10px, 0px)
+    }
 }
 
 .btn {
@@ -465,4 +488,13 @@ body::-webkit-scrollbar-thumb {
 .showBtn {
     opacity: 1;
     transform: translateY(0);
+}
+
+a img {
+    transition: 0.5s ease;
+}
+
+a img:hover {
+    opacity: 0.9;
+    transform: scale(0.95);
 }
