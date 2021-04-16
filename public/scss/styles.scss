@@ -241,13 +241,16 @@ body::-webkit-scrollbar-thumb {
         }
     }
     #allGenres_widget {
+        .card-text:last-child {
+            padding-bottom: 15px;
+        }
         .entry {
             padding-bottom: 0px;
             justify-content: left;
             align-items: center;
         }
         p { 
-            padding: 0px 0px 15px 10px;
+            padding: 15px 0px 0px 10px;
             margin-bottom: 0px;
             font-size: 20px;
             color: white;
@@ -257,6 +260,11 @@ body::-webkit-scrollbar-thumb {
 
 #about-us {
     flex-direction: column;
+    .carousel {
+        .carousel-indicators {
+            padding-top: 20px; position: relative;
+        }
+    }
     body {
         font-family: 'Montserrat', sans-serif;
         color: #818181;
