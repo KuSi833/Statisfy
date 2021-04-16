@@ -159,7 +159,6 @@ body::-webkit-scrollbar-thumb {
                     padding-left: 10px;
                     font-size: 20px;
                     color: white;
-                    text-decoration: none;
                 }
 
                 #artist-name {
@@ -238,6 +237,19 @@ body::-webkit-scrollbar-thumb {
             padding: 15px;
             margin: 15px;
             opacity: 1;
+        }
+    }
+    #allGenres_widget {
+        .entry {
+            padding-bottom: 0px;
+            justify-content: left;
+            align-items: center;
+        }
+        p { 
+            padding: 0px 0px 15px 10px;
+            margin-bottom: 0px;
+            font-size: 20px;
+            color: white;
         }
     }
 }

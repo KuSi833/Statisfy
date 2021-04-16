@@ -80,6 +80,14 @@ const getTopGenresChartData = (genresArray, n) => {
 
     return topGenresChartData;
 };
+// Recommendations
+const generateSeedGenres = (genresArray) => {
+    let seed_genres = [];
+    for (let i = 0; i < 5; i++) {
+        seed_genres.push(genresArray[0][i]);
+    }
+    return seed_genres;
+}
 
 const pullData = async (req, res, next) => {
     if (req.spotifyInfo === null || req.spotifyInfo === undefined) {
@@ -285,7 +293,8 @@ const pullData = async (req, res, next) => {
             }
 
             // let topGenres = getTopGenresChartData(genresArray, 5);  WTF IS THIS
-            let seed_genres = genresArray[0].splice(0, 5);
+
+            let seed_genres = generateSeedGenres(genresArray);
 
             const recommendationsA = await (
                 await spotifyApi.getRecommendations({

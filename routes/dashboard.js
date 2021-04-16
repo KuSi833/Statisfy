@@ -17,6 +17,8 @@ router.get('/', ensureAuth, cache, pullData, async (req, res) => {
     ];
     audioFeatures = '[' + audioFeatures + ']';
 
+    console.log(spotifyInfo.genresArray)
+
     res.render('dashboard', {
         dashboard: true,
         title: 'Dashboard',
