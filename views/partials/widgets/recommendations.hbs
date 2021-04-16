@@ -15,7 +15,7 @@
                     {{#each spotifyInfo.recommendationsA}}
                         <div class="entry">
                             <a href="{{{this.album.external_urls.spotify}}}">
-                                <img src="{{{this.album.images.2.url}}}">
+                                <img alt = "album image" src="{{{this.album.images.2.url}}}">
                             </a>
                             <div class="song-info">
                                 <a id="song-name" href={{{this.external_urls.spotify}}}>{{this.name}}</a>
@@ -56,7 +56,7 @@
 
             </div>
 
-            <button onclick = "location.href = '/dashboard/createGR';" type="button" id="createPlaylist" class="btn btn-outline-primary active top-buttons"> &#10133; Create Playlist</button>
+            <button type="button" id="createPlaylist" class="btn btn-outline-primary active top-buttons"> <em class="fas fa-plus"></em> Create Playlist</button>
         </div>
     </div>
 </div>
