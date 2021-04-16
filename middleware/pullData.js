@@ -284,7 +284,14 @@ const pullData = async (req, res, next) => {
 
             const spotifyUser = await spotifyApi.getMe();
             const name = spotifyUser.body.display_name;
-            const image = spotifyUser.body.images[0];
+            let image = spotifyUser.body.images[0];
+            // If user doesn't have image assings default
+            if (image == undefined) {
+                image = {
+                    url: '/img/default-avatar.png'
+                }
+            }
+            console.log(image);
             const country = spotifyUser.body.country;
             const url = spotifyUser.body.external_urls.spotify;
             const product = spotifyUser.body.product;

@@ -37,7 +37,7 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     border-radius: 7px;
     //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-image: -webkit-linear-gradient($primary, $secondary);
+    background-image: -webkit-linear-gradient($primary, $primary);
 }
 
 .page-container {
