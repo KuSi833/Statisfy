@@ -145,12 +145,15 @@ body::-webkit-scrollbar-thumb {
                     object-fit: cover;
                     border-radius: 5px;
                 }
+                .entry:last-child {
+                    padding-bottom: 0px;
+                }
             }
         }
         .entry {
             display: flex;
             flex-direction: row;
-            padding-bottom: 16px;
+            padding-bottom: 15px;
             .song-info {
                 display: flex;
                 flex-direction: column;
@@ -242,16 +245,16 @@ body::-webkit-scrollbar-thumb {
         }
     }
     #allGenres_widget {
-        .card-text:last-child {
-            padding-bottom: 15px;
-        }
         .entry {
             padding-bottom: 0px;
             justify-content: left;
             align-items: center;
         }
+        .entry:first-child {
+            padding-top: 15px;
+        }
         p { 
-            padding: 15px 0px 0px 10px;
+            padding: 0px 0px 15px 10px;
             margin-bottom: 0px;
             font-size: 20px;
             color: white;
