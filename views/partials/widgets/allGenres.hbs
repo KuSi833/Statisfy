@@ -1,0 +1,20 @@
+<div class="widget top_widgets col-12 col-lg-4" id='allGenres_widget' >
+    <div class='card top-stuff h-100 '>
+        <div class="card-header text-center">
+            <h4>All Genres</h4>
+        </div>
+        <div class="card-body">
+            <div class="scrollable">
+                <div id = "short" class = "card-text">
+                    {{#each spotifyInfo.genresArray}}
+                        <div class="entry">
+                            <div class="song-info">
+                                <a id="top-artist-name" href="{{{this.external_urls.spotify}}}">{{ this.[0] }}</a>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
