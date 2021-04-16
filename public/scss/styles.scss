@@ -109,17 +109,6 @@ body::-webkit-scrollbar-thumb {
 #dashboard {
     flex-direction: column;
 
-    .navbar {
-        display: flex;
-        flex-direction: row;
-        height: 80px;
-        align-items: center;
-        background-color: $dark-blue;
-
-        color: white;
-        font-size: large;
-    }
-
     .middle {
         .page-content {
             margin-bottom: 80px;
@@ -384,6 +373,17 @@ body::-webkit-scrollbar-thumb {
         color: white;
         font-size: large;
     }
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    align-items: center;
+    background-color: $dark-blue;
+
+    color: white;
+    font-size: large;
 }
 
 .btn {
