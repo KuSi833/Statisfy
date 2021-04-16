@@ -91,6 +91,11 @@ body::-webkit-scrollbar-thumb {
         }
     }
 
+    #login-to-spotify-button {
+        margin-top: 5vh;
+        width: 30vh;
+    }
+
     #loggedin {
         .media {
             display: flex;
@@ -118,6 +123,118 @@ body::-webkit-scrollbar-thumb {
     .middle {
         .page-content {
             margin-bottom: 80px;
+        }
+    }
+    .widget {
+        border-radius: 5px;
+        padding: 5px 5px 5px 5px;
+    
+        .card {
+            background: $widget-bg;
+            color: white;
+    
+            .card-header {
+                background: $light-blue;
+                display: flex;
+                flex-direction: row;
+                padding: 0.4rem 0.4rem 0.2rem 0.6rem;
+            }
+        }
+    }
+    .top_widgets {
+        .btn-group {
+            padding: 0px;
+            margin: 15px 0px 15px 0px;
+        }
+        .card-body {
+            padding-top: 0px;
+            .card-text {
+                // padding: 5px 5px 5px 15px;
+                img {
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    border-radius: 5px;
+                }
+            }
+        }
+        .entry {
+            display: flex;
+            flex-direction: row;
+            padding-bottom: 16px;
+            .song-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                a {
+                    padding-left: 10px;
+                    font-size: 20px; 
+                    color:white; 
+                    text-decoration: none;
+                }
+    
+                #artist-name {
+                    font-size: 15px; 
+                    padding-left: 10px; 
+                    color:lightgrey; 
+                    text-decoration: none;
+                }
+            }
+        }
+        .scrollable {
+            overflow-y: auto;
+            max-height: 400px;
+            background-color: $light-blue;
+            border-radius: 8px;
+        }
+        #createPlaylist {
+            margin: 10px 0px 0px auto;
+            float: right;
+            padding: 5px 10px 5px 10px;
+            color: white;
+            font-weight: 400;
+            i {
+                color: white;
+            }
+        }
+    }
+    #profile_widget {
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            .profile-header {
+                display: flex;
+                flex-direction: row;
+                .name-div {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    padding-top: 12px;
+                    h1 {
+                        padding-left: 20px;
+                    }
+                    p {
+                        padding-left: 10px;
+                    }
+                    #followers {
+                        color: lightgray;
+                        font-size: 15px;
+                        padding-top: 10px;
+                    }
+                }
+            }
+            .other-info {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 20px;
+            }
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
         }
     }
 }
@@ -278,124 +395,9 @@ body::-webkit-scrollbar-thumb {
     border-radius: 8px;
 }
 
-.widget {
-    border-radius: 5px;
-    padding: 5px 5px 5px 5px;
-
-    .card {
-        background: $widget-bg;
-        color: white;
-
-        .card-header {
-            background: $light-blue;
-            display: flex;
-            flex-direction: row;
-            padding: 0.4rem 0.4rem 0.2rem 0.6rem;
-        }
-    }
-}
-
-.top_widgets {
-    .btn-group {
-        padding: 0px;
-        margin: 15px 0px 15px 0px;
-    }
-    .card-body {
-        padding-top: 0px;
-        .card-text {
-            // padding: 5px 5px 5px 15px;
-            img {
-                width: 80px;
-                height: 80px;
-                object-fit: cover;
-                border-radius: 5px;
-            }
-        }
-    }
-    .entry {
-        display: flex;
-        flex-direction: row;
-        padding-bottom: 16px;
-        .song-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            a {
-                padding-left: 10px;
-                font-size: 20px; 
-                color:white; 
-                text-decoration: none;
-            }
-
-            #artist-name {
-                font-size: 15px; 
-                padding-left: 10px; 
-                color:lightgrey; 
-                text-decoration: none;
-            }
-        }
-    }
-    .scrollable {
-        overflow-y: auto;
-        max-height: 400px;
-        background-color: $light-blue;
-        border-radius: 8px;
-    }
-    #createPlaylist {
-        margin: 10px 0px 0px auto;
-        float: right;
-        padding-right: 10px;
-    }
-}
-
-#login-to-spotify-button {
-    margin-top: 5vh;
-    width: 30vh;
-}
-
 #icon {
     color: #fff;
     font-size: 1.35em;
-}
-
-#profile_widget {
-    .card-body {
-        display: flex;
-        flex-direction: column;
-        .profile-header {
-            display: flex;
-            flex-direction: row;
-            .name-div {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                padding-top: 12px;
-                h1 {
-                    padding-left: 20px;
-                }
-                p {
-                    padding-left: 10px;
-                }
-                #followers {
-                    color: lightgray;
-                    font-size: 15px;
-                    padding-top: 10px;
-                }
-            }
-        }
-        .other-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding-top: 20px;
-        }
-    }
-    img {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 50%;
-    }
 }
 
 .scrollToTopBtn {
