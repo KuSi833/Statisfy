@@ -180,7 +180,7 @@ const pullData = async (req, res, next) => {
             for (let item of userPlaylists) {
                 if (item.name == 'Top tracks - Statisfy') {
                     playlistId = item.id;
-                    console.log(playlistId);
+                    // console.log(playlistId);
                     console.log('found playlist named top tracks');
                 }
             }
@@ -211,7 +211,6 @@ const pullData = async (req, res, next) => {
             const recentlyPlayed = await (
                 await spotifyApi.getMyRecentlyPlayedTracks()
             ).body.items;
-            console.log(recentlyPlayed);
 
             // Getting Genres
             const genresDict = await getGenres(spotifyApi);
@@ -317,9 +316,6 @@ const pullData = async (req, res, next) => {
             const product = spotifyUser.body.product;
             const email = spotifyUser.body.email;
             const followers = spotifyUser.body.followers.total;
-
-            console.log('followers');
-            console.log(followers);
 
             const userData = {
                 name,

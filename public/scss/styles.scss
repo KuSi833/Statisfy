@@ -116,13 +116,8 @@ body::-webkit-scrollbar-thumb {
     }
 
     .middle {
-        // display: flex;
-        // flex-direction: row;
-        // flex-grow: 1;
-
-        page-content {
-            margin: 0 auto;
-            width: 20%;
+        .page-content {
+            margin-bottom: 80px;
         }
     }
 }
@@ -295,11 +290,8 @@ body::-webkit-scrollbar-thumb {
             background: $light-blue;
             display: flex;
             flex-direction: row;
+            padding: 0.4rem 0.4rem 0.2rem 0.6rem;
         }
-    }
-    .scrollable {
-        overflow-y: auto;
-        max-height: 400px;
     }
 }
 
@@ -318,12 +310,6 @@ body::-webkit-scrollbar-thumb {
                 object-fit: cover;
                 border-radius: 5px;
             }
-            a {
-                font-size: 20px; 
-                padding-left: 10px; 
-                color:white; 
-                text-decoration: none;
-            }
         }
     }
     .entry {
@@ -334,6 +320,13 @@ body::-webkit-scrollbar-thumb {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            a {
+                padding-left: 10px;
+                font-size: 20px; 
+                color:white; 
+                text-decoration: none;
+            }
+
             #artist-name {
                 font-size: 15px; 
                 padding-left: 10px; 
@@ -341,6 +334,17 @@ body::-webkit-scrollbar-thumb {
                 text-decoration: none;
             }
         }
+    }
+    .scrollable {
+        overflow-y: auto;
+        max-height: 400px;
+        background-color: $light-blue;
+        border-radius: 8px;
+    }
+    #createPlaylist {
+        margin: 10px 0px 0px auto;
+        float: right;
+        padding-right: 10px;
     }
 }
 
@@ -365,12 +369,17 @@ body::-webkit-scrollbar-thumb {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                padding-top: 10px;
+                padding-top: 12px;
                 h1 {
                     padding-left: 20px;
                 }
                 p {
                     padding-left: 10px;
+                }
+                #followers {
+                    color: lightgray;
+                    font-size: 15px;
+                    padding-top: 10px;
                 }
             }
         }

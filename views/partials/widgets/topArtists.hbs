@@ -12,19 +12,40 @@
             <div class="scrollable">
                 <div id = "short" class = "card-text">
                     {{#each spotifyInfo.topArtistsShort}}
-                        <p><img alt = "artist_img" src="{{{this.images.2.url}}}"><a href= {{{this.external_urls.spotify}}}>{{this.name}}</a></p>
+                        <div class="entry">
+                            <a href="{{{this.external_urls.spotify}}}">
+                                <img alt="artist image" src="{{{this.images.2.url}}}">
+                            </a>
+                            <div class="song-info">
+                                <a id="top-artist-name" href="{{{this.external_urls.spotify}}}">{{this.name}}</a>
+                            </div>
+                        </div>
                     {{/each}}
                 </div>
 
-                <div id = "medium" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                <div id = "medium" class = "card-text">
                     {{#each spotifyInfo.topArtistsMedium}}
-                        <p><img alt = "artist_img" src="{{{this.images.2.url}}}"><a href= {{{this.external_urls.spotify}}}>{{this.name}}</a></p>
+                        <div class="entry">
+                            <a href="{{{this.external_urls.spotify}}}">
+                                <img alt="artist image" src="{{{this.images.2.url}}}">
+                            </a>
+                            <div class="song-info">
+                                <a id="top-artist-name" href="{{{this.external_urls.spotify}}}">{{this.name}}</a>
+                            </div>
+                        </div>
                     {{/each}}
                 </div>
 
-                <div id = "long" class = "card-text" style="padding-top: 10px; padding-left: 45px; display:none">
+                <div id = "long" class = "card-text">
                     {{#each spotifyInfo.topArtistsLong}}
-                        <p><img alt = "artist_img" src="{{{this.images.2.url}}}"><a href= {{{this.external_urls.spotify}}}>{{this.name}}</a></p>
+                        <div class="entry">
+                            <a href="{{{this.external_urls.spotify}}}">
+                                <img alt="artist image" src="{{{this.images.2.url}}}">
+                            </a>
+                            <div class="song-info">
+                                <a id="top-artist-name" href="{{{this.external_urls.spotify}}}">{{this.name}}</a>
+                            </div>
+                        </div>
                     {{/each}}
                 </div>
             </div>
